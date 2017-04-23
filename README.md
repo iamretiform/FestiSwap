@@ -46,6 +46,8 @@ present at the event, during the event.
 The goal of this project is to create a classifieds app that
 incorporates: 
 
-Geolocating: of users 
-Geofencing of event marketplaces 
-Timing of event marketplace instantiation and destruction 
+*Geolocating: of users* 
+
+*Geofencing of event marketplaces*
+
+*Timing of event marketplace instantiation and destruction*
