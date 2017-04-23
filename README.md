@@ -8,6 +8,8 @@ Apr 21- May5 2017
 * [*Conlin McManus*](https://github.com/conlinmcmanus)
 * [*Daniel Kweon-Lee*](https://github.com/dkweonlee)
 
+In collaboration with project management and technical resources from:
+* [*Pivotal*] (https://pivotal.io/labs)
 
 ## MISSION
 *Give time and space, a marketplace.*
