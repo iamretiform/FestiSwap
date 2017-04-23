@@ -2,7 +2,8 @@
 
 # FestiSwap 
 [*Bravo Platoon*](http://www.codeplatoon.org/) Capstone Project
-[[https://github.com/iamretiform/FestiSwap/blob/master/app/assets/images/cp_logo.png]](www.codeplatoon.org)
+[[https://github.com/iamretiform/FestiSwap/blob/master/app/assets/images/cp_logo.png]]
+[*Check out Code Platoon*](www.codeplatoon.org)
 
 
 
