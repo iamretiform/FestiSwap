@@ -5,8 +5,8 @@ Apr 21- May5 2017
 
 ### Team Members:
 * [*Scott Plunkett*](https://github.com/iamretiform)
-* [*Conlin McManus*] (hhttps://github.com/conlinmcmanus)
-* [*Daniel Kweon-Lee*] (https://github.com/dkweonlee)
+* [*Conlin McManus*](https://github.com/conlinmcmanus)
+* [*Daniel Kweon-Lee*](https://github.com/dkweonlee)
 
 
 ## MISSION
