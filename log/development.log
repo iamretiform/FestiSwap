@@ -48,3 +48,303 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 406ms (Views: 404.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-04-23 13:15:37 -0500
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "FestiSwap_development" does not exist
+):
+  
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:711:in `rescue in connect'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:707:in `connect'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `new'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `postgresql_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:757:in `new_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:801:in `checkout_new_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:780:in `try_to_checkout_new_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:741:in `acquire_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:500:in `checkout'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:374:in `connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:929:in `retrieve_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_handling.rb:116:in `retrieve_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_handling.rb:88:in `connection'
+activerecord (5.1.0.rc2) lib/active_record/migration.rb:562:in `connection'
+activerecord (5.1.0.rc2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-04-23 13:15:38 -0500
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "FestiSwap_development" does not exist
+):
+  
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:711:in `rescue in connect'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:707:in `connect'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:220:in `initialize'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `new'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/postgresql_adapter.rb:38:in `postgresql_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:757:in `new_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:801:in `checkout_new_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:780:in `try_to_checkout_new_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:741:in `acquire_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:500:in `checkout'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:374:in `connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_adapters/abstract/connection_pool.rb:929:in `retrieve_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_handling.rb:116:in `retrieve_connection'
+activerecord (5.1.0.rc2) lib/active_record/connection_handling.rb:88:in `connection'
+activerecord (5.1.0.rc2) lib/active_record/migration.rb:562:in `connection'
+activerecord (5.1.0.rc2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (1.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "FestiSwap_development"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "FestiSwap_test"[0m
+  [1m[35m (539.4ms)[0m  [1m[35mCREATE DATABASE "FestiSwap_development" ENCODING = 'unicode'[0m
+  [1m[35m (410.7ms)[0m  [1m[35mCREATE DATABASE "FestiSwap_test" ENCODING = 'unicode'[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateEvents (20170423015151)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170423015151"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAds (20170423015333)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "title" character varying, "description" text, "event_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_ads_on_event_id" ON "ads"  ("event_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170423015333"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-04-23 18:16:00.152452"], ["updated_at", "2017-04-23 18:16:00.152452"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-04-23 13:17:43 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 453ms (Views: 443.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-23 13:18:03 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 23ms (Views: 11.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2017-04-23 13:18:06 -0500
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (9.7ms) [cache miss]
+  Rendered events/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 32ms (Views: 22.5ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-04-23 13:18:08 -0500
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9dwyY7zpeuzlcR/knFujy1HU/4yiA5ThzUHAzg3Rfi0Xv1lCZ1vE4M8weR+a87CduKoQOqN4VBxG26Wo5QqMkQ==", "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "events" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2017-04-23 18:18:08.473978"], ["updated_at", "2017-04-23 18:18:08.473978"]]
+  [1m[35m (12.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 22ms (ActiveRecord: 19.2ms)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2017-04-23 13:18:08 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 17ms (Views: 7.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/events/1/edit" for 127.0.0.1 at 2017-04-23 13:18:10 -0500
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (1.2ms) [cache miss]
+  Rendered events/edit.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-23 13:18:12 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/events/1" for 127.0.0.1 at 2017-04-23 13:18:16 -0500
+Processing by EventsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Gt9M//sxTet49Ol3zEgAd3d4VcB9nsPejHiI4fwil25j4zXOTuVnALqVS73J0cMWHry+qx1P7YTCfwJdxTbduQ==", "id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events
+Completed 302 Found in 4ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-23 13:18:16 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2017-04-23 13:18:18 -0500
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (1.0ms) [cache miss]
+  Rendered events/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-04-23 13:18:19 -0500
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E8ClXqRkEQBU4H9U1gwibGKo9EUc61TeRlOIB1jWvXnxo85/f9avDH6hGa/QpDE6i9Yb8x2QlCPNye1hsA1PxQ==", "commit"=>"Create Event"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "events" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2017-04-23 18:18:19.465997"], ["updated_at", "2017-04-23 18:18:19.465997"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 3ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-23 13:18:19 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-23 13:18:21 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-23 13:18:22 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-23 13:18:24 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2/ad" for 127.0.0.1 at 2017-04-23 13:18:34 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/events/2/ad"):
+  
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-04-23 13:48:12 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
