@@ -1,3 +1,5 @@
+[ ![Codeship Status for iamretiform/FestiSwap](https://app.codeship.com/projects/e09b3180-0a0c-0135-259a-02d4833482d6/status?branch=master)](https://app.codeship.com/projects/214694)
+
 # FestiSwap 
 
 ## PROJECT DURATION
