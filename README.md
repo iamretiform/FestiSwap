@@ -1,5 +1,6 @@
-FestiSwap 
-PROJECT DURATION
+#**FestiSwap** 
+
+**PROJECT DURATION**
 Apr 21- May5 2017
 
 Team Members: 
