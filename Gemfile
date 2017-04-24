@@ -32,11 +32,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'nested_scaffold'
 gem 'diff-lcs'
+gem 'nested_scaffold'
 
 group :test do
-  gem 'faker', '~> 1.6.1'
   gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
@@ -47,12 +46,12 @@ group :development, :test do
   gem 'pry'
 
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.5'
-  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'capybara', '~> 2.13.0'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker', github: 'stympy/faker'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
-
-  gem 'database_cleaner'
 end
 
 group :development do
