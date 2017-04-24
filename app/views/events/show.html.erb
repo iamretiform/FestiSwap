@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<h1>
+<%= @event.title %>
+</h1>
+<h2>
+<%= @event.description %>
+</h2>
+<%= link_to 'New Event Ad', new_event_ad_path(@event.id) %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

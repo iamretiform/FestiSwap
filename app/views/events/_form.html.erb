@@ -11,7 +11,12 @@
     </div>
   <% end %>
 
+  <%= form_for @event, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+    <%= f.text_field :title %><br>
+    <%= f.text_area :description, size: "60x12" %>
   <div class="actions">
     <%= form.submit %>
   </div>
+  <% end %>
+
 <% end %>
