@@ -1348,3 +1348,353 @@ Processing by EventsController#show as HTML
 Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/events" for 127.0.0.1 at 2017-04-24 13:06:47 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:06:50 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:06:52 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (1.8ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 19ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:07:25 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (1.7ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:08:14 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (1.8ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:08:42 -0500
+Processing by AdsController#index as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/index.html.erb within layouts/application
+  [1m[36mAd Load (0.7ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered ads/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 13ms (Views: 9.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-24 13:08:46 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2017-04-24 13:08:47 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 9.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/event/1/ads" for 127.0.0.1 at 2017-04-24 13:11:36 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/event/1/ads"):
+  
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/events/1" for 127.0.0.1 at 2017-04-24 13:16:09 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 1]]
+  Rendered events/show.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 39ms (Views: 17.3ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-24 13:16:18 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:16:19 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.7ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:16:22 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (2.6ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 19ms (Views: 14.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:16:36 -0500
+Processing by AdsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kF4Pv4v1hrZffXiB8rM4RuSqs6Tli9omX7DhjevyPOiXONqM1d+lcbeNtwc0J/kUM9yxAjdGNsMi7VPiuiNavg==", "ad"=>{"title"=>"Zack's Gust Event Ad", "description"=>"I have the best hair for sale."}, "commit"=>"Create Ad", "event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", "Zack's Gust Event Ad"], ["description", "I have the best hair for sale."], ["created_at", "2017-04-24 18:16:36.511239"], ["updated_at", "2017-04-24 18:16:36.511239"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2/ads/3
+Completed 302 Found in 10ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/events/2/ads/3" for 127.0.0.1 at 2017-04-24 13:16:36 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"3"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 3], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:16:42 -0500
+Processing by AdsController#index as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/index.html.erb within layouts/application
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered ads/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-24 13:16:56 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:16:58 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-24 13:17:02 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/1" for 127.0.0.1 at 2017-04-24 13:18:16 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.8ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 1]]
+  Rendered events/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-04-24 13:18:39 -0500
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:18:43 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.4ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:19:43 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:19:46 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (2.2ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 17ms (Views: 13.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:19:52 -0500
+Processing by AdsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6HfRPyQz6oKZlNJNMHTgCwBgDDJaPsPoJSn2DLfLi1vvEQQMehnJRXFkHcv24CFZ1xYOlIjzLw1YdERj5hrtDQ==", "ad"=>{"title"=>"bla", "description"=>"bla\r\n "}, "commit"=>"Create Ad", "event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", "bla"], ["description", "bla\r\n "], ["created_at", "2017-04-24 18:19:52.109266"], ["updated_at", "2017-04-24 18:19:52.109266"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2/ads/4
+Completed 302 Found in 11ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/events/2/ads/4" for 127.0.0.1 at 2017-04-24 13:19:52 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 4], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:19:54 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:22:18 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 40ms (Views: 17.0ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/events/2/ads/3" for 127.0.0.1 at 2017-04-24 13:22:23 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"3"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.5ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 3], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 16ms (Views: 10.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:22:24 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:22:27 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (2.7ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 18ms (Views: 14.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:22:35 -0500
+Processing by AdsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"17/BTANuS/suDTmkgFTfSSMfrx0lP4E489SlnA74en/Q2RR/XURoPMb99iJGwB4b9Gmtu/fybd2OiRfzXykcKQ==", "ad"=>{"title"=>"bla2", "description"=>"bla222"}, "commit"=>"Create Ad", "event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", "bla2"], ["description", "bla222"], ["created_at", "2017-04-24 18:22:35.712224"], ["updated_at", "2017-04-24 18:22:35.712224"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2/ads/5
+Completed 302 Found in 11ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/events/2/ads/5" for 127.0.0.1 at 2017-04-24 13:22:35 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 5], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:22:40 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.6ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 16ms (Views: 12.5ms | ActiveRecord: 0.7ms)
+
+
