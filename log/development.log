@@ -374,10 +374,3 @@ Unpermitted parameters: :utf8, :authenticity_token, :ad, :commit, :event_id
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
 Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.1ms)
 
-
-  
-ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "title" violates not-null constraint
-DETAIL:  Failing row contains (1, 1, null, null, 2017-04-24 19:33:26.32334, 2017-04-24 19:33:26.32334).
-: INSERT INTO "ads" ("event_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"):
-  
-app/controllers/ads_controller.rb:18:in `create'
