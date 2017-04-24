@@ -17,16 +17,16 @@ ActiveRecord::Schema.define(version: 20170424164348) do
 
   create_table "ads", force: :cascade do |t|
     t.bigint "event_id"
-    t.string "title"
-    t.text "description"
+    t.string "title", null: false
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_ads_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "title", null: false
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
