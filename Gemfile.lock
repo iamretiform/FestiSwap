@@ -218,6 +218,7 @@ DEPENDENCIES
   capybara (~> 2.5)
   coffee-rails (~> 4.2)
   database_cleaner
+  diff-lcs
   factory_girl_rails (~> 4.5.0)
   faker (~> 1.6.1)
   jbuilder (~> 2.5)

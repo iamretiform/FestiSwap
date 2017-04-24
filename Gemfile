@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'nested_scaffold'
+gem 'diff-lcs'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
