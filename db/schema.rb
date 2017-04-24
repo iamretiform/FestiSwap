@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423015333) do
+ActiveRecord::Schema.define(version: 20170424164348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "ads", force: :cascade do |t|
+    t.bigint "event_id"
     t.string "title"
     t.text "description"
-    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_ads_on_event_id"
@@ -31,4 +31,5 @@ ActiveRecord::Schema.define(version: 20170423015333) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ads", "events"
 end
