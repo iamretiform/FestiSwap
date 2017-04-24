@@ -1,6 +1,6 @@
-<h1>Editing Ad</h1>
+<h1>Editing ad</h1>
 
-<%= render 'form', ad: @ad %>
+<%= render 'form' %>
 
-<%= link_to 'Show', @ad %> |
-<%= link_to 'Back', ads_path %>
+<%= link_to 'Show', [@ad.event, @ad] %> |
+<%= link_to 'Back', event_ads_path(@ad.event) %>

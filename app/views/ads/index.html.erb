@@ -1,25 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Ads</h1>
+<h1>Listing ads</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-  <tbody>
-    <% @ads.each do |ad| %>
-      <tr>
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<% @ads.each do |ad| %>
+  <tr>
+    <td><%= ad.title %></td>
+    <td><%= ad.description %></td>
+    <td><%= link_to 'Show', [ad.event, ad] %></td>
+    <td><%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %></td>
+    <td><%= link_to 'Destroy', [ad.event, ad], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
 </table>
 
-<br>
+<br />
 
-<%= link_to 'New Ad', new_ad_path %>
+<%= link_to 'New Ad', new_event_ad_path(params[:event_id]) %>
