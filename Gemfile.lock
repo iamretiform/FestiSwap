@@ -8,6 +8,13 @@ GIT
       sprockets (~> 4.x)
       sprockets-rails (< 4.0)
 
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 9224b3469d001d725087ad00994bd384790e4f74
+  specs:
+    faker (1.8.0)
+      i18n (~> 0.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -203,6 +210,7 @@ DEPENDENCIES
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)
   database_cleaner
+  faker!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   nested_scaffold
