@@ -1,0 +1,17 @@
+
+
+<% @ads.each do |ad| %>
+  <tr>
+    <td><%= ad.title %></td>
+    <td><%= ad.description %></td>
+    <td><%= link_to 'Show', [ad.event, ad] %></td>
+    <td><%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %></td>
+    <td><%= link_to 'Destroy', [ad.event, ad], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Events', events_path %>
+<%= link_to 'New Ad', new_event_ad_path(params[:event_id]) %>

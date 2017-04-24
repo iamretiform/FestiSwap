@@ -1,44 +1,68 @@
 require 'rails_helper'
 
 RSpec.describe AdsController, type: :controller do
-  describe 'GET #index' do
+  let(:event) { Event.create(title: 'World Fair', description: 'Greatest show on earth.') }
+  let(:valid_attributes) { { title: 'bob', description: 'top', event_id: event.id } }
+  let(:invalid_attributes) { { title: '', description: 'top', event_id: event.id } }
+
+  describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status code' do
-      get :index
+      ad = Ad.create!(valid_attributes)
+      get :show, params: {event_id: event.id, id: ad.id}
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
-    it 'renders the index template' do
-      get :index
-      expect(response).to render_template('index')
-    end
-
-    it 'loads all of the ads into @ads' do
-      ad1 = Ad.create!
-      ad2 = Ad.create!
-      get :index
-
-      expect(assigns(:ads)).to match_array([ad1, ad2])
+    it 'renders the show template' do
+      ad = Ad.create!(valid_attributes)
+      get :show, params: {event_id: event.id, id: ad.id}
+      expect(response).to render_template('show')
     end
   end
-  describe 'GET #create' do
+  describe 'GET #new' do
     it 'responds successfully with an HTTP 200 status code' do
-      get :create
+      get :new, params: {event_id: event.id}
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
-    it 'renders the create ad template' do
-      get :create
-      expect(response).to render_template('create')
+    it 'renders the new ad template' do
+      get :new, params: {event_id: event.id}
+      expect(response).to render_template('ads/new')
+    end
+  end
+  describe 'GET #new' do
+    it 'responds successfully with an HTTP 200 status code' do
+      get :new, params: {event_id: event.id}
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
     end
 
-    it 'create ad with title and description' do
-      Ad.create(title: 'Hello World', description: 'This is a test.', event_id: 1)
-      get :create
-
-      expect(response(:ads)).to include('Hello World')
-      expect(response(:ads)).to include('This is a test.')
+    it 'renders the new ad template' do
+      get :new, params: {event_id: event.id}
+      expect(response).to render_template('ads/new')
+    end
+  end
+  describe 'POST #create' do
+    context "with valid attributes" do
+      it 'creates a new ad' do
+        expect { post :create, params: { event_id: event.id, ad: valid_attributes } }.to change(Ad, :count).by(1)
+      end
+      it "redirects to the new ad" do
+        post :create, params: { event_id: event.id, ad: valid_attributes }
+        expect(response).to redirect_to event_ad_path(event_id: event.id, id: Ad.last.id)
+      end
+    end
+    context "with invalid attributes" do
+      it "does not save the new ad" do
+        expect{
+          post :create, params: { event_id: event.id, ad: invalid_attributes }
+        }.to_not change(Ad,:count)
+      end
+      it "re-renders the new method" do
+        post :create, params: { event_id: event.id, ad: invalid_attributes }
+        expect(response).to render_template :new
+      end
     end
   end
 end

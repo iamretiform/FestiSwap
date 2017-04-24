@@ -1,74 +1,51 @@
 class AdsController < ApplicationController
+  before_action :set_ads
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
-  # GET /ads
-  # GET /ads.json
-  def index
-    @ads = Ad.all
-  end
-
-  # GET /ads/1
-  # GET /ads/1.json
   def show
   end
 
-  # GET /ads/new
   def new
-    @ad = Ad.new
+    @ad = @event.ads.build
   end
 
-  # GET /ads/1/edit
   def edit
   end
 
-  # POST /ads
-  # POST /ads.json
   def create
-    @ad = Ad.new(ad_params)
+    @ad = @event.ads.new(ad_params)
 
-    respond_to do |format|
-      if @ad.save
-        format.html { redirect_to @ad, notice: 'Ad was successfully created.' }
-        format.json { render :show, status: :created, location: @ad }
-      else
-        format.html { render :new }
-        format.json { render json: @ad.errors, status: :unprocessable_entity }
-      end
+    if @ad.save
+      redirect_to([@ad.event, @ad], notice: 'Ad was successfully created.')
+    else
+      render action: 'new'
     end
   end
 
-  # PATCH/PUT /ads/1
-  # PATCH/PUT /ads/1.json
   def update
-    respond_to do |format|
-      if @ad.update(ad_params)
-        format.html { redirect_to @ad, notice: 'Ad was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ad }
-      else
-        format.html { render :edit }
-        format.json { render json: @ad.errors, status: :unprocessable_entity }
-      end
+    if @ad.update_attributes(ad_params)
+      redirect_to([@ad.event, @ad], notice: 'Ad was successfully updated.')
+    else
+      render action: 'edit'
     end
   end
 
-  # DELETE /ads/1
-  # DELETE /ads/1.json
   def destroy
     @ad.destroy
-    respond_to do |format|
-      format.html { redirect_to ads_url, notice: 'Ad was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    redirect_to event_ads_url(@event)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ad
-      @ad = Ad.find(params[:id])
-    end
+  def set_ads
+    @event = Event.find(params[:event_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ad_params
-      params.fetch(:ad, {})
-    end
+  def set_ad
+    @ad = @event.ads.find(params[:id])
+  end
+
+  def ad_params
+    params.require(:ad).permit(:title, :description).merge(event_id: @event)
+  end
 end
