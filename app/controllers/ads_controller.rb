@@ -1,16 +1,14 @@
 class AdsController < ApplicationController
   before_action :set_ads
-  before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :set_ad, only: %i[show edit update destroy]
 
-  def show
-  end
+  def show; end
 
   def new
     @ad = @event.ads.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @ad = @event.ads.new(ad_params)
@@ -37,6 +35,7 @@ class AdsController < ApplicationController
   end
 
   private
+
   def set_ads
     @event = Event.find(params[:event_id])
   end
