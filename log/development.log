@@ -1,1700 +1,383 @@
-  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
-  [1m[35m (29.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
-  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateEvents (20170423015151)
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (25.8ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170423015151"]]
-  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateAds (20170423015333)
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "title" character varying, "description" text, "event_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_ads_on_event_id" ON "ads"  ("event_id")[0m
-  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170423015333"]]
-  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-04-23 01:57:40.863758"], ["updated_at", "2017-04-23 01:57:40.863758"]]
-  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
-  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2017-04-24 14:27:45 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 62ms (Views: 50.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-04-24 14:27:45 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2017-04-24 14:27:48 -0500
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (11.7ms) [cache miss]
+  Rendered events/new.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 81ms (Views: 34.9ms | ActiveRecord: 19.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2017-04-24 14:27:51 -0500
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JoiNc8KbGO1ikPNVKEyAi2c7kDXq0DDUBmwZxaOZA6LE6+ZSGSmm4UjRla4u5JPdjkV/g+ur8CmN9nyjS0LxHg==", "event"=>{"title"=>"b", "description"=>"b"}, "commit"=>"Create Event"}
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started GET "/" for 127.0.0.1 at 2017-04-22 21:35:39 -0500
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /Users/scottyplunkett/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.0.rc2/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /Users/scottyplunkett/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.0.rc2/lib/rails/templates/rails/welcome/index.html.erb (4.5ms)
-Completed 200 OK in 21ms (Views: 10.5ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-22 21:36:34 -0500
-Processing by Rails::WelcomeController#index as HTML
-  Rendering /Users/scottyplunkett/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.0.rc2/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered /Users/scottyplunkett/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.0.rc2/lib/rails/templates/rails/welcome/index.html.erb (3.7ms)
-Completed 200 OK in 9ms (Views: 6.4ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-22 21:41:41 -0500
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (0.3ms)
-Completed 200 OK in 406ms (Views: 404.1ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-24 10:13:09 -0500
-  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (1.4ms)
-Completed 200 OK in 256ms (Views: 249.0ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:13:13 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (6.6ms)
-Completed 200 OK in 29ms (Views: 13.5ms | ActiveRecord: 4.0ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:13:16 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (6.4ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (10.4ms)
-Completed 200 OK in 29ms (Views: 18.2ms | ActiveRecord: 3.3ms)
-
-
-Started POST "/events" for 127.0.0.1 at 2017-04-24 10:13:19 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zeGXF6Vw5TMH+WNuCO9qUU+SCwQ2Dde4AkwG7wOW3MtMOUsDQ89vDfmaH0BODgNNVJrVM4bMlkGd8UHFwR1CHA==", "commit"=>"Create Event"}
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (17.3ms)[0m  [1m[32mINSERT INTO "events" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2017-04-24 15:13:19.464257"], ["updated_at", "2017-04-24 15:13:19.464257"]]
-  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/1
-Completed 302 Found in 22ms (ActiveRecord: 18.1ms)
-
-
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 10:13:19 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 13ms (Views: 7.3ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:13:21 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 10:13:24 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.2ms)
-
-
-Started DELETE "/events/1" for 127.0.0.1 at 2017-04-24 10:13:29 -0500
-Processing by EventsController#destroy as HTML
-  Parameters: {"authenticity_token"=>"fv5iGxNPLLeg1ymFa4y5GiVyjCloGi9vARI3HaFhtjl5mLcoTWUPcEgn5gOtGHhI8gSOj7rXw4p8T4Vy8LDQbw==", "id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
-  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events
-Completed 302 Found in 5ms (ActiveRecord: 2.5ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:13:29 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.7ms)
-Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-24 10:13:36 -0500
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-24 10:20:06 -0500
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:20:09 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (0.7ms)
-  Rendered events/new.html.erb within layouts/application (2.3ms)
-Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
-
-
-  
-SyntaxError (/Users/scottyplunkett/Desktop/FestiSwap/app/views/events/_form.html.erb:23: syntax error, unexpected keyword_ensure, expecting keyword_end
-          ensure
-                ^):
-  
-app/views/events/_form.html.erb:23: syntax error, unexpected keyword_ensure, expecting keyword_end
-app/views/events/new.html.erb:3:in `_app_views_events_new_html_erb___3475993967944529699_70312687392020'
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:20:29 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (0.6ms)
-  Rendered events/new.html.erb within layouts/application (2.0ms)
-Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
-
-
-  
-SyntaxError (/Users/scottyplunkett/Desktop/FestiSwap/app/views/events/_form.html.erb:22: syntax error, unexpected keyword_ensure, expecting keyword_end
-          ensure
-                ^):
-  
-app/views/events/_form.html.erb:22: syntax error, unexpected keyword_ensure, expecting keyword_end
-app/views/events/new.html.erb:3:in `_app_views_events_new_html_erb___3475993967944529699_70312687406680'
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:20:54 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (0.7ms)
-  Rendered events/new.html.erb within layouts/application (2.0ms)
-Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
-
-
-  
-SyntaxError (/Users/scottyplunkett/Desktop/FestiSwap/app/views/events/_form.html.erb:20: syntax error, unexpected keyword_ensure, expecting keyword_end
-          ensure
-                ^):
-  
-app/views/events/_form.html.erb:20: syntax error, unexpected keyword_ensure, expecting keyword_end
-app/views/events/new.html.erb:3:in `_app_views_events_new_html_erb___3475993967944529699_70312687474260'
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:21:18 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (10.4ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (11.8ms)
-Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:21:49 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (1.5ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (2.9ms)
-Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:22:10 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (1.5ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (2.9ms)
-Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:22:52 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (1.4ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (2.7ms)
-Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/events" for 127.0.0.1 at 2017-04-24 10:23:01 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MG+YcluZv1FxsaWGrZkVhJ5Ce0rupLfLi9jfyxhlGxw3CU1BBbOclplBagBrDdTWSTR57DxpWy72hW2kSbR9Sg==", "event"=>{"title"=>"Tara's Event", "description"=>"It's a part."}, "commit"=>"Create Event"}
-Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
-
-
-  
-ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
-  
-app/controllers/events_controller.rb:27:in `create'
-Started POST "/events" for 127.0.0.1 at 2017-04-24 10:28:14 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MG+YcluZv1FxsaWGrZkVhJ5Ce0rupLfLi9jfyxhlGxw3CU1BBbOclplBagBrDdTWSTR57DxpWy72hW2kSbR9Sg==", "event"=>{"title"=>"Tara's Event", "description"=>"It's a part."}, "commit"=>"Create Event"}
-Completed 500 Internal Server Error in 102ms (ActiveRecord: 0.0ms)
-
-
-  
-NameError (undefined local variable or method `title' for #<EventsController:0x007fe5e0288160>):
-  
-app/controllers/events_controller.rb:72:in `event_params'
-app/controllers/events_controller.rb:27:in `create'
-Started POST "/events" for 127.0.0.1 at 2017-04-24 10:28:40 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MG+YcluZv1FxsaWGrZkVhJ5Ce0rupLfLi9jfyxhlGxw3CU1BBbOclplBagBrDdTWSTR57DxpWy72hW2kSbR9Sg==", "event"=>{"title"=>"Tara's Event", "description"=>"It's a part."}, "commit"=>"Create Event"}
-Completed 500 Internal Server Error in 17ms (ActiveRecord: 2.9ms)
-
-
-  
-ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
-  
-app/controllers/events_controller.rb:27:in `create'
-Started POST "/events" for 127.0.0.1 at 2017-04-24 10:29:04 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MG+YcluZv1FxsaWGrZkVhJ5Ce0rupLfLi9jfyxhlGxw3CU1BBbOclplBagBrDdTWSTR57DxpWy72hW2kSbR9Sg==", "event"=>{"title"=>"Tara's Event", "description"=>"It's a part."}, "commit"=>"Create Event"}
-Completed 500 Internal Server Error in 100ms (ActiveRecord: 0.0ms)
-
-
-  
-NameError (undefined local variable or method `title' for #<EventsController:0x007fe5e495c618>):
-  
-app/controllers/events_controller.rb:72:in `event_params'
-app/controllers/events_controller.rb:27:in `create'
-Started GET "/" for 127.0.0.1 at 2017-04-24 10:32:39 -0500
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-24 10:32:41 -0500
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:32:44 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (6.4ms)
-Completed 200 OK in 29ms (Views: 16.9ms | ActiveRecord: 3.1ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:32:49 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (2.7ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (4.3ms)
-Completed 200 OK in 24ms (Views: 15.4ms | ActiveRecord: 1.8ms)
-
-
-Started POST "/events" for 127.0.0.1 at 2017-04-24 10:34:02 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ErOCR6aOgwRR5SYL8waAz+qBBW9Zo8eEKs9/vtEoQneTa15TQDEJOq+GWiW15+nT8YnbWOlihn21cjiUE6PcoA==", "event"=>{"title"=>"Tara's Event", "description"=>""}, "commit"=>"Create Event"}
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Tara's Event"], ["description", ""], ["created_at", "2017-04-24 15:34:02.494020"], ["updated_at", "2017-04-24 15:34:02.494020"]]
-  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "b"], ["description", "b"], ["created_at", "2017-04-24 19:27:51.857526"], ["updated_at", "2017-04-24 19:27:51.857526"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
 Redirected to http://localhost:3000/events/2
-Completed 302 Found in 18ms (ActiveRecord: 5.1ms)
+Completed 302 Found in 10ms (ActiveRecord: 5.6ms)
 
 
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 10:34:02 -0500
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 14:27:51 -0500
 Processing by EventsController#show as HTML
   Parameters: {"id"=>"2"}
   [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:34:08 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 10:34:09 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:34:12 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.7ms)
-Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:34:53 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.7ms)
-Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:35:01 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:35:57 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.0ms)
-Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:36:18 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.2ms)
-Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 10:36:20 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:39:08 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (8.4ms)
-Completed 200 OK in 23ms (Views: 12.9ms | ActiveRecord: 2.8ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 10:39:50 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 10:40:14 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2/edit" for 127.0.0.1 at 2017-04-24 10:40:17 -0500
-Processing by EventsController#edit as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/edit.html.erb within layouts/application
-  Rendered events/_form.html.erb (3.6ms) [cache miss]
-  Rendered events/edit.html.erb within layouts/application (5.2ms)
-Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.2ms)
-
-
-Started PATCH "/events/2" for 127.0.0.1 at 2017-04-24 10:40:23 -0500
-Processing by EventsController#update as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bbSFRx2brGjCuicTjC1oeYjfMXaMVPqilp8VIDsd6AR8AdiGdANU0Mv4W4Pnbg1/Bpm9LwgOpaOfJsaRdzxsTg==", "event"=>{"title"=>"Tara's Event", "description"=>"IT's a party!!!!!"}, "commit"=>"Update Event", "id"=>"2"}
-Can't verify CSRF token authenticity.
-Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+  Rendered events/show.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.4ms)
 
 
   
-ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
-  
-actionpack (5.1.0.rc2) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
-actionpack (5.1.0.rc2) lib/action_controller/metal/request_forgery_protection.rb:227:in `handle_unverified_request'
-actionpack (5.1.0.rc2) lib/action_controller/metal/request_forgery_protection.rb:222:in `verify_authenticity_token'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:413:in `block in make_lambda'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
-actionpack (5.1.0.rc2) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:198:in `block in halting'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:507:in `block in invoke_before'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:507:in `each'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:507:in `invoke_before'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:130:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.0.rc2) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.0.rc2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.0.rc2) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.0.rc2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.0.rc2) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.0.rc2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.0.rc2) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.0.rc2) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.0.rc2) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.0.rc2) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.0.rc2) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.0.rc2) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
-actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:832:in `call'
-rack (2.0.1) lib/rack/etag.rb:25:in `call'
-rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
-rack (2.0.1) lib/rack/head.rb:12:in `call'
-rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
-rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.1) lib/rack/method_override.rb:22:in `call'
-rack (2.0.1) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
-puma (3.8.2) lib/puma/configuration.rb:224:in `call'
-puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
-puma (3.8.2) lib/puma/server.rb:435:in `process_client'
-puma (3.8.2) lib/puma/server.rb:299:in `block in run'
-puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started PATCH "/events/2" for 127.0.0.1 at 2017-04-24 10:41:12 -0500
-Processing by EventsController#update as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bbSFRx2brGjCuicTjC1oeYjfMXaMVPqilp8VIDsd6AR8AdiGdANU0Mv4W4Pnbg1/Bpm9LwgOpaOfJsaRdzxsTg==", "event"=>{"title"=>"Tara's Event", "description"=>"IT's a party!!!!!"}, "commit"=>"Update Event", "id"=>"2"}
-Can't verify CSRF token authenticity.
-Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
-
-
-  
-ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
-  
-actionpack (5.1.0.rc2) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
-actionpack (5.1.0.rc2) lib/action_controller/metal/request_forgery_protection.rb:227:in `handle_unverified_request'
-actionpack (5.1.0.rc2) lib/action_controller/metal/request_forgery_protection.rb:222:in `verify_authenticity_token'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:413:in `block in make_lambda'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
-actionpack (5.1.0.rc2) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:198:in `block in halting'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:507:in `block in invoke_before'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:507:in `each'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:507:in `invoke_before'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:130:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/abstract_controller/callbacks.rb:19:in `process_action'
-actionpack (5.1.0.rc2) lib/action_controller/metal/rescue.rb:20:in `process_action'
-actionpack (5.1.0.rc2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
-activesupport (5.1.0.rc2) lib/active_support/notifications.rb:166:in `block in instrument'
-activesupport (5.1.0.rc2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
-activesupport (5.1.0.rc2) lib/active_support/notifications.rb:166:in `instrument'
-actionpack (5.1.0.rc2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
-actionpack (5.1.0.rc2) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
-activerecord (5.1.0.rc2) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
-actionpack (5.1.0.rc2) lib/abstract_controller/base.rb:124:in `process'
-actionview (5.1.0.rc2) lib/action_view/rendering.rb:30:in `process'
-actionpack (5.1.0.rc2) lib/action_controller/metal.rb:189:in `dispatch'
-actionpack (5.1.0.rc2) lib/action_controller/metal.rb:253:in `dispatch'
-actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
-actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
-actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:33:in `each'
-actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:33:in `serve'
-actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:832:in `call'
-rack (2.0.1) lib/rack/etag.rb:25:in `call'
-rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
-rack (2.0.1) lib/rack/head.rb:12:in `call'
-rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
-rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:556:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.1) lib/rack/method_override.rb:22:in `call'
-rack (2.0.1) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
-puma (3.8.2) lib/puma/configuration.rb:224:in `call'
-puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
-puma (3.8.2) lib/puma/server.rb:435:in `process_client'
-puma (3.8.2) lib/puma/server.rb:299:in `block in run'
-puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 10:41:16 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:41:18 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.2ms)
-
-
-Started DELETE "/events/2" for 127.0.0.1 at 2017-04-24 10:41:21 -0500
-Processing by EventsController#destroy as HTML
-  Parameters: {"authenticity_token"=>"ElEbW9OBbRgl7N54wfhF3A0z981t1w6UswypG30HtosVN85ojatO380cEf4HbISO2kX1a78a4nHOURt0LNbQ3Q==", "id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 2]]
-  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events
-Completed 302 Found in 5ms (ActiveRecord: 2.6ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:41:21 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.2ms)
-Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 10:41:23 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (2.2ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (4.1ms)
-Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/events" for 127.0.0.1 at 2017-04-24 10:41:31 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tZjs1fZcgmYKFugzJe/vmHylqsMbsyQiov8yX+ybQ580QDDBEOMIWPR1lB1jDoaEZ6109KtyZds9QnV1LhDdSA==", "event"=>{"title"=>"Tara's Event", "description"=>"It's a party!"}, "commit"=>"Create Event"}
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Tara's Event"], ["description", "It's a party!"], ["created_at", "2017-04-24 15:41:31.481588"], ["updated_at", "2017-04-24 15:41:31.481588"]]
-  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/3
-Completed 302 Found in 9ms (ActiveRecord: 6.0ms)
-
-
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:41:31 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:41:36 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:41:38 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:42:37 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.6ms)
-Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:43:31 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (1.2ms)
-Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:46:52 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (176.1ms)
-Completed 500 Internal Server Error in 182ms (ActiveRecord: 0.2ms)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `event_ads' for #<#<Class:0x007fe5e5891890>:0x007fe5e58a8748>
-Did you mean?  event_path
-               event_url):
-     5: <h2>
-     6: <%= @event.description %>
-     7: </h2>
-     8: <%= render event_ads %>
-     9: <%= link_to 'Edit', edit_event_path(@event) %> |
-    10: <%= link_to 'Back', events_path %>
-  
-app/views/events/show.html.erb:8:in `_app_views_events_show_html_erb__2002399478327940716_70312687651740'
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:47:21 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (2.6ms)
-Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms)
-
-
-  
-ActionView::Template::Error (No route matches {:action=>"index", :controller=>"ads", :id=>"3"}, missing required keys: [:event_id]):
-     5: <h2>
-     6: <%= @event.description %>
-     7: </h2>
-     8: <%= render event_ads_path %>
-     9: <%= link_to 'Edit', edit_event_path(@event) %> |
-    10: <%= link_to 'Back', events_path %>
-  
-app/views/events/show.html.erb:8:in `_app_views_events_show_html_erb__2002399478327940716_70312632392460'
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:47:42 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (3.0ms)
-Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.2ms)
-
-
-  
-ActionView::Template::Error (Missing partial events/3/_ads with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
-  * "/Users/scottyplunkett/Desktop/FestiSwap/app/views"
+ActionView::Template::Error (Missing partial ../ads/_index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/conlinmcmanus/Desktop/bravo_platoon/FestiSwap/app/views"
 ):
-     5: <h2>
-     6: <%= @event.description %>
-     7: </h2>
-     8: <%= render event_ads_path(@event.id) %>
-     9: <%= link_to 'Edit', edit_event_path(@event) %> |
-    10: <%= link_to 'Back', events_path %>
+    4: </h1>
+    5: <h2>
+    6: <%= @event.description %>
+    7: <%= render '../ads/index' %>
+    8: </h2>
+    9: <table>
+   10:   <tr>
   
-app/views/events/show.html.erb:8:in `_app_views_events_show_html_erb__2002399478327940716_70312643470640'
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:48:01 -0500
+app/views/events/show.html.erb:7:in `_app_views_events_show_html_erb__447298361499634048_70196814786960'
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 14:29:20 -0500
 Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (1.1ms)
-Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.1ms)
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 16ms (Views: 11.6ms | ActiveRecord: 2.1ms)
 
 
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:49:45 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.3ms)
-
-
-Started GET "/events/3/ads/new" for 127.0.0.1 at 2017-04-24 10:49:50 -0500
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 14:29:24 -0500
 Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"3"}
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (87.7ms)
-  Rendered ads/new.html.erb within layouts/application (89.7ms)
-Completed 500 Internal Server Error in 117ms (ActiveRecord: 8.4ms)
+  Rendered ads/_form.html.erb (7.1ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 38ms (Views: 22.0ms | ActiveRecord: 3.4ms)
 
 
-  
-ActionView::Template::Error (undefined method `ads_path' for #<#<Class:0x007fe5debf3dc8>:0x007fe5debeaac0>
-Did you mean?  audio_path):
-    1: <%= form_with(model: ad, local: true) do |form| %>
-    2:   <% if ad.errors.any? %>
-    3:     <div id="error_explanation">
-    4:       <h2><%= pluralize(ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
-  
-app/views/ads/_form.html.erb:1:in `_app_views_ads__form_html_erb___4462136450869811095_70312630537420'
-app/views/ads/new.html.erb:3:in `_app_views_ads_new_html_erb___3496202199365374775_70312630671500'
-Started GET "/events/3/ads/new" for 127.0.0.1 at 2017-04-24 10:52:19 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"3"}
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (83.7ms)
-  Rendered ads/new.html.erb within layouts/application (85.5ms)
-Completed 500 Internal Server Error in 90ms (ActiveRecord: 0.0ms)
+Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 14:29:29 -0500
+Processing by AdsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aLAOWyRDa97QxFHWf4ldx2mGZLJWsVYYCcwGDnTWSzERjHdqkZdBNRKl8xx6EJ6mAEKP2TZgeEJHy4yyTcIB5g==", "ad"=>{"title"=>"", "description"=>""}, "commit"=>"Create Ad", "event_id"=>"2"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", ""], ["description", ""], ["created_at", "2017-04-24 19:29:29.044205"], ["updated_at", "2017-04-24 19:29:29.044205"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2/ads/1
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
 
 
-  
-ActionView::Template::Error (undefined method `ads_path' for #<#<Class:0x007fe5debf3dc8>:0x007fe5e05e7658>
-Did you mean?  audio_path):
-    1: <%= form_with(model: ad, local: true) do |form| %>
-    2:   <% if ad.errors.any? %>
-    3:     <div id="error_explanation">
-    4:       <h2><%= pluralize(ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
-  
-app/views/ads/_form.html.erb:1:in `_app_views_ads__form_html_erb___4462136450869811095_70312644229920'
-app/views/ads/new.html.erb:3:in `_app_views_ads_new_html_erb___3496202199365374775_70312644272260'
-Started GET "/events/3/ads/new" for 127.0.0.1 at 2017-04-24 10:58:03 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"3"}
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (80.4ms)
-  Rendered ads/new.html.erb within layouts/application (82.1ms)
-Completed 500 Internal Server Error in 87ms (ActiveRecord: 0.0ms)
+Started GET "/events/2/ads/1" for 127.0.0.1 at 2017-04-24 14:29:29 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.5ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 1], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 12ms (Views: 7.2ms | ActiveRecord: 0.7ms)
 
 
-  
-ActionView::Template::Error (undefined method `ads_path' for #<#<Class:0x007fe5debf3dc8>:0x007fe5de667a58>
-Did you mean?  audio_path):
-    1: <%= form_with(model: ad, local: true) do |form| %>
-    2:   <% if ad.errors.any? %>
-    3:     <div id="error_explanation">
-    4:       <h2><%= pluralize(ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
-  
-app/views/ads/_form.html.erb:1:in `_app_views_ads__form_html_erb___4462136450869811095_70312627677520'
-app/views/ads/new.html.erb:3:in `_app_views_ads_new_html_erb___3496202199365374775_70312627759220'
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:58:09 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.0ms)
-Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/3" for 127.0.0.1 at 2017-04-24 10:58:15 -0500
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 14:29:32 -0500
 Processing by EventsController#show as HTML
-  Parameters: {"id"=>"3"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.2ms)
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 0.5ms)
 
 
-Started GET "/events" for 127.0.0.1 at 2017-04-24 10:58:32 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 14:29:34 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (1.6ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 0.4ms)
 
 
-Started GET "/" for 127.0.0.1 at 2017-04-24 10:58:43 -0500
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-24 11:51:46 -0500
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-        bin/rails db:migrate RAILS_ENV=development
-
-):
-  
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:576:in `check_pending!'
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:553:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.1) lib/rack/method_override.rb:22:in `call'
-rack (2.0.1) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
-puma (3.8.2) lib/puma/configuration.rb:224:in `call'
-puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
-puma (3.8.2) lib/puma/server.rb:435:in `process_client'
-puma (3.8.2) lib/puma/server.rb:299:in `block in run'
-puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
-  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateAds (20170424164348)
+Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 14:29:35 -0500
+Processing by AdsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TBxAT/LIb6wvdSs/n25qnQNTJ4jy/7an/t/ZX70+YBo1IDl+RxxFR+0UifWa96n8apfM45IumP2w2FPjhCoqzQ==", "ad"=>{"title"=>"", "description"=>""}, "commit"=>"Create Ad", "event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "event_id" bigint, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0b7290837f"
-FOREIGN KEY ("event_id")
-  REFERENCES "events" ("id")
-)[0m
-  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateAds (20170424164348)
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "event_id" bigint, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0b7290837f"
-FOREIGN KEY ("event_id")
-  REFERENCES "events" ("id")
-)[0m
-  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
-Started GET "/" for 127.0.0.1 at 2017-04-24 11:54:05 -0500
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActiveRecord::PendingMigrationError (
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", ""], ["description", ""], ["created_at", "2017-04-24 19:29:35.637197"], ["updated_at", "2017-04-24 19:29:35.637197"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2/ads/2
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
 
-Migrations are pending. To resolve this issue, run:
 
-        bin/rails db:migrate RAILS_ENV=development
+Started GET "/events/2/ads/2" for 127.0.0.1 at 2017-04-24 14:29:35 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 2], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 0.5ms)
 
-):
-  
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:576:in `check_pending!'
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:553:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.1) lib/rack/method_override.rb:22:in `call'
-rack (2.0.1) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
-puma (3.8.2) lib/puma/configuration.rb:224:in `call'
-puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
-puma (3.8.2) lib/puma/server.rb:435:in `process_client'
-puma (3.8.2) lib/puma/server.rb:299:in `block in run'
-puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateAds (20170424164348)
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "event_id" bigint, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0b7290837f"
-FOREIGN KEY ("event_id")
-  REFERENCES "events" ("id")
-)[0m
-  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
-Started GET "/" for 127.0.0.1 at 2017-04-24 11:56:08 -0500
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActiveRecord::PendingMigrationError (
 
-Migrations are pending. To resolve this issue, run:
+Started GET "/events/2/ads/2" for 127.0.0.1 at 2017-04-24 14:31:10 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 2], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 35ms (Views: 7.7ms | ActiveRecord: 6.0ms)
 
-        bin/rails db:migrate RAILS_ENV=development
 
-):
-  
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:576:in `check_pending!'
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:553:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.1) lib/rack/method_override.rb:22:in `call'
-rack (2.0.1) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
-puma (3.8.2) lib/puma/configuration.rb:224:in `call'
-puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
-puma (3.8.2) lib/puma/server.rb:435:in `process_client'
-puma (3.8.2) lib/puma/server.rb:299:in `block in run'
-puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/" for 127.0.0.1 at 2017-04-24 11:56:14 -0500
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActiveRecord::PendingMigrationError (
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 14:31:14 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 0.5ms)
 
-Migrations are pending. To resolve this issue, run:
 
-        bin/rails db:migrate RAILS_ENV=development
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 14:31:15 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering ads/new.html.erb within layouts/application
+  Rendered ads/_form.html.erb (2.0ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 0.3ms)
 
-):
-  
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:576:in `check_pending!'
-activerecord (5.1.0.rc2) lib/active_record/migration.rb:553:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
-web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.1) lib/rack/method_override.rb:22:in `call'
-rack (2.0.1) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
-puma (3.8.2) lib/puma/configuration.rb:224:in `call'
-puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
-puma (3.8.2) lib/puma/server.rb:435:in `process_client'
-puma (3.8.2) lib/puma/server.rb:299:in `block in run'
-puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateAds (20170424164348)
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "event_id" bigint, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0b7290837f"
-FOREIGN KEY ("event_id")
-  REFERENCES "events" ("id")
-)[0m
-  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateAds (20170424164348)
+
+Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 14:31:18 -0500
+Processing by AdsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OK7Zj6VQJRAZXW08LoRb8ODE0VhzepgCzYtzyMLisd5BkqC+EIQP+9s8z/YrHZiRiQA6MxOrtliDjPl0+/b7CQ==", "ad"=>{"title"=>"", "description"=>""}, "commit"=>"Create Ad", "event_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameters: :utf8, :authenticity_token, :ad, :commit, :event_id
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "event_id" bigint, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0b7290837f"
-FOREIGN KEY ("event_id")
-  REFERENCES "events" ("id")
-)[0m
-  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["event_id", 2], ["created_at", "2017-04-24 19:31:18.118425"], ["updated_at", "2017-04-24 19:31:18.118425"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2/ads/3
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/events/2/ads/3" for 127.0.0.1 at 2017-04-24 14:31:18 -0500
+Processing by AdsController#show as HTML
+  Parameters: {"event_id"=>"2", "id"=>"3"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 3], ["LIMIT", 1]]
+  Rendering ads/show.html.erb within layouts/application
+  Rendered ads/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 8.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events/2" for 127.0.0.1 at 2017-04-24 14:31:20 -0500
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
+  Rendered events/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/events/2/ads/1" for 127.0.0.1 at 2017-04-24 14:31:44 -0500
+Processing by AdsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"shvf1WKA/wOTiN5JFk1GzQgVMzDGE64blr5Dp6wKGTfLJ6bk11TV6FHpfIMT1IWsYdHYW6bCgEHYuckblR5T4A==", "event_id"=>"2", "id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "ads" WHERE "ads"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2/ads
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/events/2/ads" for 127.0.0.1 at 2017-04-24 14:31:44 -0500
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for AdsController):
+  
+actionpack (5.1.0.rc2) lib/abstract_controller/base.rb:119:in `process'
+actionview (5.1.0.rc2) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.0.rc2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.0.rc2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.0.rc2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.0.rc2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.0.rc2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
-  [1m[35m (176.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "FestiSwap_development"[0m
-  [1m[35m (181.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "FestiSwap_test"[0m
-  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
-  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (179.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "FestiSwap_development"[0m
+  [1m[35m (193.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "FestiSwap_test"[0m
+  [1m[35m (338.3ms)[0m  [1m[35mCREATE DATABASE "FestiSwap_development" ENCODING = 'unicode'[0m
+  [1m[35m (371.5ms)[0m  [1m[35mCREATE DATABASE "FestiSwap_test" ENCODING = 'unicode'[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4342215068660855820);[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateEvents (20170423015151)
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170423015151"]]
-  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170423015151"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateAds (20170424164348)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "event_id" bigint, "title" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0b7290837f"
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "ads" ("id" bigserial primary key, "event_id" bigint, "title" character varying NOT NULL, "description" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0b7290837f"
 FOREIGN KEY ("event_id")
   REFERENCES "events" ("id")
 )[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_ads_on_event_id" ON "ads"  ("event_id")[0m
-  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170424164348"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_ads_on_event_id" ON "ads"  ("event_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170424164348"]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-04-24 17:00:38.713762"], ["updated_at", "2017-04-24 17:00:38.713762"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-04-24 19:32:53.577588"], ["updated_at", "2017-04-24 19:32:53.577588"]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4342215068660855820)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started GET "/" for 127.0.0.1 at 2017-04-24 12:01:04 -0500
-  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (1.2ms)
-Completed 200 OK in 316ms (Views: 308.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 14:33:04 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 404 Not Found in 17ms (ActiveRecord: 3.6ms)
 
 
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 12:02:33 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (10.9ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (14.3ms)
-Completed 200 OK in 49ms (Views: 23.0ms | ActiveRecord: 9.0ms)
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=2):
+  
+app/controllers/ads_controller.rb:41:in `set_ads'
+Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 14:33:07 -0500
+Processing by AdsController#new as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 404 Not Found in 10ms (ActiveRecord: 4.5ms)
 
 
-Started GET "/events" for 127.0.0.1 at 2017-04-24 12:02:36 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.9ms)
-Completed 200 OK in 14ms (Views: 9.4ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 12:02:39 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 12:02:41 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (1.9ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (3.4ms)
-Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.0ms)
-
-
-Started GET "/" for 127.0.0.1 at 2017-04-24 12:02:42 -0500
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=2):
+  
+app/controllers/ads_controller.rb:41:in `set_ads'
+Started GET "/" for 127.0.0.1 at 2017-04-24 14:33:17 -0500
 Processing by HomeController#index as HTML
   Rendering home/index.html.erb within layouts/application
   Rendered home/index.html.erb within layouts/application (0.5ms)
-Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.0ms)
 
 
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 12:44:50 -0500
+Started GET "/events/new" for 127.0.0.1 at 2017-04-24 14:33:19 -0500
 Processing by EventsController#new as HTML
   Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (1.5ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (2.9ms)
-Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+  Rendered events/_form.html.erb (14.5ms) [cache miss]
+  Rendered events/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 34ms (Views: 28.1ms | ActiveRecord: 0.0ms)
 
 
-Started POST "/events" for 127.0.0.1 at 2017-04-24 12:45:02 -0500
+Started POST "/events" for 127.0.0.1 at 2017-04-24 14:33:23 -0500
 Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sH4SFwW57HB/18abiDMU2vpocSb1Rd7n3TW1a/xxFqExps4D4wZmToG0urXO0n3G4WCvEUWEnx5CiPJBPvqIdg==", "event"=>{"title"=>"Tara's Event", "description"=>"It's a party!"}, "commit"=>"Create Event"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ii+yxhJIR+r0QDZtEImZTy1tpkQUryKzKdJXhA+aZMHATNnnyfr55t4BUJYWIYoZxBNJ8hXU4k6iSDLi50GWfQ==", "event"=>{"title"=>"b", "description"=>"b"}, "commit"=>"Create Event"}
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Tara's Event"], ["description", "It's a party!"], ["created_at", "2017-04-24 17:45:02.648025"], ["updated_at", "2017-04-24 17:45:02.648025"]]
-  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "b"], ["description", "b"], ["created_at", "2017-04-24 19:33:23.128428"], ["updated_at", "2017-04-24 19:33:23.128428"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
 Redirected to http://localhost:3000/events/1
-Completed 302 Found in 9ms (ActiveRecord: 5.2ms)
+Completed 302 Found in 6ms (ActiveRecord: 1.7ms)
 
 
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 12:45:02 -0500
+Started GET "/events/1" for 127.0.0.1 at 2017-04-24 14:33:23 -0500
 Processing by EventsController#show as HTML
   Parameters: {"id"=>"1"}
   [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.8ms)
-Completed 200 OK in 13ms (Views: 7.8ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/1/ads/new" for 127.0.0.1 at 2017-04-24 12:45:07 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"1"}
-  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (4.6ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (6.1ms)
-Completed 200 OK in 57ms (Views: 12.5ms | ActiveRecord: 5.6ms)
-
-
-Started POST "/events/1/ads" for 127.0.0.1 at 2017-04-24 12:45:22 -0500
-Processing by AdsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qstD9pnKC4JaefGo1D8LCEGhTKVizlBcXS6SehiI1OytrZbFx+AoRbKJPi4Sq8paltdOA7ADvLkgcyAVSVmyug==", "ad"=>{"title"=>"Zack's Ad", "description"=>"I got shtuff."}, "commit"=>"Create Ad", "event_id"=>"1"}
-  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 1], ["title", "Zack's Ad"], ["description", "I got shtuff."], ["created_at", "2017-04-24 17:45:22.869494"], ["updated_at", "2017-04-24 17:45:22.869494"]]
-  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/1/ads/1
-Completed 302 Found in 11ms (ActiveRecord: 6.5ms)
-
-
-Started GET "/events/1/ads/1" for 127.0.0.1 at 2017-04-24 12:45:22 -0500
-Processing by AdsController#show as HTML
-  Parameters: {"event_id"=>"1", "id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 1], ["id", 1], ["LIMIT", 1]]
-  Rendering ads/show.html.erb within layouts/application
-  Rendered ads/show.html.erb within layouts/application (0.8ms)
-Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 0.5ms)
-
-
-Started GET "/events/1/ads" for 127.0.0.1 at 2017-04-24 12:45:29 -0500
-Processing by AdsController#index as HTML
-  Parameters: {"event_id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering ads/index.html.erb within layouts/application
   [1m[36mAd Load (0.4ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 1]]
-  Rendered ads/index.html.erb within layouts/application (3.9ms)
-Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.6ms)
+  Rendered events/show.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 25ms (Views: 11.6ms | ActiveRecord: 1.6ms)
 
 
-Started GET "/events/1/ads/new" for 127.0.0.1 at 2017-04-24 12:45:35 -0500
+Started GET "/events/1/ads/new" for 127.0.0.1 at 2017-04-24 14:33:24 -0500
 Processing by AdsController#new as HTML
   Parameters: {"event_id"=>"1"}
   [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (2.2ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (3.7ms)
-Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 0.4ms)
+  Rendered ads/_form.html.erb (5.2ms) [cache miss]
+  Rendered ads/new.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 39ms (Views: 15.4ms | ActiveRecord: 5.4ms)
 
 
-Started POST "/events/1/ads" for 127.0.0.1 at 2017-04-24 12:45:49 -0500
+Started POST "/events/1/ads" for 127.0.0.1 at 2017-04-24 14:33:26 -0500
 Processing by AdsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KphfLV8FFzcSplgBClCtKPCEYpIstV7yDdWFCrN7Uogt/ooeAS808PpWl4fMxGx6J/JgNP54shdwiDdl4qo03g==", "ad"=>{"title"=>"Gust Ad", "description"=>"I have shtuff Zaz doesn't have.\r\n"}, "commit"=>"Create Ad", "event_id"=>"1"}
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"roxG6oxwgsdHxxSHKV7/GF74fZT9uftajiLJrb6BOE7XsD/bOaSoLIWmtk0sxzx5NzyW/51o1QDAJUMRh5VymQ==", "ad"=>{"title"=>"", "description"=>""}, "commit"=>"Create Ad", "event_id"=>"1"}
   [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: :utf8, :authenticity_token, :ad, :commit, :event_id
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 1], ["title", "Gust Ad"], ["description", "I have shtuff Zaz doesn't have.\r\n"], ["created_at", "2017-04-24 17:45:49.320211"], ["updated_at", "2017-04-24 17:45:49.320211"]]
-  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/1/ads/2
-Completed 302 Found in 10ms (ActiveRecord: 6.3ms)
-
-
-Started GET "/events/1/ads/2" for 127.0.0.1 at 2017-04-24 12:45:49 -0500
-Processing by AdsController#show as HTML
-  Parameters: {"event_id"=>"1", "id"=>"2"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 1], ["id", 2], ["LIMIT", 1]]
-  Rendering ads/show.html.erb within layouts/application
-  Rendered ads/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 11ms (Views: 7.5ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/1/ads" for 127.0.0.1 at 2017-04-24 12:45:53 -0500
-Processing by AdsController#index as HTML
-  Parameters: {"event_id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering ads/index.html.erb within layouts/application
-  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 1]]
-  Rendered ads/index.html.erb within layouts/application (2.9ms)
-Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/1/ads" for 127.0.0.1 at 2017-04-24 12:46:58 -0500
-Processing by AdsController#index as HTML
-  Parameters: {"event_id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering ads/index.html.erb within layouts/application
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 1]]
-  Rendered ads/index.html.erb within layouts/application (3.0ms)
-Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 12:47:00 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (1.8ms)
-Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/new" for 127.0.0.1 at 2017-04-24 12:47:02 -0500
-Processing by EventsController#new as HTML
-  Rendering events/new.html.erb within layouts/application
-  Rendered events/_form.html.erb (2.3ms) [cache miss]
-  Rendered events/new.html.erb within layouts/application (3.9ms)
-Completed 200 OK in 21ms (Views: 17.0ms | ActiveRecord: 0.0ms)
-
-
-Started POST "/events" for 127.0.0.1 at 2017-04-24 12:47:23 -0500
-Processing by EventsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CwQ11FVWQT5NjPheloioEhJA5iU9tDEMknyliYC25GeK3OnAs+nLALPvhHDQacEOCUg4Eo11cPUNweKjQj16sA==", "event"=>{"title"=>"The second event.", "description"=>"Should be alright...."}, "commit"=>"Create Event"}
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "events" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The second event."], ["description", "Should be alright...."], ["created_at", "2017-04-24 17:47:23.464204"], ["updated_at", "2017-04-24 17:47:23.464204"]]
-  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/2
-Completed 302 Found in 10ms (ActiveRecord: 6.3ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 12:47:23 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.1ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 12:47:29 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.0ms)
-Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 12:47:58 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.9ms)
-Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 12:50:40 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (1.1ms)
-Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 12:50:53 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 LIMIT $2[0m  [["event_id", 1], ["LIMIT", 11]]
-  Rendered events/show.html.erb within layouts/application (7.3ms)
-Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.5ms)
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["event_id", 1], ["created_at", "2017-04-24 19:33:26.323340"], ["updated_at", "2017-04-24 19:33:26.323340"]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.1ms)
 
 
   
-ActionView::Template::Error (undefined method `title' for #<Ad::ActiveRecord_Associations_CollectionProxy:0x007f9b111ba5e0>):
-     5: <h2>
-     6: <%= @event.description %>
-     7: </h2>
-     8: <%= @event.ads.title %>
-     9: <%= link_to 'New Event Ad', new_event_ad_path(@event.id) %>
-    10: <%= link_to 'Edit', edit_event_path(@event) %> |
-    11: <%= link_to 'Back', events_path %>
+ActiveRecord::NotNullViolation (PG::NotNullViolation: ERROR:  null value in column "title" violates not-null constraint
+DETAIL:  Failing row contains (1, 1, null, null, 2017-04-24 19:33:26.32334, 2017-04-24 19:33:26.32334).
+: INSERT INTO "ads" ("event_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"):
   
-app/views/events/show.html.erb:8:in `_app_views_events_show_html_erb___2068231859913700440_70151991885940'
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 12:51:12 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.9ms)
-Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 13:06:47 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.2ms)
-Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:06:50 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 12ms (Views: 9.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:06:52 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (1.8ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (3.9ms)
-Completed 200 OK in 19ms (Views: 15.4ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:07:25 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (1.7ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (3.8ms)
-Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:08:14 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (1.8ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (3.3ms)
-Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:08:42 -0500
-Processing by AdsController#index as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/index.html.erb within layouts/application
-  [1m[36mAd Load (0.7ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered ads/index.html.erb within layouts/application (2.6ms)
-Completed 200 OK in 13ms (Views: 9.5ms | ActiveRecord: 0.8ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 13:08:46 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.1ms)
-Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 13:08:47 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  Rendered events/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 12ms (Views: 9.0ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/event/1/ads" for 127.0.0.1 at 2017-04-24 13:11:36 -0500
-  
-ActionController::RoutingError (No route matches [GET] "/event/1/ads"):
-  
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
-web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
-web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
-web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:36:in `call_app'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `block in call'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:26:in `tagged'
-activesupport (5.1.0.rc2) lib/active_support/tagged_logging.rb:69:in `tagged'
-railties (5.1.0.rc2) lib/rails/rack/logger.rb:24:in `call'
-sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
-rack (2.0.1) lib/rack/method_override.rb:22:in `call'
-rack (2.0.1) lib/rack/runtime.rb:22:in `call'
-activesupport (5.1.0.rc2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/executor.rb:12:in `call'
-actionpack (5.1.0.rc2) lib/action_dispatch/middleware/static.rb:125:in `call'
-rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
-railties (5.1.0.rc2) lib/rails/engine.rb:522:in `call'
-puma (3.8.2) lib/puma/configuration.rb:224:in `call'
-puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
-puma (3.8.2) lib/puma/server.rb:435:in `process_client'
-puma (3.8.2) lib/puma/server.rb:299:in `block in run'
-puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 13:16:09 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 1]]
-  Rendered events/show.html.erb within layouts/application (11.6ms)
-Completed 200 OK in 39ms (Views: 17.3ms | ActiveRecord: 5.2ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 13:16:18 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.1ms)
-Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:16:19 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.7ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (2.8ms)
-Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.9ms)
-
-
-Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:16:22 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (2.6ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (4.7ms)
-Completed 200 OK in 19ms (Views: 14.9ms | ActiveRecord: 0.2ms)
-
-
-Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:16:36 -0500
-Processing by AdsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kF4Pv4v1hrZffXiB8rM4RuSqs6Tli9omX7DhjevyPOiXONqM1d+lcbeNtwc0J/kUM9yxAjdGNsMi7VPiuiNavg==", "ad"=>{"title"=>"Zack's Gust Event Ad", "description"=>"I have the best hair for sale."}, "commit"=>"Create Ad", "event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", "Zack's Gust Event Ad"], ["description", "I have the best hair for sale."], ["created_at", "2017-04-24 18:16:36.511239"], ["updated_at", "2017-04-24 18:16:36.511239"]]
-  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/2/ads/3
-Completed 302 Found in 10ms (ActiveRecord: 6.2ms)
-
-
-Started GET "/events/2/ads/3" for 127.0.0.1 at 2017-04-24 13:16:36 -0500
-Processing by AdsController#show as HTML
-  Parameters: {"event_id"=>"2", "id"=>"3"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 3], ["LIMIT", 1]]
-  Rendering ads/show.html.erb within layouts/application
-  Rendered ads/show.html.erb within layouts/application (0.7ms)
-Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:16:42 -0500
-Processing by AdsController#index as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/index.html.erb within layouts/application
-  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered ads/index.html.erb within layouts/application (3.3ms)
-Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 13:16:56 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.3ms)
-Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:16:58 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (2.7ms)
-Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 13:17:02 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.0ms)
-Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/1" for 127.0.0.1 at 2017-04-24 13:18:16 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.8ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 1]]
-  Rendered events/show.html.erb within layouts/application (4.3ms)
-Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 0.9ms)
-
-
-Started GET "/events" for 127.0.0.1 at 2017-04-24 13:18:39 -0500
-Processing by EventsController#index as HTML
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
-  Rendered events/index.html.erb within layouts/application (2.4ms)
-Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.2ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:18:43 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.4ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (3.5ms)
-Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.6ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:19:43 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (2.4ms)
-Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:19:46 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (2.2ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (4.0ms)
-Completed 200 OK in 17ms (Views: 13.7ms | ActiveRecord: 0.2ms)
-
-
-Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:19:52 -0500
-Processing by AdsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6HfRPyQz6oKZlNJNMHTgCwBgDDJaPsPoJSn2DLfLi1vvEQQMehnJRXFkHcv24CFZ1xYOlIjzLw1YdERj5hrtDQ==", "ad"=>{"title"=>"bla", "description"=>"bla\r\n "}, "commit"=>"Create Ad", "event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", "bla"], ["description", "bla\r\n "], ["created_at", "2017-04-24 18:19:52.109266"], ["updated_at", "2017-04-24 18:19:52.109266"]]
-  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/2/ads/4
-Completed 302 Found in 11ms (ActiveRecord: 6.7ms)
-
-
-Started GET "/events/2/ads/4" for 127.0.0.1 at 2017-04-24 13:19:52 -0500
-Processing by AdsController#show as HTML
-  Parameters: {"event_id"=>"2", "id"=>"4"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 4], ["LIMIT", 1]]
-  Rendering ads/show.html.erb within layouts/application
-  Rendered ads/show.html.erb within layouts/application (0.8ms)
-Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 0.5ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:19:54 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (3.3ms)
-Completed 200 OK in 14ms (Views: 11.1ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:22:18 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (11.1ms)
-Completed 200 OK in 40ms (Views: 17.0ms | ActiveRecord: 5.9ms)
-
-
-Started GET "/events/2/ads/3" for 127.0.0.1 at 2017-04-24 13:22:23 -0500
-Processing by AdsController#show as HTML
-  Parameters: {"event_id"=>"2", "id"=>"3"}
-  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[36mAd Load (0.5ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 3], ["LIMIT", 1]]
-  Rendering ads/show.html.erb within layouts/application
-  Rendered ads/show.html.erb within layouts/application (0.9ms)
-Completed 200 OK in 16ms (Views: 10.6ms | ActiveRecord: 0.7ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:22:24 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.2ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (2.5ms)
-Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/2/ads/new" for 127.0.0.1 at 2017-04-24 13:22:27 -0500
-Processing by AdsController#new as HTML
-  Parameters: {"event_id"=>"2"}
-  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering ads/new.html.erb within layouts/application
-  Rendered ads/_form.html.erb (2.7ms) [cache miss]
-  Rendered ads/new.html.erb within layouts/application (4.5ms)
-Completed 200 OK in 18ms (Views: 14.1ms | ActiveRecord: 0.3ms)
-
-
-Started POST "/events/2/ads" for 127.0.0.1 at 2017-04-24 13:22:35 -0500
-Processing by AdsController#create as HTML
-  Parameters: {"utf8"=>"✓", "authenticity_token"=>"17/BTANuS/suDTmkgFTfSSMfrx0lP4E489SlnA74en/Q2RR/XURoPMb99iJGwB4b9Gmtu/fybd2OiRfzXykcKQ==", "ad"=>{"title"=>"bla2", "description"=>"bla222"}, "commit"=>"Create Ad", "event_id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ads" ("event_id", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["event_id", 2], ["title", "bla2"], ["description", "bla222"], ["created_at", "2017-04-24 18:22:35.712224"], ["updated_at", "2017-04-24 18:22:35.712224"]]
-  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
-Redirected to http://localhost:3000/events/2/ads/5
-Completed 302 Found in 11ms (ActiveRecord: 6.5ms)
-
-
-Started GET "/events/2/ads/5" for 127.0.0.1 at 2017-04-24 13:22:35 -0500
-Processing by AdsController#show as HTML
-  Parameters: {"event_id"=>"2", "id"=>"5"}
-  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  [1m[36mAd Load (0.3ms)[0m  [1m[34mSELECT  "ads".* FROM "ads" WHERE "ads"."event_id" = $1 AND "ads"."id" = $2 LIMIT $3[0m  [["event_id", 2], ["id", 5], ["LIMIT", 1]]
-  Rendering ads/show.html.erb within layouts/application
-  Rendered ads/show.html.erb within layouts/application (1.0ms)
-Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.4ms)
-
-
-Started GET "/events/2" for 127.0.0.1 at 2017-04-24 13:22:40 -0500
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"2"}
-  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  Rendering events/show.html.erb within layouts/application
-  [1m[36mAd Load (0.6ms)[0m  [1m[34mSELECT "ads".* FROM "ads" WHERE "ads"."event_id" = $1[0m  [["event_id", 2]]
-  Rendered events/show.html.erb within layouts/application (4.6ms)
-Completed 200 OK in 16ms (Views: 12.5ms | ActiveRecord: 0.7ms)
-
-
+app/controllers/ads_controller.rb:18:in `create'
