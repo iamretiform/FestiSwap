@@ -9,5 +9,5 @@ RSpec.describe Event, type: :model do
   describe Event do
       it { is_expected.to validate_presence_of(:title) }
       it { is_expected.to validate_presence_of(:description) }
-    end
+  end
 end

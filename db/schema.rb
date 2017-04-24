@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170423015333) do
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_ads_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
