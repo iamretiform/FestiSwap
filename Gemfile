@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'database_cleaner', '~> 1.5'
+  gem 'faker', '~> 1.6.1'
+
 end
 
 group :development, :test do
@@ -45,9 +47,11 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13.0'
+  gem 'capybara', '~> 2.5'
   gem 'selenium-webdriver'
   gem 'rails-controller-testing'
+  gem 'factory_girl_rails', '~> 4.5.0'
+
 end
 
 group :development do
