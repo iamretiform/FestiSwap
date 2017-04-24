@@ -1,1 +1,1 @@
-json.partial! "ads/ad", ad: @ad
+json.partial! 'ads/ad', ad: @ad
