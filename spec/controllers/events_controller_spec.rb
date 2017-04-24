@@ -22,7 +22,6 @@ RSpec.describe EventsController, type: :controller do
       event2 = Event.create!(valid_attributes)
       get :index
 
-      # expect { post :create, params: { event: valid_attributes } }.to change(Event, :count).by(1)
       expect(assigns(:events)).to match_array([event1, event2])
     end
   end
