@@ -36,7 +36,6 @@ gem 'nested_scaffold'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
-  gem 'database_cleaner', '~> 1.5'
   gem 'faker', '~> 1.6.1'
 
 end
@@ -44,21 +43,17 @@ end
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-<<<<<<< HEAD
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
-=======
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
->>>>>>> 4f79c139d153eb10d3dadffcc76de339e572fd4a
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.5'
   gem 'selenium-webdriver'
   gem 'rails-controller-testing'
-<<<<<<< HEAD
   gem 'factory_girl_rails', '~> 4.5.0'
-=======
+
   gem 'database_cleaner'
->>>>>>> 4f79c139d153eb10d3dadffcc76de339e572fd4a
+
 
 end
 

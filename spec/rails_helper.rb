@@ -43,11 +43,9 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-<<<<<<< HEAD
+
   config.use_transactional_fixtures = false
   config.include FactoryGirl::Syntax::Methods
-=======
->>>>>>> 4f79c139d153eb10d3dadffcc76de339e572fd4a
 
   config.include Rails.application.routes.url_helpers
   # RSpec Rails can automatically mix in different behaviours to your tests
