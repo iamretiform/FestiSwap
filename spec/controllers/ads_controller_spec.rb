@@ -55,9 +55,7 @@ RSpec.describe AdsController, type: :controller do
     end
     context 'with invalid attributes' do
       it 'does not save the new ad' do
-        expect do
-          post :create, params: { event_id: event.id, ad: invalid_attributes }
-        end.to_not change(Ad, :count)
+        expect { post :create, params: { event_id: event.id, ad: invalid_attributes } }.to_not change(Ad, :count)
       end
       it 're-renders the new method' do
         post :create, params: { event_id: event.id, ad: invalid_attributes }
