@@ -28,6 +28,7 @@ RSpec.describe AdsController, type: :controller do
   describe 'GET #create' do
     it 'responds successfully with an HTTP 200 status code' do
       get :create, params: {event_id: event.id}
+      byebug
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
