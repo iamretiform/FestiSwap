@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
+  let(:valid_attributes) { { title: 'bob', description: 'top' } }
+  let(:invalid_attributes) { { title: '', description: 'top' } }
+
   describe "GET #index" do
     it "responds successfully with an HTTP 200 status code" do
       get :index
@@ -13,11 +16,14 @@ RSpec.describe EventsController, type: :controller do
       expect(response).to render_template("index")
     end
 
-    it "loads all of the posts into @posts" do
-      post1, post2 = Post.create!, Post.create!
+    it "loads all of the events into @events" do
+
+      event1 = Event.create!(valid_attributes) 
+      event2 = Event.create!(valid_attributes)
       get :index
 
-      expect(assigns(:posts)).to match_array([post1, post2])
+      # expect { post :create, params: { event: valid_attributes } }.to change(Event, :count).by(1)
+      expect(assigns(:events)).to match_array([event1, event2])
     end
   end
 end
