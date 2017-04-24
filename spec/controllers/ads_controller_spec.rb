@@ -32,18 +32,6 @@ RSpec.describe AdsController, type: :controller do
       expect(response).to render_template :new
     end
   end
-  describe 'GET #new' do
-    it 'responds successfully with an HTTP 200 status code' do
-      get :new, params: { event_id: event.id }
-      expect(response).to be_success
-      expect(response).to have_http_status(200)
-    end
-
-    it 'renders the new ad template' do
-      get :new, params: { event_id: event.id }
-      expect(response).to render_template :new
-    end
-  end
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'creates a new ad' do
