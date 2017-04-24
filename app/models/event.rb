@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-  has_many :ads
   validates :title, :description, presence: true
+  has_many :ads
 end

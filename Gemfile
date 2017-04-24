@@ -32,18 +32,26 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'diff-lcs'
 gem 'nested_scaffold'
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.0', require: false
+end
 
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry'
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13.0'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker', github: 'stympy/faker'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
-  gem 'faker', github: 'stympy/faker'
 end
 
 group :development do
