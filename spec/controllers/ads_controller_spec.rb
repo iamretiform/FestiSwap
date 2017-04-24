@@ -5,22 +5,21 @@ RSpec.describe AdsController, type: :controller do
   let(:valid_attributes) { { title: 'bob', description: 'top', event_id: event.id } }
   let(:invalid_attributes) { { title: '', description: 'top', event_id: event.id } }
 
-  describe 'GET #index' do
+  describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status code' do
-      get :index, params: {event_id: event.id}
+      get :show, params: {event_id: event.id}
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
-    it 'renders the index template' do
-      get :index, params: {event_id: event.id}
-      expect(response).to render_template('index')
+    it 'renders the show template' do
+      get :show, params: {event_id: event.id}
+      expect(response).to render_template('show')
     end
 
     it 'loads all of the ads into @ads' do
-      ad1 = Ad.create!(title: 'bob', description: 'top', event_id: event.id)
-      ad2 = Ad.create!(title: 'bill', description: 'bar', event_id: event.id)
-      get :index, params: {event_id: event.id}
+      ad = Ad.create!(valid_attributes)
+      get :show, params: {event_id: event.id}
 
       expect(assigns(:ads)).to match_array([ad1, ad2])
     end

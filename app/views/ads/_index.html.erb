@@ -1,13 +1,4 @@
-<h1>Listing ads</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @ads.each do |ad| %>
   <tr>
@@ -22,8 +13,5 @@
 
 <br />
 
-<<<<<<< HEAD
-<%= link_to 'New Ad', new_event_ad_path %>
-=======
+<%= link_to 'Events', events_path %>
 <%= link_to 'New Ad', new_event_ad_path(params[:event_id]) %>
->>>>>>> upstream/master

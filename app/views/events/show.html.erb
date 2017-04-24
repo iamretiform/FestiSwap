@@ -4,7 +4,9 @@
 </h1>
 <h2>
 <%= @event.description %>
+<%= render '../ads/index' %>
 </h2>
+
 <%= link_to 'New Event Ad', new_event_ad_path(@event.id) %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

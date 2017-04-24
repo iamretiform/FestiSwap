@@ -2,11 +2,6 @@ class AdsController < ApplicationController
   before_action :set_ads
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
-  # GET events/1/ads
-  def index
-    @ads = @event.ads
-  end
-
   # GET events/1/ads/1
   def show
   end
