@@ -51,7 +51,7 @@ RSpec.describe AdsController, type: :controller do
   end
   describe 'POST #create' do
     it 'creates a new ad' do
-      expect { post :create, params: { ad: valid_attributes } }.to change(Ad, :count).by(1)
+      expect { post :create, params: { event_id: 8, ad: valid_attributes } }.to change(Ad, :count).by(1)
     end
   end
 end

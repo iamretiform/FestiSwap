@@ -61,7 +61,6 @@ class EventsController < ApplicationController
 
   private
 
-<<<<<<< HEAD
   # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
@@ -69,12 +68,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.fetch(:event, {})
+    params.require(:event).permit(:title, :description)
   end
-=======
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:title, :description)
-    end
->>>>>>> upstream/master
 end
