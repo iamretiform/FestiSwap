@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'diff-lcs'
 gem 'nested_scaffold'
+gem 'devise'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
