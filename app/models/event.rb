@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
-  validates :title, :description, presence: true
+  belongs_to :user
   has_many :ads
+  validates :title, :description, :user_id, presence: true
 end
