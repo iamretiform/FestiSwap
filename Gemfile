@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'react_on_rails', '~>6'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
@@ -34,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'diff-lcs'
 gem 'nested_scaffold'
+
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
