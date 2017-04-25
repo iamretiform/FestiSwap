@@ -91,6 +91,7 @@ RSpec.describe EventsController, type: :controller do
     end
     context 'valid attributes' do
       let(:new_attributes) { { description: Faker::HowIMetYourMother.quote } }
+
       it 'updates an existing event' do
         put :update, params: { id: @event.to_param, event: new_attributes }
         @event.reload
