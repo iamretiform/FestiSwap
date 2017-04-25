@@ -1,4 +1,5 @@
 class Ad < ApplicationRecord
   belongs_to :event
-  validates :title, :description, presence: true
+  belongs_to :user
+  validates :title, :description, :user_id, presence: true
 end

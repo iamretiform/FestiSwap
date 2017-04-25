@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :set_user
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
@@ -55,7 +56,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def set_user
+    @user = current_user.id
+  end
+
   def event_params
-    params.require(:event).permit(:title, :description)
+    params.require(:event).permit(:title, :description).merge(user_id: @user)
   end
 end

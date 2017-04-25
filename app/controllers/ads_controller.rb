@@ -1,4 +1,5 @@
 class AdsController < ApplicationController
+  before_action :set_user
   before_action :set_ads
   before_action :set_ad, only: %i[show edit update destroy]
 
@@ -40,11 +41,15 @@ class AdsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def set_user
+    @user = current_user.id
+  end
+
   def set_ad
     @ad = @event.ads.find(params[:id])
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :description).merge(event_id: @event)
+    params.require(:ad).permit(:title, :description).merge(event_id: @event, user_id: @user)
   end
 end
