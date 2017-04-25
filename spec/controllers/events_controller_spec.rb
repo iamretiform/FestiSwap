@@ -84,34 +84,34 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe 'PUT #update' do
-      before :each do
-        @event = Event.create valid_attributes
+    before :each do
+      @event = Event.create valid_attributes
+    end
+    context 'valid attributes' do
+      let(:new_attributes) { { description: Faker::Name.name } }
+      it 'updates an existing event' do
+        put :update, params: { id: @event.to_param, event: new_attributes }
+        @event.reload
+        expect(@event.description).to eq(new_attributes[:description])
       end
-      context 'valid attributes' do
-        let(:new_attributes) { { description: Faker::Name.name } }
-        it 'updates an existing event' do
-          put :update, params: { id: @event.to_param, event: new_attributes }
-          @event.reload
-          expect(@event.description).to eq(new_attributes[:description])
-        end
-        it 'redirects to the updated event' do
-          put :update, params: { id: @event.to_param, event: new_attributes }
-          expect(response).to redirect_to event_path(id: @event)
-        end
-      end
-      context 'invalid attributes' do
-        let(:new_attributes) { { description: '' } }
-        it 'it does not update the existing event' do
-          put :update, params: { id: @event.to_param, event: new_attributes }
-          @event.reload
-          expect(@event.description).to include(new_attributes[:description])
-        end
-        it 're-renders the edit method' do
-          put :update, params: { id: @event.to_param, event: new_attributes }
-          expect(response).to render_template :edit
-        end
+      it 'redirects to the updated event' do
+        put :update, params: { id: @event.to_param, event: new_attributes }
+        expect(response).to redirect_to event_path(id: @event)
       end
     end
+    context 'invalid attributes' do
+      let(:new_attributes) { { description: '' } }
+      it 'it does not update the existing event' do
+        put :update, params: { id: @event.to_param, event: new_attributes }
+        @event.reload
+        expect(@event.description).to include(new_attributes[:description])
+      end
+      it 're-renders the edit method' do
+        put :update, params: { id: @event.to_param, event: new_attributes }
+        expect(response).to render_template :edit
+      end
+    end
+  end
   describe 'GET #new' do
     it 'responds successfully with an HTTP 200 status code' do
       get :new
