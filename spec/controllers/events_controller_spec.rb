@@ -37,9 +37,11 @@ RSpec.describe EventsController, type: :controller do
       expect(response).to render_template('show')
     end
     it 'renders all of an events ads' do
-      event = Event.create!(valid_attributes)
+      event = Event.create(valid_attributes)
+      ad1 = Ad.create(title: 'hello', description: 'bob', event_id: event.id)
+      ad2 = Ad.create(title: 'hobo', description: 'jon', event_id: event.id)
       get :show, params: { id: event.id }
-      expect(response.body).to include(@ads.to_s)
+      expect(assigns(:ads)).to match_array([ad1, ad2])
     end
   end
 
