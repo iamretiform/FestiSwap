@@ -23,6 +23,7 @@ export default class HelloWorld extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <h3>
