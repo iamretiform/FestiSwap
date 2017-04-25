@@ -248,7 +248,6 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.timeout_in = 30.minutes
 
-
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.

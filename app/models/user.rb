@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
   has_many :events
   has_many :ads
+  validates :name, :email, :password, presence: true
 end
