@@ -7,7 +7,8 @@ RSpec.describe Event, type: :model do
   end
 
   describe Event do
-    xit { is_expected.to validate_presence_of(:title) }
-    xit { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:title) }
+    
+    it { is_expected.to validate_presence_of(:description) }
   end
 end
