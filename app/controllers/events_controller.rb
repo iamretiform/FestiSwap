@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_user
-  before_action :set_event, only: %i[show edit update destroy]
+  before_action :find_event, only: %i[show edit update destroy]
 
   def index
     @events = Event.all
@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        DeleteEventWorker.perform_at(@event.termination_date + 1.day, @event.id)
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -52,7 +53,7 @@ class EventsController < ApplicationController
 
   private
 
-  def set_event
+  def find_event
     @event = Event.find(params[:id])
   end
 
@@ -61,6 +62,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description).merge(user_id: @user)
+    params.require(:event).permit(:title, :description, :termination_date).merge(user_id: @user)
   end
 end

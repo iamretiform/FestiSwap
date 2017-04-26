@@ -28,7 +28,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'diff-lcs'
 gem 'nested_scaffold'
+gem 'sidekiq'
 
 
 group :test do
@@ -56,6 +57,7 @@ group :development, :test do
   gem 'faker', github: 'stympy/faker'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
+  gem 'rspec-sidekiq'
 end
 
 group :development do
