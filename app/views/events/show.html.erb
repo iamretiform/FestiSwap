@@ -14,7 +14,7 @@
     <th></th>
   </tr>
 
-<% @ads.each do |ad| %>
+<% @ads.map do |ad| %>
   <tr>
     <td><%= ad.title %></td>
     <td><%= ad.description %></td>
