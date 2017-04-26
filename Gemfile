@@ -38,6 +38,7 @@ gem 'devise'
 gem 'diff-lcs'
 gem 'nested_scaffold'
 gem 'sidekiq'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false

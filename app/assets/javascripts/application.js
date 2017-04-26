@@ -13,5 +13,22 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+// require_tree .
+
+$(document).ready(function() {
+  $(function() {
+    navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+
+    function locationSuccess(position) {
+      latr.innerHTML = position.coords.latitude;
+      longr.innerHTML = position.coords.longitude;
+    }
+
+    function locationFail() {
+      alert("Oops, could not find you.");
+    }
+  });
+});
