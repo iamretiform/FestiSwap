@@ -16,15 +16,15 @@
 
 <% @ads.map do |ad| %>
   <tr>
-    <td><%= ad.title %></td>
+    <td>
+      <a href="<%= event_ad_path(ad.event, ad) %>">
+        <%= ad.title %>
+      </a>
+    </td>
     <td><%= ad.description %></td>
-    <td><%= link_to 'Show', [ad.event, ad] %></td>
-    <td><%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %></td>
-    <td><%= link_to 'Destroy', [ad.event, ad], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
-
-<%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
-<%= link_to 'Edit', edit_event_path(@event) %> |
+  <%= link_to 'Create Ad', new_event_ad_path(@event.id) %> |
+  <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

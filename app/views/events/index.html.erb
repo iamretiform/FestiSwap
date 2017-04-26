@@ -12,16 +12,19 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.title %></td>
+        <td>
+          <a href="<%= event_path(event) %>">
+            <%= event.title %>
+          </a>
+        </td>
         <td><%= event.description %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user %>
 <%= link_to 'New Event', new_event_path %>
+<% end %>
+<%= link_to 'Back', root_path %>
