@@ -98,9 +98,9 @@ RSpec.describe AdsController, type: :controller do
         delete :destroy, params: { event_id: event.id, id: @ad }
       end.to change(Ad, :count).by(-1)
     end
-    it 'redirects to ads#index' do
+    it 'redirects to events#show' do
       delete :destroy, params: { event_id: event.id, id: @ad }
-      expect(response).to redirect_to event_ads_path(@ad.event_id)
+      expect(response).to redirect_to event_path(event.id)
     end
   end
 end

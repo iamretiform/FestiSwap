@@ -38,7 +38,6 @@ gem 'devise'
 gem 'diff-lcs'
 gem 'nested_scaffold'
 
-
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
 end
