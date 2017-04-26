@@ -57,6 +57,7 @@ group :development, :test do
   gem 'faker', github: 'stympy/faker'
   gem 'rails-controller-testing'
   gem 'rspec-sidekiq'
+  gem 'foreman'
   gem 'selenium-webdriver'
 end
 

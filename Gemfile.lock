@@ -97,6 +97,8 @@ GEM
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
     ffi (1.9.18)
+    foreman (0.83.0)
+      thor (~> 0.19.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
@@ -266,6 +268,7 @@ DEPENDENCIES
   diff-lcs
   factory_girl_rails
   faker!
+  foreman
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
   listen (>= 3.0.5, < 3.2)
