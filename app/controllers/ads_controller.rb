@@ -1,8 +1,8 @@
 class AdsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :find_ad, only: [:show, :edit, :destroy, :update]
-  before_action :find_event, only: [:show, :new, :create, :destroy, :edit, :update]
-  before_action :find_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :find_ad, only: %i[show edit destroy update]
+  before_action :find_event, only: %i[show new create destroy edit update]
+  before_action :find_user, only: %i[new create edit update destroy]
 
   def new
     @ad = @event.ads.new
@@ -12,23 +12,21 @@ class AdsController < ApplicationController
     @ad = @event.ads.new ad_params
     if @ad.save
       DeleteAdWorker.perform_at(@ad.termination_date + 1.day, @ad.id)
-      redirect_to [@event, @ad], notice: "Awesome! You generated ad!"
+      redirect_to [@event, @ad], notice: 'Awesome! You generated ad!'
     else
-      render :new, notice: "Oops, something went wrong! Sorry!"
+      render :new, notice: 'Oops, something went wrong! Sorry!'
     end
   end
 
-  def show
-  end
+  def show; end
 
   def update
     if @event.ads.update(ad_params)
-      redirect_to [@event, @ad], notice: "Your ad was sucessfully updated!"
+      redirect_to [@event, @ad], notice: 'Your ad was sucessfully updated!'
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
     @ad.destroy
@@ -36,10 +34,11 @@ class AdsController < ApplicationController
   end
 
   private
+
   def find_event
     @event = Event.find(params[:event_id])
   rescue ActiveRecord::RecordNotFound
-    render "errors/not_found", status: :not_found
+    render 'errors/not_found', status: :not_found
   end
 
   def ad_params

@@ -4,25 +4,25 @@ ReactOnRails.configure do |config|
 
   # Directory where your generated assets go. All generated assets must go to the same directory.
   # Configure this in your webpack config files. This relative to your Rails root directory.
-  config.generated_assets_dir = File.join(%w(app assets webpack))
+  config.generated_assets_dir = File.join(%w[app assets webpack])
 
   # Define the files we need to check for webpack compilation when running tests.
-  config.webpack_generated_files = %w( webpack-bundle.js )
+  config.webpack_generated_files = %w[webpack-bundle.js]
 
   # This is the file used for server rendering of React when using `(prerender: true)`
   # If you are never using server rendering, you may set this to "".
   # If you are using the same file for client and server rendering, having this set probably does
   # not affect performance.
-  config.server_bundle_js_file = "webpack-bundle.js"
+  config.server_bundle_js_file = 'webpack-bundle.js'
 
   # If you are using the ReactOnRails::TestHelper.configure_rspec_to_compile_assets(config)
   # with rspec then this controls what yarn command is run
   # to automatically refresh your webpack assets on every test run.
-  config.npm_build_test_command = "yarn run build:test"
+  config.npm_build_test_command = 'yarn run build:test'
 
   # This configures the script to run to build the production assets by webpack. Set this to nil
   # if you don't want react_on_rails building this file for you.
-  config.npm_build_production_command = "yarn run build:production"
+  config.npm_build_production_command = 'yarn run build:production'
 
   ################################################################################
   # CLIENT RENDERING OPTIONS
@@ -76,11 +76,10 @@ ReactOnRails.configure do |config|
   ################################################################################
 
   # The server render method - either ExecJS or NodeJS
-  config.server_render_method = "ExecJS"
+  config.server_render_method = 'ExecJS'
 
   # Client js uses assets not digested by rails.
   # For any asset matching this regex, non-digested symlink will be created (what webpack's css wants)
   # To disable symlinks set this parameter to nil.
   config.symlink_non_digested_assets_regex = /\.(png|jpg|jpeg|gif|tiff|woff|ttf|eot|svg|map)/
-
 end
