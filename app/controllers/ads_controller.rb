@@ -1,55 +1,57 @@
 class AdsController < ApplicationController
-  before_action :set_user
-  before_action :set_ads
-  before_action :set_ad, only: %i[show edit update destroy]
+  before_action :find_ad, only: [:show, :edit, :destroy, :update]
+  before_action :find_event, only: [:show, :new, :create, :destroy, :edit, :update]
+  before_action :find_user
 
-  def show; end
-
-  def new
-    @ad = @event.ads.build
-  end
-
-  def edit; end
-
-  def create
-    @ad = @event.ads.new(ad_params)
-
-    if @ad.save
-      redirect_to([@ad.event, @ad], notice: 'Ad was successfully created.')
-    else
-      render action: 'new'
+  
+    def new
+      @ad = @event.ads.new 
     end
-  end
 
-  def update
-    if @ad.update_attributes(ad_params)
-      redirect_to([@ad.event, @ad], notice: 'Ad was successfully updated.')
-    else
-      render action: 'edit'
+    def create
+      @ad = @event.ads.new ad_params
+      if @ad.save
+        redirect_to [@event, @ad], notice: "Awesome! You generated ad!"
+      else
+        render 'new', notice: "Oops, something went wrong! Sorry!"
+      end
     end
-  end
 
-  def destroy
-    @ad.destroy
+    def show
+    end
 
-    redirect_to event_path(@event)
-  end
+    def update
+      if @event.ads.update ad_params
+        redirect_to [@event, @ad], notice: "Your ad was sucessfully updated!"
+      else
+        render 'edit'
+      end
+    end
+
+    def edit
+    end
+
+    def destroy
+      @ad.destroy
+      redirect_to event_path(@event)
+    end
 
   private
+    def find_event
+       @event = Event.find(params[:event_id])
+     rescue ActiveRecord::RecordNotFound
+       render "errors/not_found", status: :not_found
+    end
 
-  def set_ads
-    @event = Event.find(params[:event_id])
-  end
+    def ad_params
+      params.require(:ad).permit(:title, :description).merge(event_id: @event, user_id: @user)
+    end
 
-  def set_user
-    @user = current_user.id
-  end
+    def find_user
+      @user = current_user.id
+    end
 
-  def set_ad
-    @ad = @event.ads.find(params[:id])
-  end
-
-  def ad_params
-    params.require(:ad).permit(:title, :description).merge(event_id: @event, user_id: @user)
-  end
+    def find_ad
+      @ad = Ad.find(params[:id])
+    end
 end
