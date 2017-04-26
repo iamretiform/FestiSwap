@@ -44,8 +44,8 @@ RSpec.describe EventsController, type: :controller do
     end
     it 'renders all of an events ads' do
       event = Event.create(valid_attributes)
-      ad1 = Ad.create(title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, event_id: event.id, user_id: user.id)
-      ad2 = Ad.create(title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, event_id: event.id, user_id: user.id)
+      ad1 = Ad.create(title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, termination_date: Faker::Time.forward(1, :morning), event_id: event.id, user_id: user.id)
+      ad2 = Ad.create(title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, termination_date: Faker::Time.forward(1, :morning), event_id: event.id, user_id: user.id)
       get :show, params: { id: event.id }
       expect(assigns(:ads)).to match_array([ad1, ad2])
     end

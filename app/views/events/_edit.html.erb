@@ -1,9 +1,0 @@
-<%= form_tag event_path(@event), method: "put" do %>
-  <label>Updated Event Title:</label><br>
-  <%= text_field_tag :title, @event.title %><br>
-
-  <label>Updated Event Description:</label><br>
-  <%= text_area_tag :description, @event.description %><br>
-
-  <%= submit_tag "Submit Post" %>
-<% end %>
