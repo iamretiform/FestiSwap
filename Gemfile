@@ -57,6 +57,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'rspec-sidekiq'
+  gem 'foreman'
 end
 
 group :development do
