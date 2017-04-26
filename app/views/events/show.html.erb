@@ -22,9 +22,19 @@
       </a>
     </td>
     <td><%= ad.description %></td>
+    <% if current_user %>
+      <% if current_user.id == ad.user_id %>
+      <td><%= link_to 'Edit', edit_event_ad_path(ad) %></td>
+      <td><%= link_to 'Destroy', event_ad_path(ad), :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    <% end %>
   </tr>
   <% end %>
 </table>
   <%= link_to 'Create Ad', new_event_ad_path(@event.id) %> |
-  <%= link_to 'Edit', edit_event_path(@event) %> |
+  <% if current_user %>
+    <% if current_user.id == @event.user_id %>
+    <%= link_to 'Edit Event', edit_event_path(@event) %> |
+    <% end %>
+  <% end %>
 <%= link_to 'Back', events_path %>

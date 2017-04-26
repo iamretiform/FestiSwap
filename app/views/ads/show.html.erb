@@ -9,8 +9,10 @@
   <%= @ad.description %>
 </p>
 
-<% if current_user.id == @ad.user_id %>
-<%= link_to 'Edit', edit_event_ad_path(@ad) %></td>
-<%= link_to 'Destroy', event_ad_path(@ad), :confirm => 'Are you sure?', :method => :delete %></td>
+<% if current_user %>
+  <% if current_user.id == @ad.user_id %>
+  <%= link_to 'Edit', edit_event_ad_path(@ad) %></td>
+  <%= link_to 'Destroy', event_ad_path(@ad), :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
 <% end %>
 <%= link_to 'Back', event_path(@event.id) %>
