@@ -39,7 +39,6 @@ gem 'diff-lcs'
 gem 'nested_scaffold'
 gem 'sidekiq'
 
-
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
 end
