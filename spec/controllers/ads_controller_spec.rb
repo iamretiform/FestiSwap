@@ -80,11 +80,7 @@ RSpec.describe AdsController, type: :controller do
       it 'it does not update the existing ad' do
         put :update, params: { event_id: event.id, id: @ad.to_param, ad: new_attributes }
         @ad.reload
-        expect(@ad.description).to include(new_attributes[:description])
-      end
-      it 're-renders the edit method' do
-        put :update, params: { event_id: event.id, id: @ad.to_param, ad: new_attributes }
-        expect(response).to render_template :edit
+        expect(@ad.description).to_not eq(new_attributes[:description])
       end
     end
   end
