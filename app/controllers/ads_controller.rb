@@ -31,8 +31,7 @@ class AdsController < ApplicationController
 
   def destroy
     @ad.destroy
-
-    redirect_to event_url(@event)
+    redirect_to event_path(@event)
   end
 
   private
