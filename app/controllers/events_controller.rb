@@ -15,31 +15,26 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-
-
   def create
     @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        DeleteEventWorker.perform_at(@event.termination_date + 1.day, @event.id)
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.save
+      DeleteEventWorker.perform_at(@event.termination_date + 1.day, @event.id)
+      redirect_to event_path(@event), notice: 'Event was successfully created.'
+    else
+      render :new
     end
   end
 
   def edit
   end
 
-   def update
-     @event = Event.find(params[:id])
-     @event.update(title: params[:title], description: params[:description])
-     redirect_to event_path(@event)
-   end
+  def update
+    if @event.update(event_params)
+      redirect_to event_path(@event), notice: 'Event was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @event.destroy

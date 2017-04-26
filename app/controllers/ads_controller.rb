@@ -11,6 +11,7 @@ class AdsController < ApplicationController
   def create
     @ad = @event.ads.new ad_params
     if @ad.save
+      DeleteAdWorker.perform_at(@ad.termination_date + 1.day, @ad.id)
       redirect_to [@event, @ad], notice: "Awesome! You generated ad!"
     else
       render :new, notice: "Oops, something went wrong! Sorry!"
@@ -42,7 +43,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :description).merge(event_id: @event.id, user_id: @user)
+    params.require(:ad).permit(:title, :description, :termination_date).merge(event_id: @event.id, user_id: @user)
   end
 
   def find_user
