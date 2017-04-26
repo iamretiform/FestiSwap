@@ -8,7 +8,7 @@ RSpec.describe AdsController, type: :controller do
 
   render_views
 
-  let(:event) { Event.create(title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, user_id: user.id) }
+  let(:event) { Event.create(title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, termination_date: Faker::Time.forward(1, :morning), user_id: user.id) }
   let(:valid_attributes) { { title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, event_id: event.id, user_id: user.id } }
   let(:invalid_attributes) { { title: '', description: Faker::HowIMetYourMother.quote, event_id: event.id, user_id: user.id } }
 
@@ -80,11 +80,7 @@ RSpec.describe AdsController, type: :controller do
       it 'it does not update the existing ad' do
         put :update, params: { event_id: event.id, id: @ad.to_param, ad: new_attributes }
         @ad.reload
-        expect(@ad.description).to include(new_attributes[:description])
-      end
-      it 're-renders the edit method' do
-        put :update, params: { event_id: event.id, id: @ad.to_param, ad: new_attributes }
-        expect(response).to render_template :edit
+        expect(@ad.description).to_not eq(new_attributes[:description])
       end
     end
   end
@@ -100,7 +96,7 @@ RSpec.describe AdsController, type: :controller do
     end
     it 'redirects to ads#index' do
       delete :destroy, params: { event_id: event.id, id: @ad }
-      expect(response).to redirect_to event_ads_path(@ad.event_id)
+      expect(response).to redirect_to event_path(@ad.event_id)
     end
   end
 end

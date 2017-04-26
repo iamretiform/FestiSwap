@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -21,7 +14,8 @@
 
   <%= form_for @event, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
     <%= f.text_field :title %><br>
-    <%= f.text_area :description, size: "60x12" %>
+    <%= f.text_area :description, size: "60x12" %><br>
+    <%= f.datetime_local_field :termination_date %>
   <div class="actions">
     <%= form.submit %>
   </div>

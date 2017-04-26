@@ -8,8 +8,8 @@ RSpec.describe EventsController, type: :controller do
 
   render_views
 
-  let(:valid_attributes) { { title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, user_id: user.id } }
-  let(:invalid_attributes) { { title: '', description: Faker::HowIMetYourMother.quote, user_id: user.id } }
+  let(:valid_attributes) { { title: Faker::HowIMetYourMother.catch_phrase, description: Faker::HowIMetYourMother.quote, termination_date: Faker::Time.forward(1, :morning), user_id: user.id } }
+  let(:invalid_attributes) { { title: '', description: Faker::HowIMetYourMother.quote, termination_date: Faker::Time.forward(1, :morning), user_id: user.id } }
 
   describe 'GET #index' do
     it 'responds successfully with an HTTP 200 status code' do
