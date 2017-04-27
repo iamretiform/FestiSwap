@@ -41,6 +41,7 @@ gem 'sidekiq'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'fog'
+gem 'geocoder'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false

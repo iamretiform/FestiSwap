@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426223141) do
+ActiveRecord::Schema.define(version: 20170427190742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 20170426223141) do
     t.string "file_content_type"
     t.integer "file_file_size"
     t.datetime "file_updated_at"
+    t.decimal "latitude", precision: 9, scale: 7, null: false
+    t.decimal "longitude", precision: 10, scale: 7, null: false
+    t.decimal "radius", null: false
+    t.string "address", null: false
   end
 
   create_table "users", force: :cascade do |t|
