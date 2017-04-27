@@ -1,7 +1,7 @@
 class AdsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
-  before_action :find_ad, only: %i[show edit destroy update]
-  before_action :find_event, only: %i[show new create destroy edit update]
+  before_action :authenticate_user!, only: %i[new create edit update destroy delete_ad_file]
+  before_action :find_ad, only: %i[show edit destroy update delete_ad_file]
+  before_action :find_event, only: %i[show new create destroy edit update delete_ad_file]
   before_action :find_user, only: %i[new create edit update destroy]
 
   def new
@@ -22,7 +22,7 @@ class AdsController < ApplicationController
 
   def update
     if @event.ads.update(ad_params)
-      redirect_to [@event, @ad], notice: 'Your ad was sucessfully updated!'
+      redirect_to [@event, @ad], notice: 'Your ad was successfully updated!'
     end
   end
 
@@ -31,6 +31,11 @@ class AdsController < ApplicationController
   def destroy
     @ad.destroy
     redirect_to event_path(@event)
+  end
+
+  def delete_ad_file
+    @ad.file.destroy 
+    redirect_to edit_event_ad_path(@event, @ad), notice: 'File has successfully been removed.'
   end
 
   private
@@ -42,7 +47,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :description, :termination_date).merge(event_id: @event.id, user_id: @user)
+    params.require(:ad).permit(:title, :description, :termination_date, :file).merge(event_id: @event.id, user_id: @user)
   end
 
   def find_user

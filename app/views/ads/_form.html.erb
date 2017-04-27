@@ -23,6 +23,11 @@
     <%= f.label :termination_date %>(This event ends on <%= @event.termination_date.strftime("%m/%d/%Y") %> your ad end date must match or end before this date.)<br />
     <%= f.datetime_local_field :termination_date, :required => true  %>
   </div>
+  <div class="field">
+      <%= f.label 'Picture Upload' %><br />
+      <%= f.file_field :file %><br /><br />
+      <%= image_tag @ad.file.url(:medium) %><br />
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -66,5 +66,5 @@ Rails.application.configure do
     :user_name =>  ENV["GMAIL_USERNAME"],
     :password => ENV["GMAIL_PASSWORD"]
    }
-
+   Paperclip.options[:command_path] = "/usr/local/bin/"
 end

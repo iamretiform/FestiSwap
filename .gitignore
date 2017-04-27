@@ -2,7 +2,6 @@
 capybara-*.html
 .rspec
 /log
-/tmp
 /public/system
 /coverage/
 /spec/tmp

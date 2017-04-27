@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<span><%= image_tag @event.file.url %></span>
 <h1>
 <%= @event.title %>
 </h1>
@@ -7,15 +8,16 @@
 </h2>
 <table>
   <tr>
+    <th></th>
     <th>Title</th>
     <th>Description</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @ads.map do |ad| %>
   <tr>
+    <td><%= image_tag ad.file.url(:thumb) %></td>
     <td>
       <a href="<%= event_ad_path(ad.event, ad) %>">
         <%= ad.title %>
@@ -24,8 +26,8 @@
     <td><%= ad.description %></td>
     <% if current_user %>
       <% if current_user.id == ad.user_id %>
-      <td><%= link_to 'Edit', edit_event_ad_path(ad) %></td>
-      <td><%= link_to 'Destroy', event_ad_path(ad), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %></td>
+      <td><%= link_to 'Destroy', event_ad_path(ad.event, ad), :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
     <% end %>
   </tr>
