@@ -28,7 +28,7 @@ $(document).ready(function() {
     }
 
     function locationFail() {
-      alert("Oops, could not find you.");
+      alert("Oops, could not find you. Check your browser settings and enable location services.  Or you won't get to swap... and swapping rules.");
     }
   });
 });
