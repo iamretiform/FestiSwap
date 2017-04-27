@@ -24,6 +24,11 @@
     <div class="field">
       <%= f.hidden_field :termination_date %>
     </div>
+    <div class="field">
+        <%= f.label 'Picture Upload' %><br />
+        <%= f.file_field :file %><br /><br />
+        <%= image_tag @event.file.url(:medium) %><br />
+    </div>
     <div class="actions">
       <%= submit_tag "Update Post" %>
     </div>

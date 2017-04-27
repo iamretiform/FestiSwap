@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy delete_ad_file]
   before_action :set_user, only: %i[new create edit update destroy]
-  before_action :find_event, only: %i[show edit update destroy]
+  before_action :find_event, only: %i[show edit update destroy delete_event_file]
 
   def index
     @events = Event.all
@@ -43,6 +43,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def delete_event_file
+    @event.avatar.destroy 
+    redirect_to edit_event_path(@event), notice: 'File has successfully been removed.'
+  end
+
   private
 
   def find_event
@@ -54,6 +59,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :termination_date).merge(user_id: @user)
+    params.require(:event).permit(:title, :description, :termination_date, :file).merge(user_id: @user)
   end
 end

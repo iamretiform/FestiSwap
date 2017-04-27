@@ -31,6 +31,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <td><%= image_tag event.file.url(:thumb) %></td>
         <td>
           <a href="<%= event_path(event) %>">
             <%= event.title %>
