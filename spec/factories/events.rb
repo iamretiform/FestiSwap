@@ -4,5 +4,7 @@ FactoryGirl.define do
     description        { Faker::Address.street_address }
     user_id            { FactoryGirl.create(:user).id }
     termination_date   { Faker::Time.forward(1, :morning) }
+    address            { Faker::Address.street_address }
+    radius             { 1 }
   end
 end
