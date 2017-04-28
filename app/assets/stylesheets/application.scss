@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ 
+ #map {
+   height: 400px;
+   width: 400px;
+  }
+
  body {
    background-color: #fff;
    color: #333;

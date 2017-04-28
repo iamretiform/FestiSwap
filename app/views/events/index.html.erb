@@ -25,6 +25,10 @@
     </tr>
   </tbody>
 </table>
+<h3>User Current Location</h3>
+<div id="map"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=[google_maps_key]&callback=initMap">
+</script>
 <table>
   <thead>
     <h3>Event</h3>
@@ -46,10 +50,10 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td colspan="4">
+        <td id="event_latitude" colspan="4">
           <%= event.latitude %>
         </td>
-        <td colspan="4">
+        <td id="event_longitude" colspan="4">
           <%= event.longitude %>
         </td>
         <td colspan="4">
