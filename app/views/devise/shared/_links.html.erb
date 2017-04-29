@@ -18,5 +18,11 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %><br />
-<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+<a class="btn btn-social btn-google" href="<%= user_google_oauth2_omniauth_authorize_path %>">
+  <span class="fa fa-google"></span>Sign in with Google
+</a><br/><br/>
+
+<a class="btn btn-social btn-facebook" href="<%= user_facebook_omniauth_authorize_path %>">
+  <span class="fa fa-google"></span>Sign in with Facebook
+</a><br/><br/>
+

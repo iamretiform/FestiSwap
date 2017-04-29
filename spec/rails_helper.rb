@@ -35,6 +35,16 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+RSpec::Sidekiq.configure do |config|
+  # Clears all job queues before each example
+  config.clear_all_enqueued_jobs = true # default => true
+
+  # Whether to use terminal colours when outputting messages
+  config.enable_terminal_colours = true # default => true
+
+  # Warn when jobs are not enqueued to Redis but to a job array
+  config.warn_when_jobs_not_processed_by_sidekiq = false
+end
 
 RSpec.configure do |config|
   # Ensure that if we are running js tests, we are using latest webpack assets

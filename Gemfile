@@ -46,9 +46,13 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
+gem 'bootstrap-sass'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'rspec-sidekiq'
 end
 
 group :development, :test do
@@ -64,7 +68,6 @@ group :development, :test do
   gem 'faker', github: 'stympy/faker'
   gem 'foreman'
   gem 'rails-controller-testing'
-  gem 'rspec-sidekiq'
   gem 'selenium-webdriver'
 end
 
