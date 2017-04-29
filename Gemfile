@@ -45,6 +45,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
+gem 'omniauth-facebook'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
