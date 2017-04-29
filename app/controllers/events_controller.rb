@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy delete_event_file]
 
   def index
-    @events = Event.all
+    @events = SearchesEvents.new(query: params[:q]).call
   end
 
   def show
