@@ -308,6 +308,8 @@ GEM
     omniauth (1.6.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
+    omniauth-facebook (4.0.0)
+      omniauth-oauth2 (~> 1.2)
     omniauth-google-oauth2 (0.4.1)
       jwt (~> 1.5.2)
       multi_json (~> 1.3)
@@ -470,6 +472,7 @@ DEPENDENCIES
   mini_racer
   nested_scaffold
   omniauth
+  omniauth-facebook
   omniauth-google-oauth2
   paperclip!
   pg (~> 0.18)
