@@ -8,32 +8,38 @@ RSpec.describe AdsController, type: :controller do
 
   render_views
 
-  let(:event) { Event.create(
-    title: Faker::HowIMetYourMother.catch_phrase, 
-    address: Faker::Address.street_address, 
-    latitude: Faker::Address.latitude, 
-    longitude: Faker::Address.longitude, 
-    description: Faker::HowIMetYourMother.quote, 
-    radius: 1, 
-    termination_date: Faker::Time.forward(1, :morning), 
-    user_id: user.id
-  ) }
+  let(:event) do
+    Event.create(
+      title: Faker::HowIMetYourMother.catch_phrase,
+      address: Faker::Address.street_address,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
+      description: Faker::HowIMetYourMother.quote,
+      radius: 1,
+      termination_date: Faker::Time.forward(1, :morning),
+      user_id: user.id
+    )
+  end
 
-  let(:valid_attributes) { { 
-    title: Faker::HowIMetYourMother.catch_phrase, 
-    description: Faker::HowIMetYourMother.quote, 
-    termination_date: event.termination_date, 
-    event_id: event.id, 
-    user_id: user.id 
-  } }
+  let(:valid_attributes) do
+    {
+      title: Faker::HowIMetYourMother.catch_phrase,
+      description: Faker::HowIMetYourMother.quote,
+      termination_date: event.termination_date,
+      event_id: event.id,
+      user_id: user.id
+    }
+  end
 
-  let(:invalid_attributes) { { 
-    title: '', 
-    description: Faker::HowIMetYourMother.quote, 
-    termination_date: event.termination_date, 
-    event_id: event.id, 
-    user_id: user.id 
-  } }
+  let(:invalid_attributes) do
+    {
+      title: '',
+      description: Faker::HowIMetYourMother.quote,
+      termination_date: event.termination_date,
+      event_id: event.id,
+      user_id: user.id
+    }
+  end
 
   describe 'GET #show' do
     it 'responds successfully with an HTTP 200 status code' do

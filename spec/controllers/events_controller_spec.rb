@@ -8,27 +8,31 @@ RSpec.describe EventsController, type: :controller do
 
   render_views
 
-  let(:valid_attributes) { { 
-    title: Faker::HowIMetYourMother.catch_phrase, 
-    address: Faker::Address.street_address, 
-    latitude: Faker::Address.latitude, 
-    longitude: Faker::Address.longitude, 
-    description: Faker::HowIMetYourMother.quote, 
-    radius: 1, 
-    termination_date: Faker::Time.forward(1, :morning), 
-    user_id: user.id 
-  } }
+  let(:valid_attributes) do
+    {
+      title: Faker::HowIMetYourMother.catch_phrase,
+      address: Faker::Address.street_address,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
+      description: Faker::HowIMetYourMother.quote,
+      radius: 1,
+      termination_date: Faker::Time.forward(1, :morning),
+      user_id: user.id
+    }
+  end
 
-  let(:invalid_attributes) { {     
-    title: '', 
-    address: Faker::Address.street_address, 
-    latitude: Faker::Address.latitude, 
-    longitude: Faker::Address.longitude, 
-    description: Faker::HowIMetYourMother.quote, 
-    radius: 1, 
-    termination_date: Faker::Time.forward(1, :morning), 
-    user_id: user.id 
-  } }
+  let(:invalid_attributes) do
+    {
+      title: '',
+      address: Faker::Address.street_address,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude,
+      description: Faker::HowIMetYourMother.quote,
+      radius: 1,
+      termination_date: Faker::Time.forward(1, :morning),
+      user_id: user.id
+    }
+  end
 
   describe 'GET #index' do
     it 'responds successfully with an HTTP 200 status code' do
@@ -64,17 +68,17 @@ RSpec.describe EventsController, type: :controller do
     it 'renders all of an events ads' do
       event = Event.create(valid_attributes)
       ad1 = Ad.create(
-        title: Faker::HowIMetYourMother.catch_phrase, 
-        description: Faker::HowIMetYourMother.quote, 
-        termination_date: Faker::Time.forward(1, :morning), 
-        event_id: event.id, 
+        title: Faker::HowIMetYourMother.catch_phrase,
+        description: Faker::HowIMetYourMother.quote,
+        termination_date: Faker::Time.forward(1, :morning),
+        event_id: event.id,
         user_id: user.id
       )
       ad2 = Ad.create(
-        title: Faker::HowIMetYourMother.catch_phrase, 
-        description: Faker::HowIMetYourMother.quote, 
-        termination_date: Faker::Time.forward(1, :morning), 
-        event_id: event.id, 
+        title: Faker::HowIMetYourMother.catch_phrase,
+        description: Faker::HowIMetYourMother.quote,
+        termination_date: Faker::Time.forward(1, :morning),
+        event_id: event.id,
         user_id: user.id
       )
       get :show, params: { id: event.id }

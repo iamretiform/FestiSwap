@@ -36,12 +36,15 @@ gem 'redis', '~> 3.0'
 # gem 'capistrano-rails', group: :development
 gem 'devise'
 gem 'diff-lcs'
-gem 'nested_scaffold'
-gem 'sidekiq'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'figaro'
 gem 'fog'
 gem 'geocoder'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'nested_scaffold'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
+gem 'sidekiq'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
@@ -58,9 +61,9 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker', github: 'stympy/faker'
+  gem 'foreman'
   gem 'rails-controller-testing'
   gem 'rspec-sidekiq'
-  gem 'foreman'
   gem 'selenium-webdriver'
 end
 
