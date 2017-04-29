@@ -34,7 +34,7 @@ class AdsController < ApplicationController
   end
 
   def delete_ad_file
-    @ad.file.destroy 
+    @ad.file.destroy
     redirect_to edit_event_ad_path(@event, @ad), notice: 'File has successfully been removed.'
   end
 

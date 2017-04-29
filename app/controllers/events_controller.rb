@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   end
 
   def delete_event_file
-    @event.avatar.destroy 
+    @event.avatar.destroy
     redirect_to edit_event_path(@event), notice: 'File has successfully been removed.'
   end
 

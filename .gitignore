@@ -47,3 +47,6 @@ node_modules
 /app/assets/webpack/*
 Procfile
 
+
+# Ignore application configuration
+/config/application.yml
