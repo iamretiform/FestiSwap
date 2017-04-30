@@ -6,16 +6,16 @@ class User < ApplicationRecord
   has_many :ads
   validates :name, :email, presence: true
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
-                             default_url: '/images/:style/missing.png',
-                             path: 'system/users/images/:id/:style/:basename.png',
-                             url: 'system/users/images/:id/:style/:basename.png'
+                             # default_url: '/images/:style/missing.png',
+                             # path: 'system/users/images/:id/:style/:basename.png',
+                             # url: 'system/users/images/:id/:style/:basename.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
     if user
       return user
     else
-      user = User.create!(
+      User.create!(
         avatar: auth.info.image,
         name: auth.info.name,
         provider: auth.provider,

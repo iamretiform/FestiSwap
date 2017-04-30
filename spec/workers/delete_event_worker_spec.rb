@@ -15,10 +15,9 @@ RSpec.describe DeleteEventWorker, type: :worker do
   end
 
   xit 'DeleteEventWorker destroys a specific event' do
-    expect(event).to be_present 
+    expect(event).to be_present
     worker = DeleteEventWorker.new
-    worker.perform(event.id) 
+    worker.perform(event.id)
     expect(event).not_to be_present
   end
 end
-
