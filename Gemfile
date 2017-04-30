@@ -50,7 +50,6 @@ gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
 gem 'aws-sdk'
 
-
 group :test do
   gem 'rspec-sidekiq'
   gem 'shoulda-matchers', '~> 3.0', require: false

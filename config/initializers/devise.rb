@@ -277,4 +277,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :google_oauth2, ENV['google_client'], ENV['google_secret']
   config.omniauth :facebook, ENV['facebook_client'], ENV['facebook_secret']
+  config.secret_key = ENV['rails_relative_root']
 end
