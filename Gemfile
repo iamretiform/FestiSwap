@@ -48,6 +48,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
+gem 'aws-sdk'
+
 
 group :test do
   gem 'rspec-sidekiq'

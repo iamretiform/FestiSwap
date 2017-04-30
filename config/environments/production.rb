@@ -104,4 +104,13 @@ Rails.application.configure do
     user_name: ENV['gmail_username'],
     password: ENV['gmail_password']
   }
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['s3_bucket_name'],
+      access_key_id: ENV['aws_access_key'],
+      secret_access_key: ENV['aws_secret_key'],
+      s3_region: ENV['aws_region'],
+    }
+  }
 end
