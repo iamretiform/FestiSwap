@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :ads
   validates :name, :email, presence: true
-  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
+  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }
                              # default_url: '/images/:style/missing.png',
                              # path: 'system/users/images/:id/:style/:basename.png',
                              # url: 'system/users/images/:id/:style/:basename.png'
