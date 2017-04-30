@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 gem 'react_on_rails', '~>6'
 
 git_source(:github) do |repo_name|
@@ -34,10 +33,13 @@ gem 'redis', '~> 3.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'bootstrap-sass'
+gem 'bootstrap-social-rails'
 gem 'devise'
 gem 'diff-lcs'
 gem 'figaro'
 gem 'fog'
+gem 'font-awesome-rails'
 gem 'geocoder'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'nested_scaffold'
@@ -46,13 +48,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
-gem 'bootstrap-sass'
-gem 'bootstrap-social-rails'
-gem 'font-awesome-rails'
 
 group :test do
-  gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'rspec-sidekiq'
+  gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 group :development, :test do

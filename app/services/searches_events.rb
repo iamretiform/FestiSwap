@@ -7,10 +7,7 @@ class SearchesEvents
   end
 
   def call
-    if query
-      @result = result.near(query)
-    end
+    @result = result.near(query) if query
     @result
   end
 end
-

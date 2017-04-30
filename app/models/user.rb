@@ -15,7 +15,7 @@ class User < ApplicationRecord
     if user
       return user
     else
-      user = User.create!(
+      User.create!(
         avatar: auth.info.image,
         name: auth.info.name,
         provider: auth.provider,
