@@ -67,4 +67,8 @@ Rails.application.configure do
       password: ENV['gmail_password']
     }
   Paperclip.options[:command_path] = '/usr/local/bin/'
+  Paperclip::Attachment.default_options[:storage] = :fog
+  Paperclip::Attachment.default_options[:fog_credentials] = { provider: 'Local', local_root: "#{Rails.root}/public" }
+  Paperclip::Attachment.default_options[:fog_directory] = ''
+  Paperclip::Attachment.default_options[:fog_host] = 'http://localhost:5100'
 end
