@@ -336,6 +336,7 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    open_uri_redirections (0.2.1)
     orm_adapter (0.5.0)
     pg (0.20.0)
     pry (0.10.4)
@@ -496,6 +497,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  open_uri_redirections
   paperclip!
   pg (~> 0.18)
   pry

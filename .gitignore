@@ -4,6 +4,7 @@ capybara-*.html
 /log
 /tmp
 /public/system
+/public/users
 /coverage/
 /spec/tmp
 *.orig
