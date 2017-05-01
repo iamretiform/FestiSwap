@@ -50,15 +50,16 @@
     </tr>
   </thead>
   <tbody>
+    <% count = 0 %>
     <% @events.each do |event| %>
       <tr>
-        <td id="event<%= event.id %>_latitude" colspan="4">
+        <td id="event<%= count %>_latitude" colspan="4">
           <%= event.latitude %>
         </td>
-        <td id="event<%= event.id %>_longitude" colspan="4">
+        <td id="event<%= count %>_longitude" colspan="4">
           <%= event.longitude %>
         </td>
-        <td id="event<%= event.id %>_radius" colspan="4">
+        <td id="event<%= count %>_radius" colspan="4">
           <%= event.radius %>
         </td>
         <td colspan="4">
@@ -73,6 +74,7 @@
           <%= event.description %>
         </td>
       </tr>
+      <% count += 1 %>
       <% end %>
   </tbody>
 </table>

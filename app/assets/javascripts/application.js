@@ -38,17 +38,17 @@ $(document).ready(function() {
         position: uluru,
         map: map
       });
-      for (var i = 1; i < 5; i++) {
+      for (var i = 0; i <= 5; i++) {
         console.log(Number(document.getElementById("event" + i + "_latitude").innerHTML));
         console.log(Number(document.getElementById("event" + i + "_longitude").innerHTML));
         console.log(Number(document.getElementById("event" + i + "_radius").innerHTML));
         // Add the circle for this city to the map.
         var eventCircle = new google.maps.Circle({
           strokeColor: '#F26060 ',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: '#F30016 ',
-          fillOpacity: 0.35,
+          strokeOpacity: 0.7,
+          strokeWeight: 1.5,
+          fillColor: '#F337B4 ',
+          fillOpacity: 0.15,
           map: map,
           center: {
             lat: Number(document.getElementById("event" + i + "_latitude").innerHTML),
