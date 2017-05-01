@@ -19,24 +19,16 @@
 // require_tree .
 
 $(document).ready(function() {
-  $(function() {
     navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
 
     function locationSuccess(position) {
       latr.innerHTML = position.coords.latitude;
       longr.innerHTML = position.coords.longitude;
-      // create a loop that grabs all of the events latitude, longitude, and radius and feeds them into var eventMap JSON
-      // var eventMap = {
-      //   eventName: {
-      //     center: {lat: event.latitude, lng: event.longitude},
-      //     radius: event.radius
-      //   }
-      // };
 
       $(function initMap() {
         var uluru = { lat: position.coords.latitude, lng: position.coords.longitude };
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
+          zoom: 12,
           center: uluru,
           mapTypeId: 'hybrid'
         });
@@ -44,19 +36,22 @@ $(document).ready(function() {
           position: uluru,
           map: map
         });
-        // for (var event in eventMap) {
-        //   // Add the circle for this city to the map.
-        //   var eventCircle = new google.maps.Circle({
-        //     strokeColor: '#FF0000',
-        //     strokeOpacity: 0.8,
-        //     strokeWeight: 2,
-        //     fillColor: '#FF0000',
-        //     fillOpacity: 0.35,
-        //     map: map,
-        //     center: {lat: event.latitude, lng: event.longitude},
-        //     radius: event.radius
-        //   });
-        // }
+        for (var i = 1; i < 5; i++) {
+          console.log(Number(document.getElementById("event" + i + "_latitude").innerHTML));
+          console.log(Number(document.getElementById("event" + i + "_longitude").innerHTML));
+          console.log(Number(document.getElementById("event" + i + "_radius").innerHTML));
+          // Add the circle for this city to the map.
+          var eventCircle = new google.maps.Circle({
+            strokeColor: '#F26060 ',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#F30016 ',
+            fillOpacity: 0.35,
+            map: map,
+            center: { lat: Number(document.getElementById("event" + i + "_latitude").innerHTML), lng: Number(document.getElementById("event" + i + "_longitude").innerHTML) },
+            radius: Number(document.getElementById("event" + i + "_radius").innerHTML) * 200
+          });
+        }
       });
     }
 
@@ -64,4 +59,3 @@ $(document).ready(function() {
       alert("Oops, could not find you. Check your browser settings and enable location services.  Or you won't get to swap... and swapping rules.");
     }
   });
-});
