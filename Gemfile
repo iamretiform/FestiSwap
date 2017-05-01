@@ -49,6 +49,7 @@ gem 'omniauth-google-oauth2'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
 gem 'aws-sdk'
+gem 'open_uri_redirections'
 
 group :test do
   gem 'rspec-sidekiq'
