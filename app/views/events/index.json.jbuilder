@@ -1,3 +1,3 @@
 json.events @events do |event|
-  json.(event, :longitude, :latitude, :radius)
+  json.call(event, :longitude, :latitude, :radius)
 end

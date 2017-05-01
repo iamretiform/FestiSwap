@@ -5,6 +5,8 @@ capybara-*.html
 /tmp
 /public/system
 /public/users
+/public/events
+/public/ads
 /coverage/
 /spec/tmp
 *.orig

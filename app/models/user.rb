@@ -20,20 +20,20 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20]
       )
       if auth.info.image.present?
-         avatar_url = process_uri(auth.info.image)
-         user.update_attribute(:avatar, URI.parse(avatar_url))
-         return user
+        avatar_url = process_uri(auth.info.image)
+        user.update_attribute(:avatar, URI.parse(avatar_url))
+        return user
       end
     end
   end
 
   private
 
-    def self.process_uri(uri)
-      require 'open-uri'
-      require 'open_uri_redirections'
-      open(uri, :allow_redirections => :safe) do |r|
-        r.base_uri.to_s
-      end
+  def self.process_uri(uri)
+    require 'open-uri'
+    require 'open_uri_redirections'
+    open(uri, allow_redirections: :safe) do |r|
+      r.base_uri.to_s
     end
+  end
 end

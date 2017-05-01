@@ -19,55 +19,49 @@
 // require_tree .
 
 $(document).ready(function() {
-	$(function() {
-		navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+	navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
 
-		function locationSuccess(position) {
-			latr.innerHTML = position.coords.latitude;
-			longr.innerHTML = position.coords.longitude;
+	function locationSuccess(position) {
+		latr.innerHTML = position.coords.latitude;
+		longr.innerHTML = position.coords.longitude;
 
-			$(function initMap() {
-				var uluru = {
-					lat: position.coords.latitude.to_f,
-					lng: position.coords.longitude.to_f
-				};
-				var map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 14,
-					center: uluru,
-					mapTypeId: 'hybrid'
-				});
-				var marker = new google.maps.Marker({
-					position: uluru,
-					map: map
-				});
-				$.getJSON("events.json", function(data) {
-					var eventMap = []
-					for (let i = 0; i < data.events.length; i++) {
-						eventMap.push(data.events[i]);
-					}
-					for (let j = 0; j < eventMap.length; j++) {
-							// Add the circle for this city to the map.
-						var eventCircle = new google.maps.Circle({
-							strokeColor: '#FF0000',
-							strokeOpacity: 0.8,
-							strokeWeight: 2,
-							fillColor: '#FF0000',
-							fillOpacity: 0.35,
-							map: map,
-							center: {
-								lat: eventMap[j].latitude.to_f,
-								lng: eventMap[j].longitude.to_f
-							},
-							radius: eventMap[j].radius.to_f
-						});
-					};
-				});
+		$(function initMap() {
+			var uluru = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 12,
+				center: uluru,
+				mapTypeId: 'hybrid'
 			});
+			var marker = new google.maps.Marker({
+				position: uluru,
+				map: map
+			});
+			for (var i = 1; i < 5; i++) {
+				console.log(Number(document.getElementById("event" + i + "_latitude").innerHTML));
+				console.log(Number(document.getElementById("event" + i + "_longitude").innerHTML));
+				console.log(Number(document.getElementById("event" + i + "_radius").innerHTML));
+				// Add the circle for this city to the map.
+				var eventCircle = new google.maps.Circle({
+					strokeColor: '#F26060 ',
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: '#F30016 ',
+					fillOpacity: 0.35,
+					map: map,
+					center: {
+						lat: Number(document.getElementById("event" + i + "_latitude").innerHTML),
+						lng: Number(document.getElementById("event" + i + "_longitude").innerHTML)
+					},
+					radius: Number(document.getElementById("event" + i + "_radius").innerHTML) * 200
+				});
+			}
+		});
+	}
 
-		};
-
-		function locationFail() {
-			alert("Oops, could not find you. Check your browser settings and enable location services.  Or you won't get to swap... and swapping rules.");
-		};
-	})
-})
+	function locationFail() {
+		alert("Oops, could not find you. Check your browser settings and enable location services.  Or you won't get to swap... and swapping rules.");
+	}
+});

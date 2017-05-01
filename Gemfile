@@ -33,6 +33,7 @@ gem 'redis', '~> 3.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'aws-sdk'
 gem 'bootstrap-sass'
 gem 'bootstrap-social-rails'
 gem 'devise'
@@ -46,10 +47,9 @@ gem 'nested_scaffold'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'open_uri_redirections'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
-gem 'aws-sdk'
-gem 'open_uri_redirections'
 
 group :test do
   gem 'rspec-sidekiq'
