@@ -24,7 +24,7 @@ $(document).ready(function() {
   function locationSuccess(position) {
     latr.innerHTML = position.coords.latitude;
     longr.innerHTML = position.coords.longitude;
-    $(function initMap() {
+    $(document).ready(function initMap() {
       var uluru = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
