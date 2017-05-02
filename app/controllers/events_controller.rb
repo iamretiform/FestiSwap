@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update destroy delete_ad_file]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_user, only: %i[new create edit update destroy]
-  before_action :find_event, only: %i[show edit update destroy delete_event_file]
+  before_action :find_event, only: %i[show edit update destroy]
 
   def index
+    flash[:notice] = 'It may take a moment to obtain your current location. Please wait.'
     @events = SearchesEvents.new(query: params[:q]).call
   end
 
@@ -19,7 +20,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       DeleteEventWorker.perform_at(@event.termination_date + 1.day, @event.id)
-      redirect_to event_path(@event), notice: 'Event was successfully created.'
+      redirect_to event_path(@event), notice: 'Your event was successfully created.'
     else
       render :new
     end
@@ -29,7 +30,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to event_path(@event), notice: 'Event was successfully updated.'
+      redirect_to event_path(@event), notice: 'Your event was successfully updated.'
     else
       render :edit
     end
@@ -38,14 +39,9 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to events_url, notice: 'Your event was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def delete_event_file
-    @event.avatar.destroy
-    redirect_to edit_event_path(@event), notice: 'File has successfully been removed.'
   end
 
   private
