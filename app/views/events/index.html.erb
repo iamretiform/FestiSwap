@@ -26,15 +26,13 @@
   </tbody>
 </table>
 <h3>User Current Location</h3>
+<script type="text/javascript">
+$(document).ready(initMap());
+$(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
+</script> 
 <div id="map" style="position: auto; overflow: auto; height: 400px; width: 400px;"></div>
 </div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
-</script>
-<script type="text/javascript">
-$(document).ready(() => {
-  initMap();
-  navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
-});
 </script>
 </td>
 <table class="table">
