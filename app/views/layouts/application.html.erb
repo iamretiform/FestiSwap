@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>FestiSwap</title>
-  <link rel="icon" href="favicon.jpg" type="image/gif" />
-  <%= csrf_meta_tags %>
+  <head>
+    <title>FestiSwap</title>
+    <link rel="icon" href="favicon.jpg" type="image/gif" />
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-
-<body>
-  <%= render 'layouts/header' %>
-  <% flash.each do |key, value| %>
-    <h5 class="alert alert-<%= key %>"><%= value %></h5>
-  <% end %>
-  <%= yield %>
-</body>
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <% flash.each do |key, value| %>
+      <h5 class="alert alert-<%= key %>"><%= value %></h5>
+    <% end %>
+    <%= yield %>
+  </body>
 </html>

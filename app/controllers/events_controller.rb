@@ -4,7 +4,6 @@ class EventsController < ApplicationController
   before_action :find_event, only: %i[show edit update destroy]
 
   def index
-    flash[:notice] = 'It may take a moment to obtain your current location. Please wait.'
     @events = SearchesEvents.new(query: params[:q]).call
   end
 
