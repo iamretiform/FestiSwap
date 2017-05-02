@@ -1,8 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% if @ad.file_file_name %>
-  <td><%= image_tag @ad.file.url %></td>
-<% end %>
-
+<td><%= image_tag @ad.file.url(:medium) %></td>
 <p>
   <b>Title:</b>
   <h1><%= @ad.title %></h1>
