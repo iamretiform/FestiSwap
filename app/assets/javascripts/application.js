@@ -19,13 +19,9 @@
 // require_tree .
 
 
-function initMap() {
-}
+
 
 function locationSuccess(position) {
-  latr.innerHTML = position.coords.latitude;
-  longr.innerHTML = position.coords.longitude;
-  initMap();
   var uluru = {
     lat: position.coords.latitude,
     lng: position.coords.longitude
@@ -39,6 +35,7 @@ function locationSuccess(position) {
     position: uluru,
     map: map
   });
+
   for (var i = 0; i <= 5; i++) {
     console.log(Number(document.getElementById("event" + i + "_latitude").innerHTML));
     console.log(Number(document.getElementById("event" + i + "_longitude").innerHTML));
@@ -63,5 +60,3 @@ function locationSuccess(position) {
 function locationFail() {
   alert("Oops, could not find you. Check your browser settings and enable location services.  Or you won't get to swap... and swapping rules.");
 }
-$(document).ready(() =>
-  navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));

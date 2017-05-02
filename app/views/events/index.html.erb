@@ -16,19 +16,26 @@
     <tr>
       <td colspan="4">
         <p id="latr">
+          placeholder for latr
         </p>
       </td>
       <td colspan="4">
         <p id="longr">
+          placeholder for longr
         </p>
       </td>
     </tr>
   </tbody>
 </table>
 <h3>User Current Location</h3>
-<div id="map" style="position: auto; overflow: auto; height: 400px; width: 400px;"></div>
+<div id="map" style="position: auto; overflow: auto; height: 400px; width: 400px;">
+  <script type="text/javascript">
+  function initMap() {}
+  $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
+  </script>
 </div>
-</td>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
+</script>
 <table class="table">
   <thead>
     <h3>Event</h3>
@@ -49,31 +56,31 @@
   </thead>
   <tbody>
     <% count = 0 %>
-    <% @events.each do |event| %>
-      <tr>
-        <td id="event<%= count %>_latitude" colspan="4">
-          <%= event.latitude %>
-        </td>
-        <td id="event<%= count %>_longitude" colspan="4">
-          <%= event.longitude %>
-        </td>
-        <td id="event<%= count %>_radius" colspan="4">
-          <%= event.radius %>
-        </td>
-        <td colspan="4">
-          <%= image_tag event.file.url(:thumb) %>
-        </td>
-        <td colspan="4">
-          <a href="<%= event_path(event) %>">
-            <%= event.title %>
-          </a>
-        </td>
-        <td colspan="4">
-          <%= event.description %>
-        </td>
-      </tr>
-      <% count += 1 %>
-      <% end %>
+      <% @events.each do |event| %>
+        <tr>
+          <td id="event<%= count %>_latitude" colspan="4">
+            <%= event.latitude %>
+          </td>
+          <td id="event<%= count %>_longitude" colspan="4">
+            <%= event.longitude %>
+          </td>
+          <td id="event<%= count %>_radius" colspan="4">
+            <%= event.radius %>
+          </td>
+          <td colspan="4">
+            <%= image_tag event.file.url(:thumb) %>
+          </td>
+          <td colspan="4">
+            <a href="<%= event_path(event) %>">
+              <%= event.title %>
+            </a>
+          </td>
+          <td colspan="4">
+            <%= event.description %>
+          </td>
+        </tr>
+        <% count += 1 %>
+          <% end %>
   </tbody>
 </table>
 <br>
@@ -81,4 +88,3 @@
   <%= link_to 'New Event', new_event_path %>
     <% end %>
       <%= link_to 'Back', root_path %>
-
