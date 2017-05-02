@@ -16,12 +16,10 @@
     <tr>
       <td colspan="4">
         <p id="latr">
-          placeholder for latr
         </p>
       </td>
       <td colspan="4">
         <p id="longr">
-          placeholder for longr
         </p>
       </td>
     </tr>
@@ -29,12 +27,16 @@
 </table>
 <h3>User Current Location</h3>
 <div id="map" style="position: auto; overflow: auto; height: 400px; width: 400px;"></div>
-  <script type="text/javascript">
-  function initMap() {}
-  $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
-  </script>
+</div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
 </script>
+<script type="text/javascript">
+$(document).ready(() => {
+  initMap();
+  navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+});
+</script>
+</td>
 <table class="table">
   <thead>
     <h3>Event</h3>
@@ -82,8 +84,7 @@
           <% end %>
   </tbody>
 </table>
-<br>
-<% if current_user %>
-  <%= link_to 'New Event', new_event_path %>
-    <% end %>
-      <%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path %>
+  <% if current_user %>
+    <%= link_to 'New Event', new_event_path %>
+      <% end %>
