@@ -113,4 +113,5 @@ Rails.application.configure do
       secret_access_key: ENV['aws_secret_key']
     }
   }
+  config.serve_static_assets = true
 end

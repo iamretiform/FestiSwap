@@ -1,0 +1,39 @@
+/* line 1, /Users/conlinmcmanus/Desktop/bravo_platoon/FestiSwap/app/assets/stylesheets/custom.scss */
+.round-image-50 {
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  text-align: center;
+}
+/* line 11, /Users/conlinmcmanus/Desktop/bravo_platoon/FestiSwap/app/assets/stylesheets/custom.scss */
+.round-image-50 img {
+  width: 100%;
+}
+
+/* line 14, /Users/conlinmcmanus/Desktop/bravo_platoon/FestiSwap/app/assets/stylesheets/custom.scss */
+.loading:after {
+  content: '.';
+  animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: transparent;
+    text-shadow: 0.25em 0 0 transparent, 0.5em 0 0 transparent;
+  }
+  40% {
+    color: black;
+    text-shadow: 0.25em 0 0 transparent, 0.5em 0 0 transparent;
+  }
+  60% {
+    text-shadow: 0.25em 0 0 black, 0.5em 0 0 transparent;
+  }
+  80%, 100% {
+    text-shadow: .25em 0 0 black, .5em 0 0 black;
+  }
+}
