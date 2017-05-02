@@ -18,10 +18,7 @@
 //= require turbolinks
 // require_tree .
 
-
-
-
-function locationSuccess(position) {
+var locationSuccess = (position) => {
   var uluru = {
     lat: position.coords.latitude,
     lng: position.coords.longitude
@@ -35,7 +32,6 @@ function locationSuccess(position) {
     position: uluru,
     map: map
   });
-
   for (var i = 0; i <= 5; i++) {
     console.log(Number(document.getElementById("event" + i + "_latitude").innerHTML));
     console.log(Number(document.getElementById("event" + i + "_longitude").innerHTML));
@@ -55,8 +51,7 @@ function locationSuccess(position) {
       radius: Number(document.getElementById("event" + i + "_radius").innerHTML) * 200
     });
   }
-}
-
-function locationFail() {
+};
+var locationFail = () => {
   alert("Oops, could not find you. Check your browser settings and enable location services.  Or you won't get to swap... and swapping rules.");
-}
+};
