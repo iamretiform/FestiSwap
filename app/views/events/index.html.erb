@@ -2,7 +2,7 @@
   <%= notice %>
 </p>
 <h1>Events</h1>
-<table>
+<table class="table">
   <thead>
     <h3>User</h3>
     <tr>
@@ -26,10 +26,14 @@
   </tbody>
 </table>
 <h3>User Current Location</h3>
+<script type="text/javascript">
+$(document).ready(initMap());
+$(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
+</script> 
 <div id="map" style="position: auto; overflow: auto; height: 400px; width: 400px;"></div>
+</div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
 </script>
-</div>
 </td>
 <table class="table">
   <thead>
@@ -50,34 +54,35 @@
     </tr>
   </thead>
   <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td id="event<%= event.id %>_latitude" colspan="4">
-          <%= event.latitude %>
-        </td>
-        <td id="event<%= event.id %>_longitude" colspan="4">
-          <%= event.longitude %>
-        </td>
-        <td id="event<%= event.id %>_radius" colspan="4">
-          <%= event.radius %>
-        </td>
-        <td colspan="4">
-          <%= image_tag event.file.url(:thumb) %>
-        </td>
-        <td colspan="4">
-          <a href="<%= event_path(event) %>">
-            <%= event.title %>
-          </a>
-        </td>
-        <td colspan="4">
-          <%= event.description %>
-        </td>
-      </tr>
-      <% end %>
+    <% count = 0 %>
+      <% @events.each do |event| %>
+        <tr>
+          <td id="event<%= count %>_latitude" colspan="4">
+            <%= event.latitude %>
+          </td>
+          <td id="event<%= count %>_longitude" colspan="4">
+            <%= event.longitude %>
+          </td>
+          <td id="event<%= count %>_radius" colspan="4">
+            <%= event.radius %>
+          </td>
+          <td colspan="4">
+            <%= image_tag event.file.url(:thumb) %>
+          </td>
+          <td colspan="4">
+            <a href="<%= event_path(event) %>">
+              <%= event.title %>
+            </a>
+          </td>
+          <td colspan="4">
+            <%= event.description %>
+          </td>
+        </tr>
+        <% count += 1 %>
+          <% end %>
   </tbody>
 </table>
-<br>
-<% if current_user %>
-  <%= link_to 'New Event', new_event_path %>
-    <% end %>
-      <%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path %>
+  <% if current_user %>
+    <%= link_to 'New Event', new_event_path %>
+      <% end %>
