@@ -2,7 +2,7 @@
   <%= notice %>
 </p>
 <h1>Events</h1>
-<table>
+<table class="table">
   <thead>
     <h3>User</h3>
     <tr>
@@ -74,6 +74,8 @@
       </tr>
       <% count += 1 %>
       <% end %>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
+      </script> 
   </tbody>
 </table>
 <br>
@@ -81,5 +83,4 @@
   <%= link_to 'New Event', new_event_path %>
     <% end %>
       <%= link_to 'Back', root_path %>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
-</script>
+

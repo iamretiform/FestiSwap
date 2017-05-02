@@ -17,7 +17,7 @@
 //= require jquery_ujs
 //= require turbolinks
 // require_tree .
-
+function initMap() {}
 $(document).ready(function() {
   navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
 
