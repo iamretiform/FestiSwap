@@ -18,9 +18,6 @@
 //= require turbolinks
 // require_tree .
 
-
-function initMap() {}
-
 function locationSuccess(position) {
   var uluru = {
     lat: position.coords.latitude,
@@ -35,12 +32,7 @@ function locationSuccess(position) {
     position: uluru,
     map: map
   });
-
   for (var i = 0; i <= 5; i++) {
-    console.log(Number(document.getElementById("event" + i + "_latitude").innerHTML));
-    console.log(Number(document.getElementById("event" + i + "_longitude").innerHTML));
-    console.log(Number(document.getElementById("event" + i + "_radius").innerHTML));
-    // Add the circle for this city to the map.
     var eventCircle = new google.maps.Circle({
       strokeColor: '#F26060 ',
       strokeOpacity: 0.7,
