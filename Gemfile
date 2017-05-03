@@ -49,6 +49,7 @@ gem 'open_uri_redirections'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
 gem 'friendly_id'
+gem 'material_icons'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
