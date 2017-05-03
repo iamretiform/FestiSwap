@@ -36,13 +36,13 @@ class AdsController < ApplicationController
   private
 
   def find_event
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
   rescue ActiveRecord::RecordNotFound
     render 'errors/not_found', status: :not_found
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :description, :termination_date, :file).merge(event_id: @event.id, user_id: @user)
+    params.require(:ad).permit(:title, :description, :termination_date, :file, :slug).merge(event_id: @event.id, user_id: @user)
   end
 
   def find_user
@@ -50,6 +50,6 @@ class AdsController < ApplicationController
   end
 
   def find_ad
-    @ad = Ad.find(params[:id])
+    @ad = Ad.friendly.find(params[:id])
   end
 end

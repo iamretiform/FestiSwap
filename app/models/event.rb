@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  extend FriendlyId
+    friendly_id :title, use: :slugged
   geocoded_by :address # can also be an IP address
   after_validation :geocode, if: ->(obj) { obj.address.present? && obj.address_changed? }
   belongs_to :user

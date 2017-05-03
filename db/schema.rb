@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428201813) do
+ActiveRecord::Schema.define(version: 20170503195954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 20170428201813) do
     t.string "file_content_type"
     t.integer "file_file_size"
     t.datetime "file_updated_at"
+    t.string "slug"
     t.index ["event_id"], name: "index_ads_on_event_id"
+    t.index ["slug"], name: "index_ads_on_slug", unique: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -45,6 +47,20 @@ ActiveRecord::Schema.define(version: 20170428201813) do
     t.decimal "longitude", precision: 10, scale: 7, null: false
     t.decimal "radius", null: false
     t.string "address", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_events_on_slug", unique: true
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
   create_table "users", force: :cascade do |t|
