@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>FestiSwap</title>
-    <link rel="icon" href="favicon.jpg" type="image/gif" />
-    <%= csrf_meta_tags %>
+<head>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- googly icon fonts -->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- materialize css biblioteca -->
+  <!-- makes for mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FestiSwap</title>
+  <link rel="icon" href="images/whtfestsw.png" type="image/gif" />
+  <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <%= render 'layouts/header' %>
+</head>
+
+<body>
+  <%= render 'layouts/header' %>
     <% flash.each do |key, value| %>
       <h5 class="alert alert-<%= key %>"><%= value %></h5>
     <% end %>
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+</body>
+
 </html>
