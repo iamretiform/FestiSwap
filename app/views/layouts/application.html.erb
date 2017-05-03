@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <!-- googly icon fonts -->
@@ -17,6 +16,9 @@
 
 <body>
   <%= render 'layouts/header' %>
+    <% flash.each do |key, value| %>
+      <h5 class="alert alert-<%= key %>"><%= value %></h5>
+    <% end %>
   <div class="container">
     <%= yield %>
   </div>

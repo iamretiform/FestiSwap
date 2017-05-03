@@ -1,7 +1,7 @@
 class AdsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update destroy delete_ad_file]
-  before_action :find_ad, only: %i[show edit destroy update delete_ad_file]
-  before_action :find_event, only: %i[show new create destroy edit update delete_ad_file]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :find_ad, only: %i[show edit destroy update]
+  before_action :find_event, only: %i[show new create destroy edit update]
   before_action :find_user, only: %i[new create edit update destroy]
 
   def new
@@ -12,9 +12,9 @@ class AdsController < ApplicationController
     @ad = @event.ads.new ad_params
     if @ad.save
       DeleteAdWorker.perform_at(@ad.termination_date + 1.day, @ad.id)
-      redirect_to [@event, @ad], notice: 'Awesome! You generated ad!'
+      redirect_to [@event, @ad], notice: 'Your ad was successfully created.'
     else
-      render :new, notice: 'Oops, something went wrong! Sorry!'
+      render :new, notice: 'Something went wrong. Please try again.'
     end
   end
 
@@ -22,7 +22,7 @@ class AdsController < ApplicationController
 
   def update
     if @event.ads.update(ad_params)
-      redirect_to [@event, @ad], notice: 'Your ad was successfully updated!'
+      redirect_to [@event, @ad], notice: 'Your ad was successfully updated.'
     end
   end
 
@@ -30,12 +30,7 @@ class AdsController < ApplicationController
 
   def destroy
     @ad.destroy
-    redirect_to event_path(@event)
-  end
-
-  def delete_ad_file
-    @ad.file.destroy
-    redirect_to edit_event_ad_path(@event, @ad), notice: 'File has successfully been removed.'
+    redirect_to event_path(@event), notice: 'Your ad was successfully destroyed.'
   end
 
   private

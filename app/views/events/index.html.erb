@@ -1,9 +1,12 @@
 <script type="text/javascript">
 function initMap() {}
 </script>
-<p id="notice">
-  <%= notice %>
-</p>
+<script type="text/javascript"> 
+  $(document).ready( function() {
+    $('#texttohide').delay(5000).fadeOut();
+  });
+</script>
+<p id="texttohide" class="loading">It may take a moment to obtain your current location. Please wait</p> 
 <h1>Events</h1>
 <table class="table">
   <thead>
