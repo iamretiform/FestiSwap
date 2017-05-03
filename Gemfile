@@ -50,6 +50,7 @@ gem 'omniauth-google-oauth2'
 gem 'open_uri_redirections'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
+gem 'friendly_id'
 
 group :test do
   gem 'rspec-sidekiq'
