@@ -14,7 +14,8 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', github: 'rails/sass-rails'
-
+gem 'materialize-sass'
+gem 'material_icons'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -34,13 +35,10 @@ gem 'redis', '~> 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'aws-sdk'
-gem 'bootstrap-sass'
-gem 'bootstrap-social-rails'
 gem 'devise'
 gem 'diff-lcs'
 gem 'figaro'
 gem 'fog'
-gem 'font-awesome-rails'
 gem 'geocoder'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'nested_scaffold'
@@ -50,6 +48,9 @@ gem 'omniauth-google-oauth2'
 gem 'open_uri_redirections'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 group :test do
   gem 'rspec-sidekiq'

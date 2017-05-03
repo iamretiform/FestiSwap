@@ -1,39 +1,56 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">FestiSwap</a>
-    </div>
-    <form class="navbar-form navbar-left" role="search" action="/events">
-      <div class="form-group">
-        <input type="text" name="q" class="form-control" placeholder="Find events near...">
-      </div>
-      <button type="submit" class="btn btn-default">Find an Event</button>
-    </form>
-    <ul class='nav navbar-nav navbar-right'>
-      <% if current_user %>
-        <li class="round-image-50">
-          <%= image_tag(current_user.avatar.url(:thumb)) %>
-        </li>
-        <li>
-          <%= link_to 'Edit Account', edit_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        </li>
-        <% else %>
-          <li>
-            <%= link_to 'Register', new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to 'Login', new_user_session_path %>
-          </li>
-          <% end %>
-    </ul>
+<nav>
+  <div class="nav-wrapper #424242 grey darken-3 z-depth-5">
+    <a href="/" class="brand-logo">
+      <text class="hide-on-med-and-down">FestiSwap</text><i class="btn icons left pulse z-depth-6"><img height="55" width="55" src="images/whtfestsw.png"></i></a>
   </div>
 </nav>
+<div class="row">
+  <div class="grid-example col s12 m7">
+    <% if current_user %>
+      <div class="collection nav-wrapper" height="150px">
+        <div class="collection-item avatar">
+          <i alt="" src="<%= current_user.avatar.url(:thumb) %>" class="circle"></i>
+          <span class="title"><%= current_user.name %></span>
+          <p>
+            <%= current_user.locale %>
+              <br>
+              <%= current_user.email %>
+          </p>
+          <div class="divider"></div>
+          <div class="secondary-content">
+            <a class="btn btn-floating cyan">
+              <i class="material-icons">edit</i>
+              <%= link_to 'Edit Account', edit_user_registration_path %>
+            </a>
+            <a class="btn btn-floating red">
+              <i class="material-icons">settings_power</i>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+            </a>
+            <% else %>
+              <a>
+                <%= link_to 'Register', new_user_registration_path %>
+              </a>
+              <a>
+                <%= link_to 'Login', new_user_session_path %>
+              </a>
+              <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="grid-example col s12 m5">
+    <nav>
+  <div class="divider"></div>
+      <div class="nav-wrapper">
+        <form role="search" action="/events">
+        <span class="flow-text">
+          <div class="input-field #4BB8A6FF teal lighten-2 truncate">
+            <input type="text" name="q" placeholder="Enter a location to find its nearby events..." id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          </div>
+        </form>
+        </span>
+      </div>
+    </nav>
+  </div>
+</div>
