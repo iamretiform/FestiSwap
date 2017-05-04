@@ -28,20 +28,21 @@ $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, loca
   <tbody>
     <% count = 0 %>
     <% @events.each do |event| %>
-    <tr class="card">
+    <tr class="card" href="<%= event_path(event) %>"">
+      <div id="event<%= count %>_latitude" class="hide"><%= event.latitude %></div>
+      <div id="event<%= count %>_longitude" class="hide"><%= event.longitude %></div>
+      <div id="event<%= count %>_radius" class="hide"><%= event.radius %></div>
       <td colspan="3">
-      <img alt="" class="circle responsive-img"><%= image_tag event.file.url(:thumb) %></img>
+        <img alt="" class="circle responsive-img"><%= image_tag event.file.url(:thumb) %></img>
       </td>
       <td colspan="3">
-        <a href="<%= event_path(event) %>">
           <%= event.title %>
-        </a>
       </td>
       <td id="event<%= count %>_latitude">
-        <sub><%= event.address %></sub>
+        <%= event.address %>
       </td>
       <td>
-        <sub><%= event.start_date.strftime("%d %b, %Y") %> - <%= event.termination_date.strftime("%d %b, %Y") %></sub>
+        <%= event.start_date.strftime("%d %b, %Y") %> - <%= event.termination_date.strftime("%d %b, %Y") %>
       </td>
       <td class="hide-on-med-and-down">
         <div class="hide-on-med-and-down"></div>
@@ -52,11 +53,11 @@ $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, loca
     <% end %>
   </tbody>
 </table>
-<button>
+<div class="waves-effect waves-light btn white">
 <%= link_to 'Back', root_path %>
-</button>
+</div>
 <% if current_user %>
-<button>
+<div class="waves-effect waves-light btn white">
   <%= link_to 'New Event', new_event_path %>
-  </button>
+  </div>
 <% end %>

@@ -19,14 +19,14 @@
           </p>
           <div class="divider"></div>
           <div class="content">
-            <a class="btn btn-floating cyan" href="<%= edit_user_registration_path %>">
+            <a class="btn btn-floating cyan waves-effect waves-light" href="<%= edit_user_registration_path %>">
               <i class="material-icons">edit</i>
               <a class="hide-on-med-and-down" href="<%= edit_user_registration_path %>">
                 <%= link_to ' Edit Account', edit_user_registration_path %>
               </a>
             </a>
             <div class="divider"></div>
-            <a class="btn btn-floating red" data-method="delete" href="<%= destroy_user_session_path %>">
+            <a class="btn btn-floating red waves-effect waves-light" data-method="delete" href="<%= destroy_user_session_path %>">
               <i class="material-icons">settings_power</i>
               <%= link_to ' Logout', destroy_user_session_path, method: :delete %>
             </a>
