@@ -1,50 +1,67 @@
-<span><%= image_tag @event.file.url(:medium) %></span>
-<h1>
-<%= @event.title %>
-</h1>
-<h2>
-<%= @event.description %>
-</h2>
-<p>Address: <%= @event.address %></p>
-<p>Coordinates: <%= @event.latitude %>, <%= @event.longitude %></p>
-<table>
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <iframe
-    width="100%"
-    height="350"
-    frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['google_maps_key'] %>&q=<%= @event.latitude.floor(5) %>,<%= @event.longitude.floor(5) %>" allowfullscreen>
-  </iframe>
-
-<% @ads.map do |ad| %>
-  <tr>
-    <td><%= image_tag ad.file.url(:thumb) %></td>
-    <td>
-      <a href="<%= event_ad_path(ad.event, ad) %>">
+<div class="card" style="width: auto;">
+  <h4>
+    <%= @event.title %>
+      <span><%= image_tag @event.file.url(:medium) %></span>
+  </h4>
+  <h6>
+    <%= @event.description %>
+  </h6>
+  <p>Address: <%= @event.address %></p>
+  <p>Coordinates: <%= @event.latitude %>, <%= @event.longitude %></p>
+</div>
+  <div class="card" style="width: auto;">
+    <iframe
+      width="100%"
+      height="350"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['google_maps_key'] %>&q=<%= @event.latitude.floor(5) %>,<%= @event.longitude.floor(5) %>" allowfullscreen>
+    </iframe>
+  </div>
+<table class="card table col s12 m8">
+  <thead>
+    <h3>
+      Ads
+    </h3>
+  </thead>
+  <tbody>
+    <% @ads.map do |ad| %>
+    <tr class="card hoverable" href="<%= event_ad_path(ad.event, ad) %>">
+      <td colspan="3">
+        <img alt="" class="circle responsive-img">
+          <%= image_tag ad.file.url(:thumb) %>
+          </img>
+      </td>
+      <td colspan="3">
         <%= ad.title %>
-      </a>
-    </td>
-    <td><%= ad.description %></td>
-    <td><%= ad.start_date.strftime("%d %b, %Y") %> - <%= ad.termination_date.strftime("%d %b, %Y") %></td>
+      </td>
+      <td class="hide-on-med-and-down" colspan="3">
+        <div class="hide-on-med-and-down">
+          <%= ad.description %>
+        </div>
+      </td>
+      <td>
+      <%= ad.start_date.strftime("%d %b, %Y") %> 
+      - 
+      <%= ad.termination_date.strftime("%d %b, %Y") %>
+      </td>
     <% if current_user %>
       <% if current_user.id == ad.user_id %>
-      <td><%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %></td>
-      <td><%= link_to 'Destroy', event_ad_path(ad.event, ad), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %></td>
+        <td><%= link_to 'Destroy', event_ad_path(ad.event, ad), :confirm => 'Are you sure?', :method => :delete %></td>
       <% end %>
     <% end %>
-  </tr>
+    </tr>
   <% end %>
+  </tbody>
 </table>
-  <%= link_to 'Create Ad', new_event_ad_path(@event.id) %> |
+<div class="waves-effect waves-light btn white">
+  <%= link_to 'Create Ad', new_event_ad_path(@event.id) %></div> 
   <% if current_user %>
     <% if current_user.id == @event.user_id %>
-    <%= link_to 'Edit Event', edit_event_path(@event) %> |
+    <div class="waves-effect waves-light btn white">
+    <%= link_to 'Edit Event', edit_event_path(@event) %> </div>
     <% end %>
   <% end %>
+  <div class="waves-effect waves-light btn white">
 <%= link_to 'Back', events_path %>
+</div>

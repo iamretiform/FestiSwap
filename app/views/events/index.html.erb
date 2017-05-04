@@ -7,11 +7,7 @@ $(document).ready(function() {
 });
 </script>
 <p id="texttohide" class="loading">It may take a moment to obtain your current location. Please wait</p>
-<table class="card table col s12 m8">
-  <thead>
     <h3>Your Location & Events Circles:</h3>
-    </tbody>
-</table>
 <div class="card" style="width: auto;">
   <script type="text/javascript">
   $(document).ready(initMap());
@@ -28,13 +24,14 @@ $(document).ready(function() {
   <tbody>
     <% count = 0 %>
       <% @events.each do |event| %>
-        <tr class="card hoverable" id="row<%= count %>">
-          <a href="<%= event_path(event) %>">
+        <tr class="card hoverable" href="<%= event_path(event) %>" id="row<%= count %>">
       <div id="event<%= count %>_latitude" class="hide"><%= event.latitude %></div>
       <div id="event<%= count %>_longitude" class="hide"><%= event.longitude %></div>
       <div id="event<%= count %>_radius" class="hide"><%= event.radius %></div>
       <td colspan="3">
-        <img alt="" class="circle responsive-img"><%= image_tag event.file.url(:thumb) %></img>
+        <img alt="" class="circle responsive-img">
+          <%= image_tag event.file.url(:thumb) %>
+        </img>
       </td>
       <td colspan="3">
           <%= event.title %>
@@ -43,14 +40,15 @@ $(document).ready(function() {
         <%= event.address %>
       </td>
       <td>
-        <%= event.start_date.strftime("%d %b, %Y") %> - <%= event.termination_date.strftime("%d %b, %Y") %>
+        <%= event.start_date.strftime("%d %b, %Y") %>
+        -
+        <%= event.termination_date.strftime("%d %b, %Y") %>
       </td>
       <td class="hide-on-med-and-down" colspan="3">
         <div class="hide-on-med-and-down">
         <%= event.description %>
         </div>
       </td>
-      </a>
         </tr>
         <% count += 1 %>
           <% end %>
