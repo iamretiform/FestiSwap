@@ -1,26 +1,26 @@
 <nav>
   <div class="nav-wrapper #424242 grey darken-3 z-depth-5">
     <a href="/" class="brand-logo">
-    <text class="hide-on-med-and-down">FestiSwap</text><i class="btn icons left pulse z-depth-6"><img height="55" width="55" src="https://s3.us-east-2.amazonaws.com/festiswap/system/images/app_images/whtfestsw.png"></i></a>
+    <text class="hide-on-med-and-down">FestiSwap</text><i class="btn icons left z-depth-6"><img height="55" width="55" src="https://s3.us-east-2.amazonaws.com/festiswap/system/images/app_images/whtfestsw.png"></i></a>
   </div>
 </nav>
 <div class="row">
   <div class="grid-example col s12 m7">
     <% if current_user %>
     <div class="collection nav-wrapper" height="150px">
-      <div class="collection-item avatar">
+      <div class="collection-item valign-wrapper avatar">
         <image class="circle" src="<%= current_user.avatar.url(:thumb) %>"></image>
         <span class="title">Welcome <%= current_user.name %>!</span><br>
-        <p><%= current_user.locale %></p>
         <div class="secondary-content">
-          <a class="btn btn-floating cyan" href="<%= edit_user_registration_path %>">
-            <i class="material-icons">edit</i>
-            <%= link_to ' Edit Account', edit_user_registration_path %>
-          </a>
-          <a class="btn btn-floating red" data-method="delete" href="<%= destroy_user_session_path %>">
-            <i class="material-icons">settings_power</i>
-            <%= link_to ' Logout', destroy_user_session_path, method: :delete %>
-          </a>
+            <a class="btn btn-floating cyan" href="<%= edit_user_registration_path %>">
+              <i class="material-icons">edit</i>
+              <%= link_to ' Edit Account', edit_user_registration_path %>
+            </a>
+            <a class="btn btn-floating red" data-method="delete" href="<%= destroy_user_session_path %>">
+              <i class="material-icons">settings_power</i>
+              <%= link_to ' Logout', destroy_user_session_path, method: :delete %>
+            </a>
+          </div>
           <% else %>
           <div class="collection" height="150px">
             <div class="collection-item #4BB8A6FF teal lighten-2">
