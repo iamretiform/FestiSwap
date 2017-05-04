@@ -8,10 +8,10 @@ function initMap() {}
 </script>
 <p id="texttohide" class="loading">It may take a moment to obtain your current location. Please wait</p> 
 <h1>Events</h1>
-<table class="table">
+<table class="card table col s12 m8">
   <thead>
-    <h3>User</h3>
-    <tr>
+    <h3>Your Location & Events Circles:</h3>
+<!--     <tr>
       <th colspan="4">
       <h4>Latitude:</h4></th>
       <th colspan="4">
@@ -28,59 +28,51 @@ function initMap() {}
         <p id="longr">
         </p>
       </td>
-    </tr>
+    </tr>  -->
   </tbody>
 </table>
-<h3>User Current Location</h3>
+<div class="card">
 <script type="text/javascript">
 $(document).ready(initMap());
 $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
 </script>
-<div id="map" style="position: auto; overflow: auto; height: 400px; width: 400px;"></div>
+<div id="map" style="position: auto; overflow: auto; height: 400px; width: auto;"></div>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
   </script>
-<table class="table">
+  </div>
+<table class="card table highlight s10">
   <thead>
-    <h3>Event</h3>
+    <h3>Events</h3>
     <tr>
-      <th colspan="4">
-      <h4>Latitude:</h4></th>
-      <th colspan="4">
-      <h4>Longitude:</h4></th>
-      <th colspan="4">
-      <h4>Radius:</h4></th>
-      <th colspan="4">
-      <h4>Image:</h4></th>
-      <th colspan="4">
-      <h4>Title:</h4></th>
-      <th colspan="4">
-      <h4>Description:</h4></th>
+      <th class="col" colspan="3">
+      <h7>Title:</h7></th>
+      <th colspan="col" colspan="3">
+      <h7>Location:</h7></th>
     </tr>
   </thead>
   <tbody>
     <% count = 0 %>
     <% @events.each do |event| %>
     <tr>
-      <td id="event<%= count %>_latitude" colspan="4">
-        <%= event.latitude %>
+      <tr>
+      <td colspan="3">
+        <image class="circle"><%= image_tag event.file.url(:thumb) %></image>
       </td>
-      <td id="event<%= count %>_longitude" colspan="4">
-        <%= event.longitude %>
-      </td>
-      <td id="event<%= count %>_radius" colspan="4">
-        <%= event.radius %>
-      </td>
-      <td colspan="4">
-        <%= image_tag event.file.url(:thumb) %>
-      </td>
-      <td colspan="4">
+      </tr>
+      <td colspan="3">
         <a href="<%= event_path(event) %>">
           <%= event.title %>
         </a>
       </td>
-      <td colspan="4">
-        <%= event.description %>
+      <td id="event<%= count %>_latitude" colspan="3">
+        <sub><%= event.address %></sub>
       </td>
+      <tr>
+      <td class="hide-on-med-and-down" colspan="4">
+        <div class="divider hide-on-med-and-down"></div>
+        <sub><%= event.description %></sub>
+      </td>
+      </tr>
     </tr>
     <% count += 1 %>
     <% end %>
