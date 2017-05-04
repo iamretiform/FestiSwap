@@ -7,13 +7,12 @@ function initMap() {}
   });
 </script>
 <p id="texttohide" class="loading">It may take a moment to obtain your current location. Please wait</p> 
-<h1>Events</h1>
 <table class="card table col s12 m8">
   <thead>
     <h3>Your Location & Events Circles:</h3>
   </tbody>
 </table>
-<div class="card">
+<div class="card" style="width: auto;">
 <script type="text/javascript">
 $(document).ready(initMap());
 $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
@@ -22,45 +21,39 @@ $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, loca
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
   </script>
   </div>
-<table class="card table highlight s10">
+<table class="card table highlight bordered s10">
   <thead>
     <h3>Events</h3>
-    <tr>
-      <th class="col" colspan="3">
-      <h7>Title:</h7></th>
-      <th colspan="col" colspan="3">
-      <h7>Location:</h7></th>
-    </tr>
   </thead>
   <tbody>
     <% count = 0 %>
     <% @events.each do |event| %>
-    <tr>
-      <tr>
+    <tr class="card">
       <td colspan="3">
-        <image class="circle"><%= image_tag event.file.url(:thumb) %></image>
+      <img alt="" class="circle responsive-img"><%= image_tag event.file.url(:thumb) %></img>
       </td>
-      </tr>
       <td colspan="3">
         <a href="<%= event_path(event) %>">
           <%= event.title %>
         </a>
       </td>
-      <td id="event<%= count %>_latitude" colspan="3">
+      <td id="event<%= count %>_latitude">
         <sub><%= event.address %></sub>
       </td>
-      <tr>
-      <td class="hide-on-med-and-down" colspan="4">
-        <div class="divider hide-on-med-and-down"></div>
+      <td class="hide-on-med-and-down">
+        <div class="hide-on-med-and-down"></div>
         <sub><%= event.description %></sub>
       </td>
-      </tr>
     </tr>
     <% count += 1 %>
     <% end %>
   </tbody>
 </table>
+<button>
 <%= link_to 'Back', root_path %>
+</button>
 <% if current_user %>
+<button>
   <%= link_to 'New Event', new_event_path %>
+  </button>
 <% end %>
