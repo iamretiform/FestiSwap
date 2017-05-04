@@ -1,13 +1,11 @@
 <div class="card" style="width: auto;">
+  <span><%= image_tag @event.file.url(:medium) %></span><br />
   <h4>
     <%= @event.title %>
-      <span><%= image_tag @event.file.url(:medium) %></span>
   </h4>
-  <h6>
-    <%= @event.description %>
-  </h6>
-  <p>Address: <%= @event.address %></p>
-  <p>Coordinates: <%= @event.latitude %>, <%= @event.longitude %></p>
+  <p><strong>Description: </strong><%= @event.description %></p>
+  <p><strong>Location: </strong><%= @event.address %></p>
+  <p><strong>Coordinates: </strong><%= @event.latitude %>, <%= @event.longitude %></p>
 </div>
   <div class="card" style="width: auto;">
     <iframe

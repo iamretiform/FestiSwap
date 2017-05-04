@@ -1,47 +1,41 @@
 <h1>Editing Event</h1>
-
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    <ul>
       <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
-
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title, :required => true %><br>
-    </div>
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_area :description, :required => true %><br>
-    </div>
-    <div class="field">
-      <%= f.hidden_field :start_date, class: "datepicker" %>
-    </div>
-    <div class="field">
-      <%= f.hidden_field :termination_date, class: "datepicker" %>
-    </div>
-    <div class="field">
-        <%= f.label 'Picture Upload' %><br />
-        <%= f.file_field :file %><br /><br />
-        <%= image_tag @event.file.url(:medium) %><br />
-    </div>
-    <div class="actions">
-      <%= submit_tag "Update Post" %>
-    </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :required => true %><br>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :required => true %><br>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :start_date %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :termination_date %>
+  </div>
+  <div class="field">
+    <%= f.label 'Picture Upload' %><br />
+    <%= f.file_field :file %><br /><br />
+    <%= image_tag @event.file.url(:medium) %><br />
+  </div>
+  <div class="actions">
+    <%= submit_tag "Update Post" %>
+  </div><br />
 <% end %>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
-<script>
-$('.datepicker').pickadate({
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 15 // Creates a dropdown of 15 years to control year
-});
-</script>
+<div class="waves-effect waves-light btn white">
+  <%= link_to 'Show', @event %> |
+</div>
+<div class="waves-effect waves-light btn white">
+  <%= link_to 'Back', events_path %>
+</div>
