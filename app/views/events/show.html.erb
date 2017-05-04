@@ -25,7 +25,7 @@
   </thead>
   <tbody>
     <% @ads.map do |ad| %>
-    <tr class="card hoverable" href="<%= event_ad_path(ad.event, ad) %>">
+    <tr class="card hoverable">
       <td colspan="3">
         <img alt="" class="circle responsive-img">
           <%= image_tag ad.file.url(:thumb) %>
