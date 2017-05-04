@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <!-- googly icon fonts -->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- materialize css biblioteca -->
   <!-- makes for mobile devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FestiSwap</title>
   <link rel="icon" href="images/whtfestsw.png" type="image/gif" />
   <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
   <%= render 'layouts/header' %>
-  <div class="container">
-    <% flash.each do |key, value| %>
-      <div id="texttohide" class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
-    <%= yield %>
-  </div>
-  <script type="text/javascript"> 
-    $(document).ready( function() {
-      $('#texttohide').delay(5000).fadeOut();
-    });
-  </script>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div id="texttohide" class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+        <% end %>
+          <div class="container s12 m10 l10">
+            <%= yield %>
+          </div>
+          <script type="text/javascript">
+          $(document).ready(function() {
+            $('#texttohide').delay(5000).fadeOut();
+          });
+          </script>
 </body>
 
 </html>
