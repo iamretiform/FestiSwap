@@ -39,16 +39,22 @@
     <%= f.label :address %><br />
     <%= f.text_field :address, :required => true %><br>
   </div>
-  <div class="field">
+  <div class="field browser-default">
+  <script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+  </script>
     <%= f.label :radius %><br />
     <%= f.select :radius, [1, 2, 3, 4, 5], :required => true %><br>
   </div>
+
   <div class="actions">
     <%= form.submit %>
-  </div>
+    <% end %>
   <% end %>
+  </div>
 
-<% end %>
 
 <%= link_to 'Back', events_path %>
 
