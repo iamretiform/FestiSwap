@@ -22,10 +22,10 @@
       <%= f.text_area :description, :required => true %><br>
     </div>
     <div class="field">
-      <%= f.hidden_field :start_date %>
+      <%= f.hidden_field :start_date, class: "datepicker" %>
     </div>
     <div class="field">
-      <%= f.hidden_field :termination_date %>
+      <%= f.hidden_field :termination_date, class: "datepicker" %>
     </div>
     <div class="field">
         <%= f.label 'Picture Upload' %><br />
@@ -39,3 +39,9 @@
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', events_path %>
+<script>
+$('.datepicker').pickadate({
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 15 // Creates a dropdown of 15 years to control year
+});
+</script>

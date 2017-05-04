@@ -40,6 +40,9 @@ $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, loca
       <td id="event<%= count %>_latitude">
         <sub><%= event.address %></sub>
       </td>
+      <td>
+        <sub><%= event.start_date.strftime("%d %b, %Y") %> - <%= event.termination_date.strftime("%d %b, %Y") %></sub>
+      </td>
       <td class="hide-on-med-and-down">
         <div class="hide-on-med-and-down"></div>
         <sub><%= event.description %></sub>

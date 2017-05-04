@@ -8,6 +8,11 @@
   <b>Description:</b>
   <%= @ad.description %>
 </p>
+<p>
+  <b>Dates at Event:</b>
+  <%= @ad.start_date.strftime("%d %b, %Y") %> - <%= @ad.termination_date.strftime("%d %b, %Y") %>
+</p>
+
 
 <% if current_user %>
   <% if current_user.id == @ad.user_id %>

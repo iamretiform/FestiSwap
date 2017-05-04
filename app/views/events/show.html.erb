@@ -31,6 +31,7 @@
       </a>
     </td>
     <td><%= ad.description %></td>
+    <td><%= ad.start_date.strftime("%d %b, %Y") %> - <%= ad.termination_date.strftime("%d %b, %Y") %></td>
     <% if current_user %>
       <% if current_user.id == ad.user_id %>
       <td><%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %></td>
