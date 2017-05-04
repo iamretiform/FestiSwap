@@ -1,34 +1,35 @@
 <script type="text/javascript">
 function initMap() {}
 </script>
-<script type="text/javascript"> 
-  $(document).ready( function() {
-    $('#texttohide').delay(5000).fadeOut();
-  });
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#texttohide').delay(5000).fadeOut();
+});
 </script>
-<p id="texttohide" class="loading">It may take a moment to obtain your current location. Please wait</p> 
+<p id="texttohide" class="loading">It may take a moment to obtain your current location. Please wait</p>
 <table class="card table col s12 m8">
   <thead>
     <h3>Your Location & Events Circles:</h3>
-  </tbody>
+    </tbody>
 </table>
 <div class="card" style="width: auto;">
-<script type="text/javascript">
-$(document).ready(initMap());
-$(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
-</script>
-<div id="map" style="position: auto; overflow: auto; height: 400px; width: auto;"></div>
+  <script type="text/javascript">
+  $(document).ready(initMap());
+  $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
+  </script>
+  <div id="map" style="position: auto; overflow: auto; height: 400px; width: auto;"></div>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
   </script>
-  </div>
+</div>
 <table class="card table highlight bordered s10">
   <thead>
     <h3>Events</h3>
   </thead>
   <tbody>
     <% count = 0 %>
-    <% @events.each do |event| %>
-    <tr class="card" href="<%= event_path(event) %>"">
+      <% @events.each do |event| %>
+        <tr class="card hoverable" id="row<%= count %>">
+          <a href="<%= event_path(event) %>">
       <div id="event<%= count %>_latitude" class="hide"><%= event.latitude %></div>
       <div id="event<%= count %>_longitude" class="hide"><%= event.longitude %></div>
       <div id="event<%= count %>_radius" class="hide"><%= event.radius %></div>
@@ -44,20 +45,22 @@ $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, loca
       <td>
         <%= event.start_date.strftime("%d %b, %Y") %> - <%= event.termination_date.strftime("%d %b, %Y") %>
       </td>
-      <td class="hide-on-med-and-down">
-        <div class="hide-on-med-and-down"></div>
-        <sub><%= event.description %></sub>
+      <td class="hide-on-med-and-down" colspan="3">
+        <div class="hide-on-med-and-down">
+        <%= event.description %>
+        </div>
       </td>
-    </tr>
-    <% count += 1 %>
-    <% end %>
+      </a>
+        </tr>
+        <% count += 1 %>
+          <% end %>
   </tbody>
 </table>
 <div class="waves-effect waves-light btn white">
-<%= link_to 'Back', root_path %>
+  <%= link_to 'Back', root_path %>
 </div>
 <% if current_user %>
-<div class="waves-effect waves-light btn white">
-  <%= link_to 'New Event', new_event_path %>
+  <div class="waves-effect waves-light btn white">
+    <%= link_to 'New Event', new_event_path %>
   </div>
-<% end %>
+  <% end %>
