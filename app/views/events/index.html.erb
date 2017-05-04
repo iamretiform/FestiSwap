@@ -24,29 +24,38 @@ $('#texttohide').delay(5000).fadeOut();
   <tbody>
     <% count = 0 %>
     <% @events.each do |event| %>
-    <tr href="<%= event_path(event) %>" class="card hoverable" id="row<%= count %>">
+    <tr id="row<%= count %>" class="card hoverable">
+    
       <div id="event<%= count %>_latitude" class="hide"><%= event.latitude %></div>
       <div id="event<%= count %>_longitude" class="hide"><%= event.longitude %></div>
       <div id="event<%= count %>_radius" class="hide"><%= event.radius %></div>
       <td colspan="3">
-        <img alt="" class="circle responsive-img">
+      <a href="<%= event_path(event) %>">
         <%= image_tag event.file.url(:thumb) %>
-        </img>
+        </a>
       </td>
       <td colspan="3">
+      <a href="<%= event_path(event) %>">
         <%= event.title %>
+        </a>
       </td>
       <td id="event<%= count %>_latitude">
+      <a href="<%= event_path(event) %>">
         <%= event.address %>
+        </a>
       </td>
       <td>
+      <a href="<%= event_path(event) %>">
         <%= event.start_date.strftime("%d %b, %Y") %>
         -
         <%= event.termination_date.strftime("%d %b, %Y") %>
+      </a>
       </td>
       <td class="hide-on-med-and-down" colspan="3">
         <div class="hide-on-med-and-down">
+         <a href="<%= event_path(event) %>">
           <%= event.description %>
+          </a>
         </div>
       </td>
     </tr>
