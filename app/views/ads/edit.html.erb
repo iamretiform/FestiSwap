@@ -1,6 +1,10 @@
-<h1>Editing ad</h1>
+<h1>Edit Ad</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', event_ad_path %> |
-<%= link_to 'Back', event_path(@event) %>
+<div class="waves-effect waves-light btn white">
+  <%= link_to 'Show', event_ad_path %> |
+</div>
+<div class="waves-effect waves-light btn white">
+  <%= link_to 'Back', event_path(@event) %>
+</div>

@@ -20,11 +20,11 @@
     <%= f.text_area :description, :required => true %>
   </div>
   <div class="field">
-    <%= f.label :start_date %>(This event starts on <%= @event.start_date.strftime("%d %b, %Y") %> your ad start date must match or start after this date.)<br />
+    <%= f.label :start_date %> <em>(This event starts on <%= @event.start_date.strftime("%d %b, %Y") %> your ad start date must match or start after this date.)</em><br />
     <%= f.datetime_local_field :start_date, class: "datepicker" %>
   </div>
   <div class="field">
-    <%= f.label :termination_date %>(This event ends on <%= @event.termination_date.strftime("%d %b, %Y") %> your ad end date must match or end before this date.)<br />
+    <%= f.label :termination_date %> <em>(This event ends on <%= @event.termination_date.strftime("%d %b, %Y") %> your ad end date must match or end before this date.)</em><br />
     <%= f.datetime_local_field :termination_date, class: "datepicker"  %>
   </div>
   <div class="field">
@@ -34,7 +34,7 @@
   </div>
   <div class="actions">
     <%= f.submit %>
-  </div>
+  </div><br />
 <% end %>
 <script>
 $('.datepicker').pickadate({
