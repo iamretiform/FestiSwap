@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503195954) do
+ActiveRecord::Schema.define(version: 20170504175752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170503195954) do
     t.integer "file_file_size"
     t.datetime "file_updated_at"
     t.string "slug"
+    t.datetime "start_date"
     t.index ["event_id"], name: "index_ads_on_event_id"
     t.index ["slug"], name: "index_ads_on_slug", unique: true
   end
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170503195954) do
     t.decimal "radius", null: false
     t.string "address", null: false
     t.string "slug"
+    t.datetime "start_date"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
 

@@ -22,8 +22,14 @@
     <%= f.label :description %><br />
     <%= f.text_area :description, :required => true %><br>
   </div>
+  <div type="date" class="datepicker">
+    <%= f.label :start_date %><br />
+    <%= f.datetime_local_field :start_date %>
+  </div>
   <div class="field">
-    <%= f.datetime_local_field :termination_date %>
+    <%= f.label :termination_date %><br />
+    <input id="termination_date"type="date" class="datepicker">
+    <%= f.date_field :termination_date, class: "datepicker" %>
   </div>
   <div class="field">
       <%= f.label 'Picture Upload' %><br />
@@ -44,6 +50,12 @@
   <% end %>
 
 <% end %>
+<script>
+$('.datepicker').pickadate({
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 15 // Creates a dropdown of 15 years to control year
+});
+</script>
 
 
 <%= link_to 'Back', events_path %>

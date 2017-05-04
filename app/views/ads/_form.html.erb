@@ -20,6 +20,10 @@
     <%= f.text_area :description, :required => true %>
   </div>
   <div class="field">
+    <%= f.label :start_date %>(This event starts on <%= @event.start_date.strftime("%m/%d/%Y") %> your ad start date must match or start after this date.)<br />
+    <%= f.datetime_local_field :start_date, :required => true %>
+  </div>
+  <div class="field">
     <%= f.label :termination_date %>(This event ends on <%= @event.termination_date.strftime("%m/%d/%Y") %> your ad end date must match or end before this date.)<br />
     <%= f.datetime_local_field :termination_date, :required => true  %>
   </div>

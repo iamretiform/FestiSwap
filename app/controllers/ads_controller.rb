@@ -42,7 +42,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:title, :description, :termination_date, :file, :slug).merge(event_id: @event.id, user_id: @user)
+    params.require(:ad).permit(:title, :description, :start_date, :termination_date, :file, :slug).merge(event_id: @event.id, user_id: @user)
   end
 
   def find_user
