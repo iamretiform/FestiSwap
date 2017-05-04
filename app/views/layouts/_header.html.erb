@@ -1,67 +1,58 @@
 <nav>
   <div class="nav-wrapper #424242 grey darken-3 z-depth-5">
     <a href="/" class="brand-logo">
-      <text class="hide-on-med-and-down">FestiSwap</text><i class="btn icons left z-depth-6"><img height="55" width="55" src="https://s3.us-east-2.amazonaws.com/festiswap/system/images/app_images/whtfestsw.png"></i></a>
+      <text class="hide-on-med-and-down">FestiSwap</text><i class="btn icons left pulse z-depth-6"><img height="55" width="55" src="https://s3.us-east-2.amazonaws.com/festiswap/system/images/app_images/whtfestsw.png"></i></a>
   </div>
 </nav>
 <div class="row">
     <div class="container">
   <div class="container grid-example col s12 m8">
     <% if current_user %>
-      <div class="collection nav-wrapper" height="150px">
-        <div class="collection-item avatar">
-          <image class="circle" src="<%= current_user.avatar.url(:thumb) %>"></image>
-          <span class="title">Welcome <%= current_user.name %>!</span>
-          <br>
-          <p>
-            <%= current_user.locale %>
-          </p>
-          <div class="divider"></div>
-          <div class="content">
-            <a class="btn btn-floating cyan" href="<%= edit_user_registration_path %>">
-              <i class="material-icons">edit</i>
-              <a class="hide-on-med-and-down" href="<%= edit_user_registration_path %>">
-                <%= link_to ' Edit Account', edit_user_registration_path %>
-              </a>
-            </a>
-            <div class="divider"></div>
-            <a class="btn btn-floating red" data-method="delete" href="<%= destroy_user_session_path %>">
-              <i class="material-icons">settings_power</i>
-              <%= link_to ' Logout', destroy_user_session_path, method: :delete %>
-            </a>
-            <% else %>
-              <div class="collection" height="150px">
-                <div class="collection-item #4BB8A6FF teal lighten-2">
-                  <div class="waves-effect waves-light btn white">
-                    <%= link_to 'Register',new_user_registration_path %>
-                  </div>
-                </div>
-                <div class="collection-item #4BB8A6FF teal lighten-2">
-                  <div class="waves-effect waves-light btn white">
-                    <%= link_to 'Login', new_user_session_path %>
-                  </div>
-                </div>
-                <% end %>
+    <div class="collection nav-wrapper" height="150px">
+      <div class="collection-item avatar">
+        <image class="circle" src="<%= current_user.avatar.url(:thumb) %>"></image>
+        <span class="title">Welcome <%= current_user.name %>!</span><br>
+        <p><%= current_user.locale %></p>
+        <div class="secondary-content">
+          <a class="btn btn-floating cyan" href="<%= edit_user_registration_path %>">
+            <i class="material-icons">edit</i>
+            <%= link_to ' Edit Account', edit_user_registration_path %>
+          </a>
+          <a class="btn btn-floating red" data-method="delete" href="<%= destroy_user_session_path %>">
+            <i class="material-icons">settings_power</i>
+            <%= link_to ' Logout', destroy_user_session_path, method: :delete %>
+          </a>
+          <% else %>
+          <div class="collection" height="150px">
+            <div class="collection-item #4BB8A6FF teal lighten-2">
+              <div class="waves-effect waves-light btn white">
+                <%= link_to 'Register',new_user_registration_path %>
               </div>
+            </div>
+            <div class="collection-item #4BB8A6FF teal lighten-2">
+              <div class="waves-effect waves-light btn white">
+                <%= link_to 'Login', new_user_session_path %>
+              </div>
+            </div>
           </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-    <div class="container grid-example col s12 m5">
-      <nav>
-        <div class="collection nav-wrapper">
-          <form role="search" action="/events">
-            <span class="flow-text">
-              <div class="input-field #4BB8A6FF teal lighten-2 truncate">
-                <input type="text" name="q" placeholder="Enter a location to find its nearby events..." id="search" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              </div>
-            </span>
+  <div class="grid-example col s12 m5">
+    <nav>
+      <div class="collection nav-wrapper">
+        <form role="search" action="/events">
+          <span class="flow-text">
+            <div class="input-field #4BB8A6FF teal lighten-2 truncate">
+              <input type="text" name="q" placeholder="Enter a location to find its nearby events..." id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            </div>
           </form>
-        </div>
-      </nav>
-    </div>
+        </span>
+      </div>
+    </nav>
   </div>
-  
-
+</div>
+>>>>>>> ec5ffa9458a3b8d9814b33416f2547a7300f0fe6

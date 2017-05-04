@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   private
 
   def find_event
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
   end
 
   def set_user
@@ -54,6 +54,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :termination_date, :file, :address, :radius).merge(user_id: @user)
+    params.require(:event).permit(:title, :description, :termination_date, :file, :address, :radius, :slug).merge(user_id: @user)
   end
 end
