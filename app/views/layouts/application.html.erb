@@ -16,12 +16,17 @@
 
 <body>
   <%= render 'layouts/header' %>
-    <% flash.each do |key, value| %>
-      <h5 class="alert alert-<%= key %>"><%= value %></h5>
-    <% end %>
   <div class="container">
+    <% flash.each do |key, value| %>
+      <div id="texttohide" class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
   </div>
+  <script type="text/javascript"> 
+    $(document).ready( function() {
+      $('#texttohide').delay(5000).fadeOut();
+    });
+  </script>
 </body>
 
 </html>
