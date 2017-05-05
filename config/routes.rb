@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  devise_for :users, :controllers => {:passwords => "passwords"}, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   # get 'hello_world', to: 'hello_world#index'
   put 'events/:event_id/ads/:id/delete_ad_file', to: 'ads#delete_ad_file', as: 'delete_ad_file'
   put 'events/:id/delete_event_file', to: 'events#delete_event_file', as: 'delete_event_file'
