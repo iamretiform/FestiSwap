@@ -26,14 +26,11 @@
     <%= f.datetime_local_field :termination_date, class: "datepicker"  %>
   </div>
   <div class="field">
-    <%= f.label 'Picture Upload' %><br />
     <%= f.file_field :file %><br />
     <br />
     <%= image_tag @ad.file.url(:medium) %><br />
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button><br />
   <br />
 <% end %>
 <script>
