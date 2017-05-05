@@ -2,7 +2,7 @@
   <h4>
     <%= @event.title %>
     <div class="divider"></div>
-      <span><%= image_tag @event.file.url(:medium) %></span>
+    <span><%= image_tag @event.file.url(:medium) %></span>
   </h4>
   <h6>
     <%= @event.description %>
@@ -12,7 +12,7 @@
   </p>
   <p>Coordinates:
     <%= @event.latitude %>,
-      <%= @event.longitude %>
+    <%= @event.longitude %>
   </p>
 </div>
 <div class="card" style="width: auto;">
@@ -22,62 +22,62 @@
 <table class="card table col s12 m8">
   <thead>
     <h3>
-      Ads
+    Ads
     </h3>
   </thead>
   <tbody>
     <% @ads.map do |ad| %>
-      <tr class="card hoverable">
-        <td colspan="3">
-          <img alt="" class="circle responsive-img">
+    <tr class="card hoverable">
+      <td colspan="3">
+        <img alt="" class="circle responsive-img">
+        <a href="<%= event_ad_path(ad) %>">
+          <%= image_tag ad.file.url(:thumb) %>
+        </a>
+        </img>
+      </td>
+      <td colspan="3">
+        <a href="<%= event_ad_path(ad) %>">
+          <%= ad.title %>
+        </a>
+      </td>
+      <td class="hide-on-med-and-down" colspan="3">
+        <div class="hide-on-med-and-down">
           <a href="<%= event_ad_path(ad) %>">
-            <%= image_tag ad.file.url(:thumb) %>
+            <%= ad.description %>
           </a>
-          </img>
-        </td>
-        <td colspan="3">
+        </div>
+      </td>
+      <td>
+        <a href="<%= event_ad_path(ad) %>">
+          <%= ad.start_date.strftime("%d %b, %Y") %>
+          -
+          <%= ad.termination_date.strftime("%d %b, %Y") %>
           <a href="<%= event_ad_path(ad) %>">
-            <%= ad.title %>
-          </a>
-        </td>
-        <td class="hide-on-med-and-down" colspan="3">
-          <div class="hide-on-med-and-down">
-            <a href="<%= event_ad_path(ad) %>">
-              <%= ad.description %>
-            </a>
-          </div>
-        </td>
-        <td>
-          <a href="<%= event_ad_path(ad) %>">
-            <%= ad.start_date.strftime("%d %b, %Y") %>
-              -
-              <%= ad.termination_date.strftime("%d %b, %Y") %>
-                <a href="<%= event_ad_path(ad) %>">
-        </td>
-        <% if current_user %>
+          </td>
+          <% if current_user %>
           <% if current_user.id == ad.user_id %>
-            <td>
-              <%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %>
-            </td>
-            <td>
-              <%= link_to 'Destroy', event_ad_path(ad.event, ad), :confirm => 'Are you sure?', :method => :delete %>
-            </td>
-            <% end %>
-              <% end %>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
-<div class="waves-effect waves-light btn white">
-  <%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
-</div>
-<% if current_user %>
-  <% if current_user.id == @event.user_id %>
+          <td>
+            <%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', event_ad_path(ad.event, ad), :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+          <% end %>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="waves-effect waves-light btn white">
+      <%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
+    </div>
+    <% if current_user %>
+    <% if current_user.id == @event.user_id %>
     <div class="waves-effect waves-light btn white">
       <%= link_to 'Edit Event', edit_event_path(@event) %>
     </div>
     <% end %>
-      <% end %>
-        <div class="waves-effect waves-light btn white">
-          <%= link_to 'Back', events_path %>
-        </div>
+    <% end %>
+    <div class="waves-effect waves-light btn white">
+      <%= link_to 'Back', events_path %>
+    </div>
