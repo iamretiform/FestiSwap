@@ -50,17 +50,10 @@
         </td>
         <td>
           <a href="<%= event_path(event) %>">
-            <%= event.start_date.strftime("%d %b, %Y") %>
+            <%= event.start_date.strftime("%b %d, %Y") %>
             -
-            <%= event.termination_date.strftime("%d %b, %Y") %>
+            <%= event.termination_date.strftime("%b %d, %Y") %>
           </a>
-        </td>
-        <td class="hide-on-med-and-down" colspan="3">
-          <div class="hide-on-med-and-down">
-            <a href="<%= event_path(event) %>">
-              <%= event.description %>
-            </a>
-          </div>
         </td>
       </tr>
       <% count += 1 %>
