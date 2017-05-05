@@ -14,7 +14,7 @@ function locationSuccess(position) {
     lng: position.coords.longitude
   };
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
+    zoom: 13,
     center: uluru,
     mapTypeId: 'hybrid'
   });
@@ -24,11 +24,11 @@ function locationSuccess(position) {
   });
   for (var i = 0; i <= 5; i++) {
     var eventCircle = new google.maps.Circle({
-      strokeColor: '#F26060 ',
-      strokeOpacity: 0.7,
+      strokeColor: 'teal',
+      strokeOpacity: 1,
       strokeWeight: 1.5,
       fillColor: '#F337B4 ',
-      fillOpacity: 0.15,
+      fillOpacity: 0.35,
       map: map,
       center: {
         lat: Number(document.getElementById("event" + i + "_latitude").innerHTML),
