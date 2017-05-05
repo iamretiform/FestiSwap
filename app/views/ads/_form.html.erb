@@ -2,15 +2,13 @@
   <% if @ad.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
-
       <ul>
-      <% @ad.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @ad.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title, :required => true %>
@@ -28,17 +26,19 @@
     <%= f.datetime_local_field :termination_date, class: "datepicker"  %>
   </div>
   <div class="field">
-      <%= f.label 'Picture Upload' %><br />
-      <%= f.file_field :file %><br /><br />
-      <%= image_tag @ad.file.url(:medium) %><br />
+    <%= f.label 'Picture Upload' %><br />
+    <%= f.file_field :file %><br />
+    <br />
+    <%= image_tag @ad.file.url(:medium) %><br />
   </div>
   <div class="actions">
     <%= f.submit %>
-  </div><br />
+  </div>
+  <br />
 <% end %>
 <script>
-$('.datepicker').pickadate({
+  $('.datepicker').pickadate({
   selectMonths: true, // Creates a dropdown to control month
   selectYears: 15 // Creates a dropdown of 15 years to control year
-});
+  });
 </script>

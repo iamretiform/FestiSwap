@@ -28,6 +28,6 @@ module FestiSwap
     config.to_prepare do
       DeviseController.respond_to :html, :json
     end
-    config.assets.paths << Rails.root.join("lib", "videoplayer", "flash")
+    config.assets.paths << Rails.root.join('lib', 'videoplayer', 'flash')
   end
 end

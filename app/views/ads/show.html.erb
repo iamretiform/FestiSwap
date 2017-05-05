@@ -13,16 +13,16 @@
   <p>
     <b>Dates at Event:</b>
     <%= @ad.start_date.strftime("%d %b, %Y") %> -
-      <%= @ad.termination_date.strftime("%d %b, %Y") %>
+    <%= @ad.termination_date.strftime("%d %b, %Y") %>
   </p>
   <% if current_user %>
     <% if current_user.id == @ad.user_id %>
       <%= link_to 'Edit', edit_event_ad_path(@event, @ad) %>
-        </td>
-        <%= link_to 'Destroy', event_ad_path(@event, @ad), :confirm => 'Are you sure?', method: :delete %>
-          </td>
-          <% end %>
-            <% end %>
-              <%= link_to 'Back', event_path(@event.id) %>
-                <%= render 'disqus' %>
+    <% end %>
+  </td>
+  <%= link_to 'Destroy', event_ad_path(@event, @ad), :confirm => 'Are you sure?', method: :delete %>
+</td>
+<% end %>
+<%= link_to 'Back', event_path(@event.id) %>
+<%= render 'disqus' %>
 </div>

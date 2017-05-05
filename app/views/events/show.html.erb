@@ -1,8 +1,8 @@
 <div class="card hoverable" style="width: auto;">
   <h4>
-  <%= @event.title %>
-  <div class="divider"></div>
-  <span><%= image_tag @event.file.url(:medium) %></span>
+    <%= @event.title %>
+    <div class="divider"></div>
+    <span><%= image_tag @event.file.url(:medium) %></span>
   </h4>
   <b>Description:</b>
   <p>
@@ -19,17 +19,17 @@
 <table class="card table col s12 m8">
   <thead>
     <h3>
-    Ads
+      Ads
     </h3>
   </thead>
   <tbody>
     <% @ads.map do |ad| %>
-    <tr class="card hoverable">
-      <td colspan="3">
-        <img alt="" class="circle responsive-img">
-        <a href="<%= event_ad_path(@event, ad) %>">
-          <%= image_tag ad.file.url(:thumb) %>
-        </a>
+      <tr class="card hoverable">
+        <td colspan="3">
+          <img alt="" class="circle responsive-img">
+          <a href="<%= event_ad_path(@event, ad) %>">
+            <%= image_tag ad.file.url(:thumb) %>
+          </a>
         </img>
       </td>
       <td colspan="3">
@@ -52,29 +52,29 @@
           <a href="<%= event_ad_path(@event, ad) %>">
           </td>
           <% if current_user %>
-          <% if current_user.id == ad.user_id %>
-          <td>
-            <%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %>
-          </td>
-          <td>
-            <%= link_to 'Destroy', event_ad_path(ad.event, ad), :confirm => 'Are you sure?', :method => :delete %>
-          </td>
-          <% end %>
+            <% if current_user.id == ad.user_id %>
+              <td>
+                <%= link_to 'Edit', edit_event_ad_path(ad.event, ad) %>
+              </td>
+              <td>
+                <%= link_to 'Destroy', event_ad_path(ad.event, ad), :confirm => 'Are you sure?', :method => :delete %>
+              </td>
+            <% end %>
           <% end %>
         </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <div class="waves-effect waves-light btn white">
-      <%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
-    </div>
-    <% if current_user %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="waves-effect waves-light btn white">
+    <%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
+  </div>
+  <% if current_user %>
     <% if current_user.id == @event.user_id %>
-    <div class="waves-effect waves-light btn white">
-      <%= link_to 'Edit Event', edit_event_path(@event) %>
-    </div>
+      <div class="waves-effect waves-light btn white">
+        <%= link_to 'Edit Event', edit_event_path(@event) %>
+      </div>
     <% end %>
-    <% end %>
-    <div class="waves-effect waves-light btn white">
-      <%= link_to 'Back', events_path %>
-    </div>
+  <% end %>
+  <div class="waves-effect waves-light btn white">
+    <%= link_to 'Back', events_path %>
+  </div>

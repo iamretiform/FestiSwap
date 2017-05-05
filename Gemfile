@@ -13,9 +13,9 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', github: 'rails/sass-rails'
 gem 'materialize-sass'
-gem 'material_icons'
+gem 'materialize-sass'
+gem 'sass-rails', github: 'rails/sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -39,8 +39,11 @@ gem 'devise'
 gem 'diff-lcs'
 gem 'figaro'
 gem 'fog'
+gem 'friendly_id'
 gem 'geocoder'
+gem 'htmlbeautifier'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'material_icons'
 gem 'nested_scaffold'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -48,8 +51,7 @@ gem 'omniauth-google-oauth2'
 gem 'open_uri_redirections'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
-gem 'friendly_id'
-gem 'material_icons'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end

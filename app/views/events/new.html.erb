@@ -1,67 +1,63 @@
 <h1>New Event</h1>
-
 <%= form_with(model: @event, local: true, multipart: true) do |form| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
       <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <%= form_for @event, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, :required => true %><br>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :required => true %><br>
-  </div>
-  <div type="date" class="datepicker">
-    <%= f.label :start_date %><br />
-    <%= f.datetime_local_field :start_date, class: "datepicker" %>
-  </div>
-  <div class="field">
-    <%= f.label :termination_date %><br />
-    <%= f.datetime_local_field :termination_date, class: "datepicker" %>
-  </div>
-  <div class="field">
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, :required => true %><br>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :required => true %><br>
+    </div>
+    <div type="date" class="datepicker">
+      <%= f.label :start_date %><br />
+      <%= f.datetime_local_field :start_date, class: "datepicker" %>
+    </div>
+    <div class="field">
+      <%= f.label :termination_date %><br />
+      <%= f.datetime_local_field :termination_date, class: "datepicker" %>
+    </div>
+    <div class="field">
       <%= f.label 'Picture Upload' %><br />
-      <%= f.file_field :file %><br /><br />
+      <%= f.file_field :file %><br />
+      <br />
       <%= image_tag @event.file.url(:medium) %><br />
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, :required => true %><br>
-  </div>
-  <div class="field browser-default">
-  <script>
-  $(document).ready(function() {
-    $('select').material_select();
-  });
-  </script>
-    <%= f.label :radius %><br />
-    <%= f.select :radius, [1, 2, 3, 4, 5], :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    </div>
+    <div class="field">
+      <%= f.label :address %><br />
+      <%= f.text_field :address, :required => true %><br>
+    </div>
+    <div class="field browser-default">
+      <script>
+        $(document).ready(function() {
+          $('select').material_select();
+        });
+      </script>
+      <%= f.label :radius %><br />
+      <%= f.select :radius, [1, 2, 3, 4, 5], :required => true %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
     <% end %>
   <% end %>
-  </div><br />
-
-<div class="waves-effect waves-light btn white">
-<%= link_to 'Back', events_path %>
 </div>
-
+<br />
+<div class="waves-effect waves-light btn white">
+  <%= link_to 'Back', events_path %>
+</div>
 <script>
-$('.datepicker').pickadate({
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 15 // Creates a dropdown of 15 years to control year
-});
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
 </script>

@@ -1,38 +1,30 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-
   <div class="field">
-      <%= image_tag current_user.avatar.url(:medium) %><br />
-      <%= f.label 'Change Profile Picture' %><br />
-      <%= f.file_field :avatar %>
+    <%= image_tag current_user.avatar.url(:medium) %><br />
+    <%= f.label 'Change Profile Picture' %><br />
+    <%= f.file_field :avatar %>
   </div>
-  
   <div class="field">
-   <%= f.label :name %><br />
-   <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
   </div>
-
   <div class="field">
-   <%= f.label :about %> <em>(Optional)</em><br />
-   <%= f.text_area :about %>
+    <%= f.label :about %> <em>(Optional)</em><br />
+    <%= f.text_area :about %>
   </div>
-
   <div class="field">
-   <%= f.label :locale %> <em>(Optional)</em><br />
-   <%= f.text_field :locale %>
+    <%= f.label :locale %> <em>(Optional)</em><br />
+    <%= f.text_field :locale %>
   </div>
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email %>
   </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
@@ -41,21 +33,16 @@
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
-
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
   <div class="actions">
     <%= f.submit "Update" %><br />
   </div>
 <% end %>
-
 <h3>Cancel my account</h3>
-
 <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
 <div class="waves-effect waves-light btn white">
   <%= link_to "Back", :back %>
 </div>

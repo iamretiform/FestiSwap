@@ -1,21 +1,20 @@
 <script type="text/javascript">
-function initMap() {}
+  function initMap() {}
 </script>
 <script type="text/javascript">
-$(document).ready(function() {
-  $('#texttohide').delay(5000).fadeOut();
-});
+  $(document).ready(function() {
+    $('#texttohide').delay(5000).fadeOut();
+  });
 </script>
 <p id="texttohide" class="loading">It may take a moment to obtain your current location. Please wait</p>
 <h3>Your Location & Event Circles</h3>
 <div class="card" style="width: auto;">
   <script type="text/javascript">
-  $(document).ready(initMap());
-  $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
+    $(document).ready(initMap());
+    $(document).ready(navigator.geolocation.getCurrentPosition(locationSuccess, locationFail));
   </script>
   <div id="map" style="position: auto; overflow: auto; height: 400px; width: auto;"></div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap">
-  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_key'] %>&callback=initMap"></script>
 </div>
 <table class="card table highlight bordered s10">
   <thead>
@@ -23,49 +22,49 @@ $(document).ready(function() {
   </thead>
   <tbody>
     <% count = 0 %>
-      <% @events.each do |event| %>
-        <tr id="row<%= count %>" class="card hoverable">
-          <div id="event<%= count %>_latitude" class="hide">
-            <%= event.latitude %>
+    <% @events.each do |event| %>
+      <tr id="row<%= count %>" class="card hoverable">
+        <div id="event<%= count %>_latitude" class="hide">
+          <%= event.latitude %>
+        </div>
+        <div id="event<%= count %>_longitude" class="hide">
+          <%= event.longitude %>
+        </div>
+        <div id="event<%= count %>_radius" class="hide">
+          <%= event.radius %>
+        </div>
+        <td colspan="3">
+          <a href="<%= event_path(event) %>">
+            <%= image_tag event.file.url(:thumb) %>
+          </a>
+        </td>
+        <td colspan="3">
+          <a href="<%= event_path(event) %>">
+            <%= event.title %>
+          </a>
+        </td>
+        <td id="event<%= count %>_latitude">
+          <a href="<%= event_path(event) %>">
+            <%= event.address %>
+          </a>
+        </td>
+        <td>
+          <a href="<%= event_path(event) %>">
+            <%= event.start_date.strftime("%d %b, %Y") %>
+            -
+            <%= event.termination_date.strftime("%d %b, %Y") %>
+          </a>
+        </td>
+        <td class="hide-on-med-and-down" colspan="3">
+          <div class="hide-on-med-and-down">
+            <a href="<%= event_path(event) %>">
+              <%= event.description %>
+            </a>
           </div>
-          <div id="event<%= count %>_longitude" class="hide">
-            <%= event.longitude %>
-          </div>
-          <div id="event<%= count %>_radius" class="hide">
-            <%= event.radius %>
-          </div>
-          <td colspan="3">
-            <a href="<%= event_path(event) %>">
-              <%= image_tag event.file.url(:thumb) %>
-            </a>
-          </td>
-          <td colspan="3">
-            <a href="<%= event_path(event) %>">
-              <%= event.title %>
-            </a>
-          </td>
-          <td id="event<%= count %>_latitude">
-            <a href="<%= event_path(event) %>">
-              <%= event.address %>
-            </a>
-          </td>
-          <td>
-            <a href="<%= event_path(event) %>">
-              <%= event.start_date.strftime("%d %b, %Y") %>
-                -
-                <%= event.termination_date.strftime("%d %b, %Y") %>
-            </a>
-          </td>
-          <td class="hide-on-med-and-down" colspan="3">
-            <div class="hide-on-med-and-down">
-              <a href="<%= event_path(event) %>">
-                <%= event.description %>
-              </a>
-            </div>
-          </td>
-        </tr>
-        <% count += 1 %>
-          <% end %>
+        </td>
+      </tr>
+      <% count += 1 %>
+    <% end %>
   </tbody>
 </table>
 <div class="waves-effect waves-light btn white">
@@ -75,4 +74,4 @@ $(document).ready(function() {
   <div class="waves-effect waves-light btn white">
     <%= link_to 'New Event', new_event_path %>
   </div>
-  <% end %>
+<% end %>
