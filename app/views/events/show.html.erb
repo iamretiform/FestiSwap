@@ -1,18 +1,15 @@
-<div class="card" style="width: auto;">
+<div class="card hoverable" style="width: auto;">
   <h4>
-    <%= @event.title %>
-    <div class="divider"></div>
-    <span><%= image_tag @event.file.url(:medium) %></span>
+  <%= @event.title %>
+  <div class="divider"></div>
+  <span><%= image_tag @event.file.url(:medium) %></span>
   </h4>
-  <h6>
+  <b>Description:</b>
+  <p>
     <%= @event.description %>
-  </h6>
-  <p>Address:
-    <%= @event.address %>
   </p>
-  <p>Coordinates:
-    <%= @event.latitude %>,
-    <%= @event.longitude %>
+  <p><b>Address:</b>
+    <%= @event.address %>
   </p>
 </div>
 <div class="card" style="width: auto;">
@@ -30,29 +27,29 @@
     <tr class="card hoverable">
       <td colspan="3">
         <img alt="" class="circle responsive-img">
-        <a href="<%= event_ad_path(ad) %>">
+        <a href="<%= event_ad_path(@event, ad) %>">
           <%= image_tag ad.file.url(:thumb) %>
         </a>
         </img>
       </td>
       <td colspan="3">
-        <a href="<%= event_ad_path(ad) %>">
+        <a href="<%= event_ad_path(@event, ad) %>">
           <%= ad.title %>
         </a>
       </td>
       <td class="hide-on-med-and-down" colspan="3">
         <div class="hide-on-med-and-down">
-          <a href="<%= event_ad_path(ad) %>">
+          <a href="<%= event_ad_path(@event, ad) %>">
             <%= ad.description %>
           </a>
         </div>
       </td>
       <td>
-        <a href="<%= event_ad_path(ad) %>">
+        <a href="<%= event_ad_path(@event, ad) %>">
           <%= ad.start_date.strftime("%d %b, %Y") %>
           -
           <%= ad.termination_date.strftime("%d %b, %Y") %>
-          <a href="<%= event_ad_path(ad) %>">
+          <a href="<%= event_ad_path(@event, ad) %>">
           </td>
           <% if current_user %>
           <% if current_user.id == ad.user_id %>
