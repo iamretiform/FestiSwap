@@ -4,13 +4,27 @@
     <div class="divider"></div>
     <span><%= image_tag @event.file.url(:medium) %></span>
   </h4>
-  <b>Description:</b>
   <p>
+    <b>Description:</b>
     <%= @event.description %>
   </p>
-  <p><b>Address:</b>
+  <p>
+    <b>Address:</b>
     <%= @event.address %>
   </p>
+  <div class="waves-effect waves-light btn white">
+    <%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
+  </div>
+  <% if current_user %>
+    <% if current_user.id == @event.user_id %>
+      <div class="waves-effect waves-light btn white">
+        <%= link_to 'Edit Event', edit_event_path(@event) %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="waves-effect waves-light btn white">
+    <%= link_to 'Back', events_path %>
+  </div>
 </div>
 <div class="card" style="width: auto;">
   <iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['google_maps_key'] %>&q=<%= @event.latitude.floor(5) %>,<%= @event.longitude.floor(5) %>" allowfullscreen>
@@ -46,9 +60,9 @@
       </td>
       <td>
         <a href="<%= event_ad_path(@event, ad) %>">
-          <%= ad.start_date.strftime("%d %b, %Y") %>
+          <%= ad.start_date.strftime("%b %d, %Y") %>
           -
-          <%= ad.termination_date.strftime("%d %b, %Y") %>
+          <%= ad.termination_date.strftime("%b %d, %Y") %>
           <a href="<%= event_ad_path(@event, ad) %>">
           </td>
           <% if current_user %>
@@ -65,16 +79,3 @@
       <% end %>
     </tbody>
   </table>
-  <div class="waves-effect waves-light btn white">
-    <%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
-  </div>
-  <% if current_user %>
-    <% if current_user.id == @event.user_id %>
-      <div class="waves-effect waves-light btn white">
-        <%= link_to 'Edit Event', edit_event_path(@event) %>
-      </div>
-    <% end %>
-  <% end %>
-  <div class="waves-effect waves-light btn white">
-    <%= link_to 'Back', events_path %>
-  </div>
