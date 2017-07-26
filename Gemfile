@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'react-rails', '~> 1.5.0'
+
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
