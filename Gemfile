@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-gem 'react_on_rails', '~>6'
 gem 'react-rails', '~> 1.5.0'
 
 git_source(:github) do |repo_name|
