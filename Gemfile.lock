@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/thoughtbot/paperclip.git
+  remote: https://github.com/thoughtbot/paperclip.git
   revision: 093b4da18444d883de826f58628089c2f480d461
   specs:
     paperclip (5.1.0)
