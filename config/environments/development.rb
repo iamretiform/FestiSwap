@@ -71,4 +71,5 @@ Rails.application.configure do
   Paperclip::Attachment.default_options[:fog_credentials] = { provider: 'Local', local_root: "#{Rails.root}/public" }
   Paperclip::Attachment.default_options[:fog_directory] = ''
   Paperclip::Attachment.default_options[:fog_host] = 'http://localhost:5100'
+  config.react.variant = :development
 end

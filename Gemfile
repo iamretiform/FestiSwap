@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'react_on_rails', '~>6'
+gem 'react-rails', '~> 1.5.0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -13,7 +14,6 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'materialize-sass'
 gem 'materialize-sass'
 gem 'sass-rails', github: 'rails/sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -51,6 +51,7 @@ gem 'omniauth-google-oauth2'
 gem 'open_uri_redirections'
 gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 gem 'sidekiq'
+gem 'coveralls', require: false
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'

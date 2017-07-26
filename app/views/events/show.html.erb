@@ -12,6 +12,11 @@
     <b>Address:</b>
     <%= @event.address %>
   </p>
+  <p><b>Theme Song:</b>
+  <%= @event.theme_song %>
+  <div class="container">
+  <%= react_component 'Audio', id: @event.theme_song, action: @event, audio: @event.theme_song %>
+  </div>
   <div class="waves-effect waves-light btn white">
     <%= link_to 'Create Ad', new_event_ad_path(@event.id) %>
   </div>

@@ -44,6 +44,10 @@
       <%= f.file_field :file %><br />
       <br />
       <%= image_tag @event.file.url(:medium) %><br />
+      <div class="field">
+        <%= f.file_field :theme_song %><br />
+      <br />
+      </div>
     </div>
     <button class="btn waves-effect waves-light" type="submit" name="action">Create</button><br/>
   <% end %>
